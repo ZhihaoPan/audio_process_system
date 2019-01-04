@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9184afb0-a423-4a00-b808-94d748d38236" name="Default Changelist" comment="">
+    <list default="true" id="9184afb0-a423-4a00-b808-94d748d38236" name="Default Changelist" comment="调整了两个模型的连接方式,取消中间的二次存取文件">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logging/main.log" beforeDir="false" afterPath="$PROJECT_DIR$/logging/main.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mainframepkg/mainWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainframepkg/mainWindow.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,7 +19,7 @@
     <SUITE FILE_PATH="coverage/PyQt$connect.coverage" NAME="connect Coverage Results" MODIFIED="1544512824794" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dataBase" />
     <SUITE FILE_PATH="coverage/pyQt$getCPUstate.coverage" NAME="getCPUstate Coverage Results" MODIFIED="1541319694745" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
     <SUITE FILE_PATH="coverage/pyQt$fileUtils.coverage" NAME="fileUtils Coverage Results" MODIFIED="1541587301017" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
-    <SUITE FILE_PATH="coverage/PyQt$main.coverage" NAME="main Coverage Results" MODIFIED="1546583716406" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyQt$main.coverage" NAME="main Coverage Results" MODIFIED="1546590383631" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pyQt$dialogLogin__1_.coverage" NAME="dialogLogin (1) Coverage Results" MODIFIED="1541395378676" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/login" />
     <SUITE FILE_PATH="coverage/PyQt$mainWindow.coverage" NAME="mainWindow Coverage Results" MODIFIED="1545994697069" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/mainframepkg" />
     <SUITE FILE_PATH="coverage/PyQt$dialogSelfCheck.coverage" NAME="dialogSelfCheck Coverage Results" MODIFIED="1542805492589" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/selfcheck" />
@@ -29,7 +30,7 @@
     <SUITE FILE_PATH="coverage/PyQt$dialogWait2Rev.coverage" NAME="dialogWait2Rev Coverage Results" MODIFIED="1545998288097" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/revpkg" />
     <SUITE FILE_PATH="coverage/pyQt$dialogWait2Rev.coverage" NAME="dialogWait2Rev Coverage Results" MODIFIED="1541644681598" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/revpkg" />
     <SUITE FILE_PATH="coverage/PyQt$vad.coverage" NAME="vad Coverage Results" MODIFIED="1546504674720" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/algorithms/audio_classifier" />
-    <SUITE FILE_PATH="coverage/PyQt$otherUtils.coverage" NAME="otherUtils Coverage Results" MODIFIED="1546583714970" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
+    <SUITE FILE_PATH="coverage/PyQt$otherUtils.coverage" NAME="otherUtils Coverage Results" MODIFIED="1546590382248" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
     <SUITE FILE_PATH="coverage/pyQt$getState.coverage" NAME="getState Coverage Results" MODIFIED="1541326802513" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
     <SUITE FILE_PATH="coverage/pyQt$dialogSelfCheck__1_.coverage" NAME="dialogSelfCheck (1) Coverage Results" MODIFIED="1541352472284" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/selfcheck" />
     <SUITE FILE_PATH="coverage/PyQt$SpectrogramGenerator.coverage" NAME="SpectrogramGenerator Coverage Results" MODIFIED="1545196741532" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:/model/crnn/crnn/keras/data_loaders" />
@@ -64,23 +65,24 @@
           <splitter split-orientation="horizontal" split-proportion="0.51497394">
             <split-first>
               <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-                <file pinned="false" current-in-tab="false">
+                <file pinned="false" current-in-tab="true">
                   <entry file="file://$PROJECT_DIR$/mainframepkg/mainWindow.py">
                     <provider selected="true" editor-type-id="text-editor">
-                      <state relative-caret-position="1173">
-                        <caret line="285" column="10" selection-start-line="285" selection-start-column="10" selection-end-line="285" selection-end-column="10" />
+                      <state relative-caret-position="460">
+                        <caret line="287" column="146" selection-start-line="287" selection-start-column="146" selection-end-line="287" selection-end-column="146" />
                         <folding>
                           <element signature="e#24#37#0" expanded="true" />
-                          <marker date="1546586568240" expanded="true" signature="4039:4228" ph="..." />
+                          <marker date="1546590362337" expanded="true" signature="4039:4228" ph="..." />
+                          <marker date="1546590362337" expanded="true" signature="10988:10997" ph="..." />
                         </folding>
                       </state>
                     </provider>
                   </entry>
                 </file>
-                <file pinned="false" current-in-tab="true">
+                <file pinned="false" current-in-tab="false">
                   <entry file="file://$PROJECT_DIR$/algorithms/audio_classifier/multiPrediction.py">
                     <provider selected="true" editor-type-id="text-editor">
-                      <state relative-caret-position="23">
+                      <state relative-caret-position="-3496">
                         <caret line="16" column="81" selection-start-line="16" selection-start-column="81" selection-end-line="16" selection-end-column="81" />
                         <folding>
                           <marker date="1546587528417" expanded="true" signature="7703:8891" ph="..." />
@@ -96,7 +98,7 @@
                 <file pinned="false" current-in-tab="true">
                   <entry file="file://$PROJECT_DIR$/mainframepkg/workThread.py">
                     <provider selected="true" editor-type-id="text-editor">
-                      <state relative-caret-position="644">
+                      <state relative-caret-position="570">
                         <caret line="259" column="46" selection-start-line="259" selection-start-column="46" selection-end-line="259" selection-end-column="46" />
                         <folding>
                           <element signature="e#0#13#0" expanded="true" />
@@ -111,7 +113,7 @@
                   <entry file="file://$PROJECT_DIR$/dataBase/dbHelper.py">
                     <provider selected="true" editor-type-id="text-editor">
                       <state relative-caret-position="308">
-                        <caret line="112" lean-forward="true" selection-start-line="112" selection-end-line="112" />
+                        <caret line="112" selection-start-line="112" selection-end-line="112" />
                         <folding>
                           <element signature="e#25#39#0" expanded="true" />
                         </folding>
@@ -184,14 +186,14 @@
         <counts>
           <entry key="dummy" value="67" />
           <entry key="log" value="11" />
-          <entry key="py" value="34397" />
+          <entry key="py" value="34428" />
           <entry key="txt" value="375" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="453" />
-          <entry key="Python" value="34397" />
+          <entry key="Python" value="34428" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -216,7 +218,7 @@
         <entry file="file://$PROJECT_DIR$/mainframepkg/workThread.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="123">
-              <caret line="236" column="33" lean-forward="true" selection-start-line="236" selection-start-column="33" selection-end-line="236" selection-end-column="33" />
+              <caret line="236" column="33" selection-start-line="236" selection-start-column="33" selection-end-line="236" selection-end-column="33" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
                 <marker date="1546584685560" expanded="true" signature="2954:2956" ph="..." />
@@ -235,11 +237,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/logging/main.log">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3">
-              <caret line="85" column="50" selection-start-line="85" selection-start-column="46" selection-end-line="85" selection-end-column="50" />
+            <state relative-caret-position="164">
+              <caret line="185" column="71" selection-start-line="185" selection-start-column="63" selection-end-line="185" selection-end-column="71" />
             </state>
           </provider>
         </entry>
@@ -260,7 +262,7 @@
         <entry file="file://$PROJECT_DIR$/algorithms/audio_classifier/multiPrediction.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="333">
-              <caret line="115" column="50" lean-forward="true" selection-start-line="115" selection-start-column="50" selection-end-line="115" selection-end-column="50" />
+              <caret line="115" column="50" selection-start-line="115" selection-start-column="50" selection-end-line="115" selection-end-column="50" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
                 <marker date="1546587528417" expanded="true" signature="7703:8891" ph="..." />
@@ -269,14 +271,15 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mainframepkg/mainWindow.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="292">
-              <caret line="65" column="41" lean-forward="true" selection-start-line="65" selection-start-column="41" selection-end-line="65" selection-end-column="41" />
+            <state relative-caret-position="499">
+              <caret line="65" column="41" selection-start-line="65" selection-start-column="41" selection-end-line="65" selection-end-column="41" />
               <folding>
                 <element signature="e#24#37#0" expanded="true" />
-                <marker date="1546586568240" expanded="true" signature="4039:4228" ph="..." />
+                <marker date="1546590362337" expanded="true" signature="4039:4228" ph="..." />
+                <marker date="1546590362337" expanded="true" signature="10988:10997" ph="..." />
               </folding>
             </state>
           </provider>
@@ -286,7 +289,7 @@
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="230">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -332,7 +335,7 @@
       </list>
     </option>
     <option name="ROOT_SYNC" value="DONT_SYNC" />
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="SIGN_OFF_COMMIT" value="true" />
   </component>
   <component name="IdeDocumentHistory">
@@ -378,8 +381,8 @@
         <option value="$PROJECT_DIR$/dataBase/dbHelper.py" />
         <option value="$PROJECT_DIR$/mainframepkg/workThread.py" />
         <option value="$PROJECT_DIR$/algorithms/audio_classifier/cut_audio.py" />
-        <option value="$PROJECT_DIR$/mainframepkg/mainWindow.py" />
         <option value="$PROJECT_DIR$/algorithms/audio_classifier/multiPrediction.py" />
+        <option value="$PROJECT_DIR$/mainframepkg/mainWindow.py" />
       </list>
     </option>
   </component>
@@ -427,48 +430,7 @@
             <path>
               <item name="PyQt" type="b2602c69:ProjectViewProjectNode" />
               <item name="pyQt" type="462c0819:PsiDirectoryNode" />
-              <item name="algorithms" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PyQt" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pyQt" type="462c0819:PsiDirectoryNode" />
-              <item name="algorithms" type="462c0819:PsiDirectoryNode" />
-              <item name="audio_classifier" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PyQt" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pyQt" type="462c0819:PsiDirectoryNode" />
-              <item name="dataBase" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PyQt" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pyQt" type="462c0819:PsiDirectoryNode" />
               <item name="logging" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PyQt" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pyQt" type="462c0819:PsiDirectoryNode" />
-              <item name="loginpkg" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PyQt" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pyQt" type="462c0819:PsiDirectoryNode" />
-              <item name="mainframepkg" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PyQt" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pyQt" type="462c0819:PsiDirectoryNode" />
-              <item name="revpkg" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PyQt" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pyQt" type="462c0819:PsiDirectoryNode" />
-              <item name="selfcheck" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PyQt" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pyQt" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -627,9 +589,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.cut_audio" />
         <item itemvalue="Python.main" />
         <item itemvalue="Python.otherUtils" />
+        <item itemvalue="Python.cut_audio" />
         <item itemvalue="Python.dbHelper" />
         <item itemvalue="Python.vad" />
       </list>
@@ -926,7 +888,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32706222" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49731904" weight="0.4341534" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.60790884" weight="0.4138929" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.60790884" visible="true" weight="0.4138929" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49865952" weight="0.2952243" />
@@ -934,7 +896,7 @@
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.39209116" side_tool="true" weight="0.43125904" />
       <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49865952" weight="0.32850942" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="11" sideWeight="0.49865952" visible="true" weight="0.316932" />
+      <window_info anchor="bottom" id="Version Control" order="11" sideWeight="0.49865952" weight="0.316932" />
       <window_info anchor="bottom" id="Messages" order="12" />
       <window_info anchor="bottom" id="Python Console" order="13" sideWeight="0.49865952" weight="0.039073806" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -1380,7 +1342,7 @@
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="230">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
@@ -1426,17 +1388,10 @@
     <entry file="file://$PROJECT_DIR$/dataBase/dbHelper.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
-          <caret line="112" lean-forward="true" selection-start-line="112" selection-end-line="112" />
+          <caret line="112" selection-start-line="112" selection-end-line="112" />
           <folding>
             <element signature="e#25#39#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/logging/main.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3">
-          <caret line="85" column="50" selection-start-line="85" selection-start-column="46" selection-end-line="85" selection-end-column="50" />
         </state>
       </provider>
     </entry>
@@ -1453,7 +1408,7 @@
     <entry file="file://$PROJECT_DIR$/mainframepkg/workThread.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="123">
-          <caret line="236" column="33" lean-forward="true" selection-start-line="236" selection-start-column="33" selection-end-line="236" selection-end-column="33" />
+          <caret line="236" column="33" selection-start-line="236" selection-start-column="33" selection-end-line="236" selection-end-column="33" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
             <marker date="1546584685560" expanded="true" signature="2954:2956" ph="..." />
@@ -1477,7 +1432,7 @@
     <entry file="file://$PROJECT_DIR$/algorithms/audio_classifier/multiPrediction.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="333">
-          <caret line="115" column="50" lean-forward="true" selection-start-line="115" selection-start-column="50" selection-end-line="115" selection-end-column="50" />
+          <caret line="115" column="50" selection-start-line="115" selection-start-column="50" selection-end-line="115" selection-end-column="50" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
             <marker date="1546587528417" expanded="true" signature="7703:8891" ph="..." />
@@ -1487,12 +1442,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mainframepkg/mainWindow.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="65" column="41" lean-forward="true" selection-start-line="65" selection-start-column="41" selection-end-line="65" selection-end-column="41" />
+        <state relative-caret-position="499">
+          <caret line="65" column="41" selection-start-line="65" selection-start-column="41" selection-end-line="65" selection-end-column="41" />
           <folding>
             <element signature="e#24#37#0" expanded="true" />
-            <marker date="1546586568240" expanded="true" signature="4039:4228" ph="..." />
+            <marker date="1546590362337" expanded="true" signature="4039:4228" ph="..." />
+            <marker date="1546590362337" expanded="true" signature="10988:10997" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logging/main.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="185" column="71" selection-start-line="185" selection-start-column="63" selection-end-line="185" selection-end-column="71" />
         </state>
       </provider>
     </entry>

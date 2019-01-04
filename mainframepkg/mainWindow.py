@@ -283,9 +283,9 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         #写入日志文件
         mainlog("{},ycsy:{}\n,swfl:{}\n,yzfl:{}".format(text,sendMsg["ycsyjc"],sendMsg["swfl"],sendMsg["yzfl"]),"debug")
         self.work4SendRstMsg.disconnect()
-        with open(os.path.join(sendMsg["url"],"{}.json".format(sendMsg["file"])),'w') as f:
+        with open(os.path.join(sendMsg["url"],"{}.json".format(sendMsg["file"][:-4])),'w') as f:
             json.dump(sendMsg,f)
-        self.testDBHelper.testInsert(os.path.join(sendMsg["url"],sendMsg["file"]),os.path.join(sendMsg["url"],"{}.json".format(sendMsg["file"])))
+        self.testDBHelper.testInsert(os.path.join(sendMsg["url"],sendMsg["file"]),os.path.join(sendMsg["url"],"{}.json".format(sendMsg["file"][:-4])))
 
     def updateTmpContent(self):
         self.tmpContent["filedone"]+=1
