@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/algorithms/audio_classifier/cut_audio.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/algorithms/audio_classifier/vad.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dataBase/connect.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/demo/dialogDemo.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/main.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mainframepkg/mainWindow.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mainframepkg/workThread.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/utils/otherUtils.py" charset="UTF-8" />
+  </component>
+</project>
