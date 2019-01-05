@@ -16,6 +16,7 @@ from PyQt5.QtWidgets import QApplication, QDialog, QMessageBox
 from PyQt5.QtCore import QTimer, QThread, pyqtSignal
 import pathlib
 
+from algorithms.audio_classifier.vad import jingyinfenge
 from utils.getState import *
 from revpkg.wait2Rev import Ui_Dialog
 from utils.otherUtils import *
@@ -316,7 +317,7 @@ class WorkThread4Send(QThread):
         self.IP4platform=IP4platform
 
     def run(self):
-        print("WorkThread4Send start")
+        #print("文件静音检测开始")
         # 组成数据包
         sendMsg = {"head": "report", "file": self.filepath}
         file_num,fileDict = countWavFile(self.filepath)
@@ -327,6 +328,7 @@ class WorkThread4Send(QThread):
         chsum = crc32asii(sendMsg)
         sendMsg.update({"chsum": chsum})
         # zmq
+        print("WorkThread4Send start")
         self.socket.connect("tcp://" + self.IP4platform + ":5556")
         print("Sending report....: %s" % str(sendMsg))
         mainlog("Send Report:{}".format(str(sendMsg)))

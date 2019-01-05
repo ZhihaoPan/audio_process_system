@@ -3,6 +3,8 @@ import zmq,sys,time
 from PyQt5 import QtCore
 from PyQt5.QtWidgets import QMainWindow,QApplication,QMessageBox
 from PyQt5.QtCore import QTimer,QThread,pyqtSignal,QMutexLocker,QMutex
+
+from algorithms.audio_classifier.vad import jingyinfenge
 from utils.getState import *
 from utils.otherUtils import *
 import logging
@@ -86,7 +88,7 @@ class WorkThread4AudioChoose(QThread):
     返回的参数为 处理文件的url(str)，处理线程的ID(int)
     本线程的回调函数用于调用之后AudioProcess线程
     """
-    trigger=pyqtSignal(str,int)
+    trigger=pyqtSignal(str,int,int)
     def __init__(self,file_path,thread_num,FileDoneFlags,ThreadUsedFlags,mutex):
         super(WorkThread4AudioChoose, self).__init__()
         self.file_path=file_path
@@ -96,6 +98,7 @@ class WorkThread4AudioChoose(QThread):
         self.mutex=mutex
 
     def run(self):
+        #step=0
         for id,thread_flag in self.ThreadUsedFlags.items():
             #如果thread_flag==0就去文件表中找没有执行过的文件
             if not thread_flag:
@@ -103,11 +106,43 @@ class WorkThread4AudioChoose(QThread):
                 self.mutex.lock()
                 try:
                     file_name=list(self.FileDoneFlags.keys())[list(self.FileDoneFlags.values()).index(0)]
+                    step=0
                     print(file_name)
                 except:
-                    file_name=None
+                    try:
+                        file_name = list(self.FileDoneFlags.keys())[list(self.FileDoneFlags.values()).index(1)]
+                        step=1
+                        print(file_name)
+                    except:
+                        file_name=None
+                        step=2
 
-                self.trigger.emit(file_name,id)
+                self.trigger.emit(file_name,id,step)
+
+class WorkThread4VAD(QThread):
+    """
+    该线程用于进行静音片段的检测,将一个大文件分割成多个无静音片段的小文件
+    同时将小文件的文件名加入文件处理字典fileDict
+    """
+    trigger=pyqtSignal(bool,int,str,str)
+    def __init__(self,ID,mutex,file_path,fileDict):
+        super(WorkThread4VAD, self).__init__()
+        self.ThreadID=ID
+        self.mutex=mutex
+        self.file_path=file_path
+        self.fileDict=fileDict
+
+    def run(self):
+        #首先进行静音检测得到文件字典{"a.wav":1....}
+        try:
+            vad_file_dict=jingyinfenge(self.file_path,os.path.dirname(self.file_path))
+            os.remove(self.file_path)
+            self.mutex.lock()
+            self.fileDict.update(vad_file_dict)
+            self.trigger.emit(1,self.ThreadID,self.file_path,None)
+        except Exception as e:
+            self.mutex.lock()
+            self.trigger.emit(0,self.ThreadID,self.file_path,e)
 
 
 class WorkThread4AudioProcess(QThread):

@@ -9,23 +9,26 @@ def jingyinfenge(input_file,output_dir):
     # 检查目录是否存在，不存在就新建目录
     if not os.path.isdir(output_dir):
         os.makedirs(output_dir)
-    command=["auditok","-m","1000000000000000","-s","3","-i",input_file.__str__(),"-o",output_dir.__str__(),"{N}-{start}-{end}.wav"]
-    #command = "auditok -m 1000000000000000 -s 3 -i {}".format(input_file)+" -o {}".format(output_dir) + "{N}-{start}-{end}.wav"
+
+    #command=["auditok","-m","1000000000000000","-s","3","-i",input_file.__str__(),"-o",output_dir.__str__(),"{N}-{start}-{end}.wav"]
+    command = "auditok -m 1000000000000000 -s 3 -i {}".format(input_file)+" -o {}".format(output_dir) + "/{N}-{start}-{end}.wav"
     # print(command)
     p = Popen(command, shell=True, stdin=PIPE, stdout=PIPE, stderr=STDOUT, close_fds=False)
 
     output, errors = p.communicate()
     if errors:
         print(errors)
+    output=str(output,encoding="utf-8")
     print(output)  # 原始输出（就是打印在控制台上面的）
 
     # 把原始输出转成文件的格式，得到静音检测后所有的音频list
-    split_files = []
-    for file in output.split('\n'):
-        file_name = file.replace(' ','-')+'.wav'
-        split_files.append(file_name)
-    split_files.pop() # 删掉最后一个元素
-    print(split_files)
+    split_files = {}
+    for file in output.split('\r\n'):
+        if file:
+            file_name = file.replace(' ','-')+'.wav'
+            split_files.update({os.path.join(output_dir,file_name):1})
+    #split_files.pop() # 删掉最后一个元素
+    return  split_files
 
     # # 把分割的音频list以文件形式保存下来
     # with open('tmp_split_files','w') as f:
@@ -45,6 +48,14 @@ def jingyinfenge(input_file,output_dir):
 
 
 if __name__ == "__main__":
-    input_file = r'D:\Dataset\UrbanSound\Gunshot_train_addftp1current\0abf7b205.wav'
-    output_dir = r'D:\Dataset\Gunshot'
-    jingyinfenge(input_file,output_dir)
+    time1=time.clock()
+    input_file = r'D:/Dataset/mixaudio/testx.wav'
+    print(os.path.dirname(input_file))
+    output_dir = r'D:/Dataset/mixaudio'
+    #print(jingyinfenge(input_file,output_dir))
+    # if os.path.isfile(input_file):
+    #     try:
+    #         os.remove(input_file)
+    #     except Exception as error:
+    #         print(error)
+    print(time.clock()-time1)

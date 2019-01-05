@@ -164,13 +164,16 @@ def record(re_frames, WAVE_OUTPUT_FILENAME,p,FORMAT,RATE):
 
 if __name__ == '__main__':
     #pass
-    # a={r'D:\Dataset\demo\0.wav': 0, 'D:\Dataset\demo\demo1+2.wav': 0, 'D:\Dataset\demo\mix1.wav': 0, 'D:\Dataset\demo\mix2.wav': 0, 'D:\Dataset\demo\mix3.wav': 0, 'D:\Dataset\demo\scream_11.wav': 0, 'D:\Dataset\demo\speakingtest.wav': 0, 'D:\Dataset\demo\test1.wav': 0, 'D:\Dataset\demo\test2.wav': 0, 'D:\Dataset\demo\test3.wav': 0, 'D:\Dataset\demo\test4.wav': 0, 'D:\Dataset\demo\test5.wav': 0, 'D:\Dataset\demo\test6.wav': 0, 'D:\Dataset\demo\test7.wav': 0, 'D:\Dataset\demo\_.wav': 0, 'D:\Dataset\demo\cut\gun_shot_000136_gun4.wav': 0, 'D:\Dataset\demo\cut\gun_shot_000142_gun7.wav': 0, 'D:\Dataset\demo\cut\gun_shot_000146_gun6.wav': 0, 'D:\Dataset\demo\cut\gun_shot_000156_gun9.wav': 0, 'D:\Dataset\demo\cut\gun_shot_000304_gun7.wav': 0, 'D:\Dataset\demo\cut\gun_shot_000422_gun6.wav': 0, 'D:\Dataset\demo\cut\gun_shot_000444_gun9.wav': 0, 'D:\Dataset\demo\cut\gun_shot_000546_gun1.wav': 0, 'D:\Dataset\demo\cut\gun_shot_000646_gun1.wav': 0, 'D:\Dataset\demo\cut\gun_shot_000846_gun1.wav': 0, 'D:\Dataset\demo\cut\gun_shot_001446_gun5.wav': 0, 'D:\Dataset\demo\cut\gun_shot_005210_gun5.wav': 0, 'D:\Dataset\demo\cut\gun_shot_005714_gun5.wav': 0, 'D:\Dataset\demo\gun_shot\gun_shot_000000_test7.wav': 0, 'D:\Dataset\demo\gun_shot\gun_shot_000002_test4.wav': 0, 'D:\Dataset\demo\gun_shot\gun_shot_000018_test4.wav': 0, 'D:\Dataset\demo\gun_shot\gun_shot_000042_test4.wav': 0, 'D:\Dataset\demo\gun_shot\gun_shot_000048_test4.wav': 0, 'D:\Dataset\demo\gun_shot\gun_shot_000056_test4.wav': 0, 'D:\Dataset\demo\gun_shot\gun_shot_000102_test4.wav': 0, 'D:\Dataset\demo\scream\scream_000000_test4.wav': 0, 'D:\Dataset\demo\scream\scream_000018_test7.wav': 0, 'D:\Dataset\demo\scream\scream_000020_test4.wav': 0, 'D:\Dataset\demo\scream\scream_000100_test4.wav': 0, 'D:\Dataset\demo\speaking\speaking_000000_0.wav': 0}
-    # b=1
-    # print(list(a.values()).index(0))
-    # try:
-    #     print(list(a.keys())[list(a.values()).index(0)])
-    # except Exception as e:
-    #     print(a)
+    a={r'D:\Dataset\demo\0.wav': 0, 'D:\Dataset\demo\demo1+2.wav': 0, 'D:\Dataset\demo\mix1.wav': 0, 'D:\Dataset\demo\mix2.wav': 0, 'D:\Dataset\demo\mix3.wav': 0, 'D:\Dataset\demo\scream_11.wav': 0, 'D:\Dataset\demo\speakingtest.wav': 0, 'D:\Dataset\demo\test1.wav': 0, 'D:\Dataset\demo\test2.wav': 0, 'D:\Dataset\demo\test3.wav': 0, 'D:\Dataset\demo\test4.wav': 0, 'D:\Dataset\demo\test5.wav': 0, 'D:\Dataset\demo\test6.wav': 0, 'D:\Dataset\demo\test7.wav': 0, 'D:\Dataset\demo\_.wav': 0, 'D:\Dataset\demo\cut\gun_shot_000136_gun4.wav': 0, 'D:\Dataset\demo\cut\gun_shot_000142_gun7.wav': 0, 'D:\Dataset\demo\cut\gun_shot_000146_gun6.wav': 0, 'D:\Dataset\demo\cut\gun_shot_000156_gun9.wav': 0, 'D:\Dataset\demo\cut\gun_shot_000304_gun7.wav': 0, 'D:\Dataset\demo\cut\gun_shot_000422_gun6.wav': 0, 'D:\Dataset\demo\cut\gun_shot_000444_gun9.wav': 0, 'D:\Dataset\demo\cut\gun_shot_000546_gun1.wav': 0, 'D:\Dataset\demo\cut\gun_shot_000646_gun1.wav': 0, 'D:\Dataset\demo\cut\gun_shot_000846_gun1.wav': 0, 'D:\Dataset\demo\cut\gun_shot_001446_gun5.wav': 0, 'D:\Dataset\demo\cut\gun_shot_005210_gun5.wav': 0, 'D:\Dataset\demo\cut\gun_shot_005714_gun5.wav': 0, 'D:\Dataset\demo\gun_shot\gun_shot_000000_test7.wav': 0, 'D:\Dataset\demo\gun_shot\gun_shot_000002_test4.wav': 0, 'D:\Dataset\demo\gun_shot\gun_shot_000018_test4.wav': 0, 'D:\Dataset\demo\gun_shot\gun_shot_000042_test4.wav': 0, 'D:\Dataset\demo\gun_shot\gun_shot_000048_test4.wav': 0, 'D:\Dataset\demo\gun_shot\gun_shot_000056_test4.wav': 0, 'D:\Dataset\demo\gun_shot\gun_shot_000102_test4.wav': 0, 'D:\Dataset\demo\scream\scream_000000_test4.wav': 0, 'D:\Dataset\demo\scream\scream_000018_test7.wav': 0, 'D:\Dataset\demo\scream\scream_000020_test4.wav': 0, 'D:\Dataset\demo\scream\scream_000100_test4.wav': 0, 'D:\Dataset\demo\speaking\speaking_000000_0.wav': 0}
+    b=1
+    #print(list(a.values()).index(2))
+    try:
+        print(list(a.keys())[list(a.values()).index(1)])
+    except Exception as e:
+        try:
+            print(list(a.keys())[list(a.values()).index(0)])
+        except:
+            print(0)
     # def func(c,d):
     #     c["a"]=2
     #     d+=1
@@ -178,4 +181,3 @@ if __name__ == '__main__':
     # print(a,b)
     # list(a.keys())[list(a.values()).index(2)]
     # 以上两种办法都可以得到一个字典中values为2的key而且效率很高
-    print(os.path.join(r"D:\a",r"\b.wav"))

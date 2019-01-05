@@ -113,7 +113,7 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
 
 
     #处理音频信息块
-    def procAudio(self,file_name,id):
+    def procAudio(self,file_name,id,step):
         """
         WorkThread4AudioChoose的回调函数
         todo 此处为算法处理模块算法每5s的处理结果存入dicContent中，
@@ -122,7 +122,7 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         设置三个线程三个timer
         :return:
         """
-        if not file_name:
+        if not file_name and step==2:
             try:
                 threaddone=list(self.threadDict.keys())[list(self.threadDict.values()).index(1)]
             except:
@@ -133,34 +133,79 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
                     print("所有文件处理完成")
                     mainlog("所有文件处理完成。","info")
                     self.timer4audiochoose.stop()
-        else:
+        elif step==1:
 
-            self.fileDict[file_name]=1
+            self.fileDict[file_name]=2
+            self.fileDict.pop(file_name)
             self.threadDict[id]=1
             self.ThreadList.update({id:WorkThread4AudioProcess(ID=id,mutex=self.mutex4audioprocess,file_path=file_name)})
             self.ThreadList[id].trigger.connect(self.setContent)
             self.ThreadList[id].start(id)
             #设置界面
             if id is 1:
-                self.textEdit_4.setText("运行")
+                self.textEdit_4.setText("运行分类")
                 self.textEdit_7.setText("{}".format(os.path.basename(file_name)))
             elif id is 2:
-                self.textEdit_5.setText("运行")
+                self.textEdit_5.setText("运行分类")
                 self.textEdit_8.setText("{}".format(os.path.basename(file_name)))
             elif id is 3:
-                self.textEdit_6.setText("运行")
+                self.textEdit_6.setText("运行分类")
                 self.textEdit_9.setText("{}".format(os.path.basename(file_name)))
+        #对音频进行静音处理
+        elif step==0:
+            self.fileDict.pop(file_name)
+            self.threadDict[id] = 1
+            self.ThreadList.update(
+                {id: WorkThread4VAD(ID=id, mutex=self.mutex4audioprocess, file_path=file_name,fileDict=self.fileDict)})
+            self.ThreadList[id].trigger.connect(self.setContent)
+            self.ThreadList[id].start(id)
+            # 设置界面
+            if id is 1:
+                self.textEdit_4.setText("运行Vad")
+                self.textEdit_7.setText("{}".format(os.path.basename(file_name)))
+            elif id is 2:
+                self.textEdit_5.setText("运行Vad")
+                self.textEdit_8.setText("{}".format(os.path.basename(file_name)))
+            elif id is 3:
+                self.textEdit_6.setText("运行Vad")
+                self.textEdit_9.setText("{}".format(os.path.basename(file_name)))
+
 
         #对全局变量的操作结束可以解锁
         self.mutex4audiochoose.unlock()
         #同时还需要设置界面 设置维护的两个字典，在处理完之后把字典恢复，同时该list中的内容去除
        #todo 这里是把一个file传入 在线程监控中加上该线程处理的哪个文件 文件时长有多长
 
+    def showVadProcess(self,success,threadID,file_name,error):
+        """
+        WorkThread4VAD的回调函数
+        这里要把fileDict和threadDict的字典进行设置
+        :param success:
+        :param file_name:
+        :param error:
+        :return:
+        """
+        if success:
+            self.plainTextEdit.appendPlainText("INFO --VAD Process-- :{}静音检测完成".format(file_name))
+        else:
+            self.plainTextEdit.appendPlainText("ERROR --VAD Process-- :{}静音检测失败,错误为{}".format(file_name,error))
+
+        self.threadDict[threadID]=0
+        if threadID is 1:
+            self.textEdit_4.setText("就绪")
+            self.textEdit_7.setText("")
+        elif threadID is 2:
+            self.textEdit_5.setText("就绪")
+            self.textEdit_8.setText("")
+        elif threadID is 3:
+            self.textEdit_6.setText("就绪")
+            self.textEdit_9.setText("")
+
 
     def setContent(self, Content, threadID, flag):
         """
         WorkThread4AudioProcess的回调函数
-        这里要把fileDict和threadDict的字典进行设置
+        这里要把threadDict的字典进行设置
         :param Content:
         :param threadID:
         :param flag: 如果flag为0则为5s一次信息，flag为1则为result信息
@@ -238,6 +283,8 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         self.textEdit_3.setText(monitorMsg["mem"])
         self.textEdit_2.setText((monitorMsg["tem"]))
         self.lineEdit_9.setText("{}:{}.".format(self.ip4platform,monitorMsg["network"]))
+        self.lineEdit_2.setText("{}".format(len(self.fileDict)))
+
     def showTmpMsg(self, retMsg):
         """
         本地发送数据给平台后在此写入日志同时显示在界面上的框内
@@ -257,7 +304,7 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         # 写入日志文件
         #mainlog(text)
 
-        self.lineEdit_3.setText("{}".format(retMsg["filedone"]))
+        self.lineEdit_3.setText("{}".format(retMsg["filedone"]))#放到监控中进行实时检测
         self.lineEdit_5.setText(retMsg["time_remain"])
 
         #todo 为什么不加disconnect就会一次性弹出很多
@@ -279,13 +326,17 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
              ", 是否发送成功:{}, 发送内容查询log".format(sendMsg["head"], sendMsg["file"], retMsg["time"],
                                                                     retMsg["IP"], retMsg["success"])
         self.plainTextEdit.appendPlainText(text)
-        self.mutex4sendresult.unlock()
+
         #写入日志文件
         mainlog("{},ycsy:{}\n,swfl:{}\n,yzfl:{}".format(text,sendMsg["ycsyjc"],sendMsg["swfl"],sendMsg["yzfl"]),"debug")
-        self.work4SendRstMsg.disconnect()
+
         with open(os.path.join(sendMsg["url"],"{}.json".format(sendMsg["file"][:-4])),'w') as f:
             json.dump(sendMsg,f)
         self.testDBHelper.testInsert(os.path.join(sendMsg["url"],sendMsg["file"]),os.path.join(sendMsg["url"],"{}.json".format(sendMsg["file"][:-4])))
+
+        #写在最后
+        self.mutex4sendresult.unlock()
+        self.work4SendRstMsg.disconnect()
 
     def updateTmpContent(self):
         self.tmpContent["filedone"]+=1
