@@ -26,7 +26,7 @@ def loading_language_classifier_model():
     model_path = sys.path[0]
     model = load_model(model_path + '\\algorithms\\language_classifier\\trained_model\\weights_finetune.model')
     print("finished loding model", time.time() - start_time)
-    return model
+    return {"model":model}
 
 
 

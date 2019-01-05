@@ -152,27 +152,30 @@ class WorkThread4AudioProcess(QThread):
     一个音频文件一个线程
     """
     trigger=pyqtSignal(dict,int,int)
-    def __init__(self,ID,mutex,file_path):
+    def __init__(self,ID,mutex,file_path,au_cla_models,ifcuda,lang_cla_model):
         super(WorkThread4AudioProcess, self).__init__()
         self.ThreadID=ID
         self.mutex=mutex
         self.file_path=file_path
+        self.au_cla_models=au_cla_models
+        self.ifcuda=ifcuda
+        self.lang_cla_model=lang_cla_model
 
     def run(self):
-        #todo 此处对加上对音频处理的模型
+        #todo 此处对加上对音频处理的模型 模型的载入单独列一个线程出来做，能够提高非常多的效率
         try:
             time.sleep(int(self.ThreadID) * 10)
             url=os.path.dirname(self.file_path)
             file=os.path.basename(self.file_path)
             #file_path = r"/home/panzh/Downloads/demoAudio/test/0.wav"
-            au_cla_models, ifcuda = loading_audio_classifier_models({"ResNet101": 0.3, "resnext": 0.6, "VGG16": 0.1})
+            #au_cla_models, ifcuda = loading_audio_classifier_models({"ResNet101": 0.3, "resnext": 0.6, "VGG16": 0.1})
             #lang_cla_model = loading_language_classifier_model()
-            au_cla_labels,dur_time,speaking_time_dict=audio_class_predict(self.file_path, au_cla_models, ifcuda)
+            au_cla_labels,dur_time,speaking_time_dict=audio_class_predict(self.file_path, self.au_cla_models, self.ifcuda)
             # 我系潘记号 这是你前所未见的全新版本
             # lang_cla_labels = {"timesteps": [], "content": []}
             # if speaking_time_dict:  # 如果改字典非空的话
             #     for stTime, duTime in speaking_time_dict.items():
-            #         speaking_audio_url, max_prob_label, time_len = get_prediction(self.file_path, lang_cla_model, stTime, duTime)
+            #         speaking_audio_url, max_prob_label, time_len = get_prediction(self.file_path, self.lang_cla_model["model], stTime, duTime)
             #         lang_cla_labels["timesteps"].append(
             #             "{}s,{}s".format(strTime2Seconds(stTime), strTime2Seconds(stTime) + strTime2Seconds(duTime)))
             #         lang_cla_labels["content"].append(max_prob_label)
@@ -221,7 +224,7 @@ class WorkThread4AudioProcess(QThread):
 
         except Exception as e:
             self.mutex.lock()
-            self.trigger.emit({"ERROR":e,"ThreadID":self.ThreadID},self.ThreadID,-1)
+            self.trigger.emit({"ERROR":e,"file":os.path.join(url,file)},self.ThreadID,-1)
             self.quit()
             return
         self.rstContent={"url":url,"file":file,"file_duration":"{:.2f}s".format(dur_time)}
@@ -269,7 +272,7 @@ class WorkThread4SendResult(QThread):
         # struct 4 send message
         self.mutex.lock()
         if not self.dicContent:
-            self.trigger.emit({})
+            self.trigger.emit({},{})
             return
         sendMsg = {"head": "data"}
         sendMsg.update(self.dicContent)
@@ -283,7 +286,7 @@ class WorkThread4SendResult(QThread):
             # time.sleep(5)
             print("Sending Msg dont update....")
             retMsg = {}
-            self.trigger.emit(retMsg)
+            self.trigger.emit(retMsg,{})
             return
         #time.sleep(1)
         print("Sending result message......:%s" % str(sendMsg))
@@ -297,6 +300,25 @@ class WorkThread4SendResult(QThread):
         self.trigger.emit(retMsg,sendMsg)
         self.quit()
 
+class WorkThread4LoadingModels(QThread):
+    """
+    该线程用于在系统启动时初始化模型以便后面快速使用
+    """
+    trigger=pyqtSignal(dict,bool,dict)
+    def __init__(self):
+        super(WorkThread4LoadingModels, self).__init__()
+
+    def run(self):
+        try:
+            au_cla_models, ifcuda = loading_audio_classifier_models({"ResNet101": 0.3, "resnext": 0.6,
+                                                                     "VGG16": 0.1})
+            lang_cla_model={}
+            # lang_cla_model = loading_language_classifier_model()
+
+            self.trigger.emit(au_cla_models, ifcuda, lang_cla_model)
+        except Exception as e:
+            mainlog("加载模型出现错误！！！！！:{}".format(e),"error")
+            self.trigger.emit({},0,{})
 
 
 if __name__ == '__main__':

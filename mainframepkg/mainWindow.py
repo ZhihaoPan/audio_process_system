@@ -52,6 +52,12 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         self.fileDict=fileDict  #用于判断该音频文件是否已经被处理
         self.procFunctions=procFunctions
         self.ip4platform=IP4platform
+        #初始化模型变量
+        self.au_cla_models=None
+        self.lang_cla_model=None
+        self.ifcuda=False
+
+        #初始化字典变量
         self.tmpContent={"file":file_path,"filedone":0,"time_pass":"000000",
                          "time_remain":"999999","num_ycsyjc": 0, "num_swfl": 0, "num_yzfl": 0}
         self.rstContent={}
@@ -75,6 +81,14 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         self.timer4monitor.start(1000)
         self.timer4monitor.timeout.connect(self.showCurrentTime)
 
+        #初始化加载模型的Timer和线程
+        self.timer4loadingmodel=QTimer()
+        self.timer4loadingmodel.setSingleShot(True)
+        self.timer4loadingmodel.start()
+        self.work4LoadingModel=WorkThread4LoadingModels()
+        self.work4LoadingModel.trigger.connect(self.loadingModel)
+        self.timer4loadingmodel.timeout.connect(self.work4LoadingModel.start)
+
         #该timer用于发送每10s一次的信息
         self.timer4sendtmpmsg=QTimer()
         self.timer4sendtmpmsg.setSingleShot(0)
@@ -90,7 +104,7 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         #该timer用于音频处理块的开始
         self.timer4audiochoose=QTimer()
         self.timer4audiochoose.setSingleShot(0)
-        self.timer4audiochoose.start(5000)
+        #self.timer4audiochoose.start(5000)
         self.timer4audiochoose.timeout.connect(self.audioThreadChoose)
 
 
@@ -101,7 +115,7 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
     #定时清除界面信息
     def clearup(self):
         self.plainTextEdit.clear()
-        self.plainTextEdit.appendPlainText("进行界面信息的清空处理,如需查看以往信息请看日志文件...")
+        self.plainTextEdit.appendPlainText("INFO --进行界面信息的清空处理,如需查看以往信息请看日志文件...")
 
     def audioThreadChoose(self):
         """
@@ -110,6 +124,19 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         """
         #self.plainTextEdit.appendPlainText("文件线程选择Thread启动...")
         self.work4AudioChoose.start()
+
+    def loadingModel(self,au_cla_models,ifcuda,lang_cla_model):
+        """
+        该函数是WorkThread4LoadingModels的回调函数 同时开启音频选择时间控制器
+        :param au_cla_models:
+        :param ifcuda:
+        :param lang_cla_model:
+        :return:
+        """
+        self.au_cla_models=au_cla_models
+        self.ifcuda=ifcuda
+        self.lang_cla_model=lang_cla_model
+        self.timer4audiochoose.start(5000)
 
 
     #处理音频信息块
@@ -122,23 +149,24 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         设置三个线程三个timer
         :return:
         """
-        if not file_name and step==2:
+        if (not file_name) and step==2:
             try:
                 threaddone=list(self.threadDict.keys())[list(self.threadDict.values()).index(1)]
             except:
                 threaddone=None
             if not threaddone:
                 if self.textEdit_4.toPlainText()=="就绪" and self.textEdit_5.toPlainText()=="就绪" and self.textEdit_6.toPlainText()=="就绪":
-                    self.plainTextEdit.appendPlainText("所有文件处理完成")
+                    self.plainTextEdit.appendPlainText("INFO -- 所有文件处理完成")
                     print("所有文件处理完成")
                     mainlog("所有文件处理完成。","info")
                     self.timer4audiochoose.stop()
-        elif step==1:
+        elif file_name and step==1:
 
             self.fileDict[file_name]=2
-            self.fileDict.pop(file_name)
+            #self.fileDict.pop(file_name)
             self.threadDict[id]=1
-            self.ThreadList.update({id:WorkThread4AudioProcess(ID=id,mutex=self.mutex4audioprocess,file_path=file_name)})
+            self.ThreadList.update({id:WorkThread4AudioProcess(ID=id,mutex=self.mutex4audioprocess,file_path=file_name,
+                                                               au_cla_models=self.au_cla_models,ifcuda=self.ifcuda,lang_cla_model=self.lang_cla_model)})
             self.ThreadList[id].trigger.connect(self.setContent)
             self.ThreadList[id].start(id)
             #设置界面
@@ -152,8 +180,9 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
                 self.textEdit_6.setText("运行分类")
                 self.textEdit_9.setText("{}".format(os.path.basename(file_name)))
         #对音频进行静音处理
-        elif step==0:
+        elif file_name and step==0:
             self.fileDict.pop(file_name)
+            #self.fileDict[file_name]=2
             self.threadDict[id] = 1
             self.ThreadList.update(
                 {id: WorkThread4VAD(ID=id, mutex=self.mutex4audioprocess, file_path=file_name,fileDict=self.fileDict)})
@@ -200,7 +229,7 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         elif threadID is 3:
             self.textEdit_6.setText("就绪")
             self.textEdit_9.setText("")
-
+        self.mutex4audioprocess.unlock()
 
     def setContent(self, Content, threadID, flag):
         """
@@ -213,18 +242,17 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         """
         #
         if flag is -1:
-            self.plainTextEdit.appendPlainText("当前线程：{} 处理音频时发生错误:{}\n".format(Content["ThreadID"], Content["ERROR"]))
-            mainlog("当前线程：{} 处理音频时发生错误:{}\n".format(Content["ThreadID"], Content["ERROR"]),"error")
+            self.plainTextEdit.appendPlainText("ERROR --当前线程：{} 处理音频时发生错误:{}\n".format(threadID, Content["ERROR"]))
+            mainlog("当前线程：{} 处理音频{}时发生错误:{}\n".format(threadID, Content["file"], Content["ERROR"]),"error")
         elif flag is 0:
             file_done_name = os.path.join(Content["url"], Content["file"])
             try:
-                self.fileDict[file_done_name] = 1
-                self.plainTextEdit.appendPlainText("当前音频处理线程:{},处理的文件是:{},\n处理完成,准备发送处理结果信息...".format(threadID,file_done_name))
+                self.plainTextEdit.appendPlainText("INFO --当前音频处理线程:{},处理的文件是:{},\n处理完成,准备发送处理结果信息...".format(threadID,file_done_name))
                 self.rstContent.update(Content)
                 self.updateTmpContent()
                 self.sendRstMsg()
             except Exception as e:
-                self.plainTextEdit.appendPlainText("当前的文件名不存在在fileDict内：{} Error:{}".format(file_done_name, e))
+                self.plainTextEdit.appendPlainText("ERROR --当前的文件名不存在在fileDict内：{} Error:{}".format(file_done_name, e))
 
         self.threadDict[threadID]=0
         if threadID is 1:
@@ -248,7 +276,7 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         :return:
         """
         #每5s设置一次content
-        self.plainTextEdit.appendPlainText("准备发送5s信息,发送5s信息线程开始运行...")
+        #self.plainTextEdit.appendPlainText("INFO --准备发送5s信息,发送5s信息线程开始运行...")
         self.work4SendTempMsg.setSendContent(self.tmpContent)
         #设置了发送的信息可以开始线程
         self.work4SendTempMsg.start()
@@ -292,12 +320,12 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         :return:
         """
         if not retMsg:
-            self.plainTextEdit.appendPlainText("发送平台的信息包头为:msg,但发送的内容为空!!!!!!!")
+            self.plainTextEdit.appendPlainText("WARNING --发送平台的信息包头为:msg,但发送的内容为空!!!!!!!")
             # 写入日志文件
             mainlog("发送平台的信息包头为:msg,但发送的内容为空!!!!!!!",level="warning")
             self.work4SendTempMsg.disconnect()
             return
-        text="发送平台信息包头:{}, 当前处理的音频文件是:{}" \
+        text="INFO --发送平台信息包头:{}, 当前处理的音频文件是:{}" \
              "\n发送时刻(hhmmss):{}, IP地址:{}" \
              " \n是否发送成功:{}".format(retMsg["head"], retMsg["file"],retMsg["time"], retMsg["IP"], retMsg["success"])
         self.plainTextEdit.appendPlainText(text)
@@ -317,12 +345,12 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
                 :return:
                 """
         if not retMsg:
-            self.plainTextEdit.appendPlainText("发送平台的信息包头为:data,但发送的内容重复或者为空")
+            self.plainTextEdit.appendPlainText("WARNING --发送平台的信息包头为:data,但发送的内容重复或者为空")
             # 写入日志文件
             mainlog("发送平台的信息包头为:data,但发送的内容重复或者为空!!!!!!!", level="warning")
             self.work4SendRstMsg.disconnect()
             return
-        text="发送平台信息包头:{}, 当前处理的音频文件是:{} \n发送时刻(hhmmss):{}, IP地址:{}" \
+        text="INFO --发送平台信息包头:{}, 当前处理的音频文件是:{} \n发送时刻(hhmmss):{}, IP地址:{}" \
              ", 是否发送成功:{}, 发送内容查询log".format(sendMsg["head"], sendMsg["file"], retMsg["time"],
                                                                     retMsg["IP"], retMsg["success"])
         self.plainTextEdit.appendPlainText(text)

@@ -114,12 +114,11 @@ def countWavFile(path):
                 outfile = os.path.join(tmp, item)
                 queue.append(outfile)
         elif os.path.isfile(tmp):
-            name = os.path.basename(tmp)
-            extension = name.split('.')
-            if len(extension) == 2:
-                if extension[1] == 'wav':
-                    fileDict.update({tmp:0})
-                    count += 1
+            #name = os.path.basename(tmp)
+            extension = os.path.splitext(tmp)[1]
+            if extension == '.wav':
+                fileDict.update({tmp:0})
+                count += 1
     return count,fileDict
 
 def calProcTime(filepath):
