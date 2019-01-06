@@ -1,5 +1,5 @@
 import logging
-#todo 在不同环境下地址要改
+#todo 在不同环境下filename中的地址要改
 def mainlog(msg,level='info'):
     logging.basicConfig(level=logging.DEBUG, format='%(asctime)s  %(levelname)s :  %(message)s',
                         datefmt='%Y-%m-%d %A %H:%M:%S', filename='./logging/main.log', filemode='a')

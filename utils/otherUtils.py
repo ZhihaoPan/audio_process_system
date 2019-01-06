@@ -128,7 +128,7 @@ def calProcTime(filepath):
 if __name__ == "__main__":
 
     import zmq
-
+    #
     context = zmq.Context()
 
     #  Socket to talk to server
@@ -145,6 +145,8 @@ if __name__ == "__main__":
     #  Get the reply.
     message = socket.recv_json()
     print("Received reply %s [ %s ]" % (1, message))
+
+    socket.disable_monitor()
 
     socket = context.socket(zmq.REP)
     socket.bind("tcp://*:5556")
@@ -165,13 +167,24 @@ if __name__ == "__main__":
     socket1 = context1.socket(zmq.SUB)
     socket1.connect("tcp://127.0.0.1:5558")
 
-    while 1:
-        socket.setsockopt(zmq.SUBSCRIBE, b'')
-        msg=dict(socket.recv_json())
-        print("mainwindow receive:%s" % str(msg))
-        socket1.setsockopt(zmq.SUBSCRIBE, b'')
-        msg1 = dict(socket1.recv_json())
-        print("mainwindow receive:%s" % str(msg1))
+    #while 1:
+    socket.setsockopt(zmq.SUBSCRIBE, b'')
+    msg=dict(socket.recv_json())
+    print("mainwindow receive:%s" % str(msg))
+    socket1.setsockopt(zmq.SUBSCRIBE, b'')
+    msg1 = dict(socket1.recv_json())
+    print("mainwindow receive:%s" % str(msg1))
+
     # 主界面信息传递
 
+    socket = context.socket(zmq.REQ)
+    socket.connect("tcp://localhost:5555")
 
+    #  Do 10 requests, waiting each time for a response
+    print("Sending --- request %s …" % 1)
+    dic = {"head": "cmd", "file": r"D:\Dataset\Gunshot1", "func_ycsyjc": 0, "func_yzfl": 0, "func_swfl": 0,
+           "chsum": "0xf53b5ae7"}
+
+    socket.send_json(dic)
+    message = socket.recv_json()
+    print("Received --- reply %s [ %s ]" % (1, message))

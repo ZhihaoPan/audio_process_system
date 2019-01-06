@@ -18,6 +18,7 @@ class WorkThread4Monitor(QThread):
         super(WorkThread4Monitor,self).__init__()
         self.ip_address=ip_address
 
+
     def run(self):
         cpu=getCPUstate(1)
         gpu=getGPUstate()
@@ -30,7 +31,73 @@ class WorkThread4Monitor(QThread):
         self.exit()
         return
 
+class WorkThread4ChangeFileMonitor(QThread):
+    trigger=pyqtSignal(dict)
+    def __init__(self):
+        super(WorkThread4ChangeFileMonitor, self).__init__()
+        self.context = zmq.Context()
+        self.socket = self.context.socket((zmq.REP))
+        # 等待对方发送数据包 因此是类似于服务器端用bind
+        self.socket.bind("tcp://*:5555")
+
+    def run(self):
+        self.message = dict(self.socket.recv_json())
+        mainlog("Reveived Change File Request:{}".format(self.message))
+        print("Received Change File request: {}".format(self.message))
+
+
+        returnMsg = {}
+        ifReady = 1  # 用于判断系统是否准备完毕
+        # 在这边要做文件是否存在能否打开的测试，计算校验数值是否正确
+        if self.message["head"] == "cmd":
+            ifReady = ifReady and 1
+            self.nfs = pathlib.Path(self.message["file"])
+            self.func_ycsyjc = self.message["func_ycsyjc"]
+            self.func_swfl = self.message["func_swfl"]
+            self.func_yzfl = self.message["func_yzfl"]
+            self.chsum = self.message["chsum"]
+
+            # 首先进行校验值的计算判断发送的内容是否正确
+            chstr = getChstr(self.message)
+            # 把message中的信息加入回传的字典中
+            returnMsg.update(self.message)
+            # 计算校验码
+            chsum = crc32asii(str(chstr))
+            error=200
+            if chsum == self.chsum:
+                ifReady = ifReady and 1
+                # 设置信息中校验正确
+                returnMsg.update({"chsum": "经过校验后，发送信息内容无误。"})
+            else:
+                error = 600
+                ifReady = ifReady and 0
+                returnMsg.update({"chsum": "经过校验后，发送信息内容出现错误。"})
+            if self.nfs.exists():
+                ifReady = ifReady and 1
+                # 在信息栏中显示该文件夹可以打开,(统计文件夹下的文件数量 放到后面做还是现在做）
+                returnMsg.update({"ifFileOpen": str(self.nfs.absolute()) + ": 该文件目录存在."})
+            else:
+                ifReady = ifReady and 0
+                error = 404
+                returnMsg.update({"ifFileOpen": str(self.nfs.absolute()) + ": 该文件目录不存在."})
+            self.trigger.emit(returnMsg)  # 通过trigger返回线程信息
+        else:
+            ifReady = ifReady and 0
+            error = 700
+            returnMsg.update({"Error": "Head is not cmd"})
+
+        # todo 已完成 这里要对需要发送的数据进行组包，network想个好的办法能够获得上面PING运行后的数据同时在sendjson之前发送,如果要计算ping值要进行等待
+        sendDic = {"head": "rec", "file": str(self.nfs.absolute()), "network": 1, "ready": ifReady, "error": error}
+        # 计算上面json数据包的校验值
+        sendChsum = crc32asii(str(sendDic))
+        sendDic.update({"chsum": sendChsum})
+        # 发给平台数据包，直接传输json格式
+        self.socket.send_json(sendDic)
+        mainlog("Send Change File Reply:{}".format(sendDic))
+
+
 class WorkThread4SendTempMsg(QThread):
+    """该线程用于发送固定时间的处理信息给平台"""
     trigger = pyqtSignal(dict)
 
     def __init__(self,ip4platform):
@@ -162,7 +229,7 @@ class WorkThread4AudioProcess(QThread):
         self.lang_cla_model=lang_cla_model
 
     def run(self):
-        #todo 此处对加上对音频处理的模型 模型的载入单独列一个线程出来做，能够提高非常多的效率
+        #todo 已完成 此处对加上对音频处理的模型 模型的载入单独列一个线程出来做，能够提高非常多的效率
         try:
             time.sleep(int(self.ThreadID) * 10)
             url=os.path.dirname(self.file_path)

@@ -11,12 +11,12 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(517, 719)
+        Dialog.resize(514, 789)
         self.pushButton = QtWidgets.QPushButton(Dialog)
-        self.pushButton.setGeometry(QtCore.QRect(120, 680, 91, 28))
+        self.pushButton.setGeometry(QtCore.QRect(110, 720, 91, 28))
         self.pushButton.setObjectName("pushButton")
         self.pushButton_2 = QtWidgets.QPushButton(Dialog)
-        self.pushButton_2.setGeometry(QtCore.QRect(300, 680, 93, 28))
+        self.pushButton_2.setGeometry(QtCore.QRect(290, 720, 93, 28))
         self.pushButton_2.setObjectName("pushButton_2")
         self.label_9 = QtWidgets.QLabel(Dialog)
         self.label_9.setGeometry(QtCore.QRect(230, 430, 231, 20))
@@ -139,6 +139,12 @@ class Ui_Dialog(object):
         self.lineEdit_13.setEnabled(False)
         self.lineEdit_13.setObjectName("lineEdit_13")
         self.gridLayout_2.addWidget(self.lineEdit_13, 4, 1, 1, 1)
+        self.radioButton = QtWidgets.QRadioButton(Dialog)
+        self.radioButton.setEnabled(True)
+        self.radioButton.setGeometry(QtCore.QRect(40, 680, 161, 21))
+        self.radioButton.setCheckable(True)
+        self.radioButton.setChecked(True)
+        self.radioButton.setObjectName("radioButton")
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -177,4 +183,5 @@ class Ui_Dialog(object):
         self.label_13.setText(_translate("Dialog", "预计时长："))
         self.label_14.setText(_translate("Dialog", "校验结果："))
         self.lineEdit_13.setText(_translate("Dialog", "等待文件信息载入...."))
+        self.radioButton.setText(_translate("Dialog", "是否进行静音检测"))
 

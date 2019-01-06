@@ -16,15 +16,16 @@ from utils.getState import *
 
 
 class windowMainProc(QMainWindow,Ui_MainWindow):
-    def __init__(self, file_path, fileNum, fileDict,procFunctions, IP4platform="127.0.0.1", thread_num=3,parent=None):
+    def __init__(self, file_path, fileNum, fileDict, procFunctions, IP4platform="127.0.0.1", thread_num=3,parent=None):
         """
-        todo 首先要考虑是否要在界面上加上一定的参数设置，以及加了参数设置之后设置参数传递使得更改应用到模型
-        todo 其次是如何把每5s一次的信息和线程结合到一起；
-        todo 最后要做一个文件夹或文件判断知道用户发来的信息中到底是文件还是文件夹
-        todo 还有 如果对方平台要重新设定检测的文件我们要怎么处理，把静音检测和数据库的写入加入到现有系统中。
+        todo 暂时不考虑 首先要考虑是否要在界面上加上一定的参数设置，以及加了参数设置之后设置参数传递使得更改应用到模型
+        todo 已完成 其次是如何把每5s一次的信息和线程结合到一起；
+        todo 已完成 最后要做一个文件夹或文件判断知道用户发来的信息中到底是文件还是文件夹
+        todo 未完成 还有 如果对方平台要重新设定检测的文件我们要怎么处理，已完成 把静音检测和数据库的写入加入到现有系统中。
         #下一步的任务 首先再找些数据用之前的算法跑下结果把效果不好的数据放到模型中再次训练
         :param file_path: 文件夹名称
         :param fileNum: 文件数量
+        :param fileDict:文件字典目录,存有上一步中对文件夹下所有音频文件的字典 如果进行静音处理则为{"aa.wav":0....} 否则为{"aa.wav":1....}
         :param procFunctions: 准备使用的算法
         :param IP4platform: zmq需要连接的IP地址
         :param thread_num: 系统开启的线程数目，可以改动，主要看系统内存和显卡能不能跑的开
@@ -52,19 +53,21 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         self.fileDict=fileDict  #用于判断该音频文件是否已经被处理
         self.procFunctions=procFunctions
         self.ip4platform=IP4platform
+        self.file_path=file_path
+        self.thread_num=thread_num
         #初始化模型变量
         self.au_cla_models=None
         self.lang_cla_model=None
         self.ifcuda=False
 
         #初始化字典变量
-        self.tmpContent={"file":file_path,"filedone":0,"time_pass":"000000",
+        self.tmpContent={"file":self.file_path,"filedone":0,"time_pass":"000000",
                          "time_remain":"999999","num_ycsyjc": 0, "num_swfl": 0, "num_yzfl": 0}
         self.rstContent={}
         self.threadDict={}
         self.ThreadList={}
         #创建Thread ID的字典 0表示该线程没有被使用 1表示该线程被使用中 threadId从1开始计算
-        for tmp in range(thread_num):
+        for tmp in range(self.thread_num):
             self.threadDict.update({tmp+1:0})
 
         # 给线程的部分内容加锁，保证线程不会混乱
@@ -78,6 +81,8 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         #初始化监控的线程
         self.work4monitor=WorkThread4Monitor(self.ip4platform)
         self.work4monitor.trigger.connect(self.showMonitor)
+        self.work4changefilemonitor=WorkThread4ChangeFileMonitor()
+        self.work4changefilemonitor.trigger.connect(self.setChangeFile)
         self.timer4monitor.start(1000)
         self.timer4monitor.timeout.connect(self.showCurrentTime)
 
@@ -99,7 +104,7 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         self.work4SendRstMsg = WorkThread4SendResult(self.ip4platform,self.mutex4sendresult)
 
         #初始化线程和处理文件选择的线程，该线程进行文件和线程的调度
-        self.work4AudioChoose = WorkThread4AudioChoose(file_path,thread_num,self.fileDict,self.threadDict,self.mutex4audiochoose)
+        self.work4AudioChoose = WorkThread4AudioChoose(self.file_path,self.thread_num,self.fileDict,self.threadDict,self.mutex4audiochoose)
         self.work4AudioChoose.trigger.connect(self.procAudio)
         #该timer用于音频处理块的开始
         self.timer4audiochoose=QTimer()
@@ -299,6 +304,7 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         currentTime = time.asctime(time.localtime(time.time()))
         self.lineEdit_11.setText(currentTime)
         self.work4monitor.start()
+        self.work4changefilemonitor.start()
 
 
 
@@ -370,6 +376,21 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         self.work4SendRstMsg.disconnect()
         self.mutex4sendresult.unlock()
 
+
+    def setChangeFile(self,changeMsg):
+        if changeMsg:
+            #根据平台发来的信息进行重新初始化
+            self.plainTextEdit.appendPlainText("INFO -- 系统收到新的文件命令,重启运行环境。")
+            mainlog("系统收到新的文件命令,重启运行环境。","info")
+            self.file_path=changeMsg["file"]
+            self.lineEdit.setText(self.file_path)
+            self.tmpContent["file"]=self.file_path
+            file_num, self.fileDict = countWavFile(self.file_path)
+            self.lineEdit_2.setText("{:}".format(file_num))
+            self.work4AudioChoose = WorkThread4AudioChoose(self.file_path, self.thread_num, self.fileDict,
+                                                           self.threadDict, self.mutex4audiochoose)
+            self.work4AudioChoose.trigger.connect(self.procAudio)
+            self.timer4audiochoose.start(5000)
 
     def updateTmpContent(self):
         self.tmpContent["filedone"]+=1

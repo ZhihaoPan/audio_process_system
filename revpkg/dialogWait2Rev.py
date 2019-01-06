@@ -83,6 +83,9 @@ class dialogWait2Rev(QDialog, Ui_Dialog):
         """
         #把要处理的function拿出来单独发送
         try:
+            if not self.radioButton.isChecked():
+                for tmpfile in self.fileDict.keys():
+                    self.fileDict[tmpfile]=1
             dicFunc={"func_ycsyjc":self.Msg["func_ycsyjc"],
                      "func_yzfl":self.Msg["func_yzfl"],
                      "func_swfl":self.Msg["func_swfl"]}
@@ -95,8 +98,11 @@ class dialogWait2Rev(QDialog, Ui_Dialog):
             self.timer1.stop()
             self.timer2.stop()
             self.close()
-        except:
+        except Exception as e:
+            mainlog(e,"error")
             error=QMessageBox.critical(self,"还未接收到平台信息","请等待平台发送信息！",QMessageBox.Yes | QMessageBox.No)
+
+
     def showCurrentTime(self):
         currentTime = time.asctime(time.localtime(time.time()))
         self.lineEdit.setText(currentTime)
@@ -189,7 +195,7 @@ class dialogWait2Rev(QDialog, Ui_Dialog):
         #self.timer2.start(10000)
 
     # 如果在自检的时候出现的问题，可以传递错误信息，汇总后一起发送给平台
-    # todo 查看需要发送什么样的自检信息到这里
+    # todo 未完成 查看需要发送什么样的自检信息到这里
     def setSelfcheckError(self, str):
         pass
 
@@ -234,6 +240,8 @@ class WorkThread4zmq(QThread):
         self.selfCheckSta = selfCheckSta
         self.network=99999
 
+        self.socket.bind("tcp://*:5555")  # 绑定端口
+
     def setNetWork(self,network):
         self.network=network
 
@@ -244,7 +252,6 @@ class WorkThread4zmq(QThread):
         while self.network is 99999:
             time.sleep(2)
         print("WorkThread4zmq start")
-        self.socket.bind("tcp://*:5555")  # 绑定端口
         self.message = dict(self.socket.recv_json())
         mainlog("Reveived Request:{}".format(self.message))
         print("Received request: {}".format(self.message))
@@ -299,6 +306,10 @@ class WorkThread4zmq(QThread):
         self.socket.send_json(sendDic)
         mainlog("Send Reply:{}".format(sendDic))
 
+
+        #self.socket.unbind("tcp://*:5555")
+        self.socket.close()
+
 class WorkThread4Send(QThread):
     """
     该线程用于计算文件的数量，预处理音频所需要的时长和组成数据包发送给平台
@@ -322,7 +333,7 @@ class WorkThread4Send(QThread):
         sendMsg = {"head": "report", "file": self.filepath}
         file_num,fileDict = countWavFile(self.filepath)
         sendMsg.update({"file_num": file_num})
-        # todo 这里还需要添加计算时间的函数,该函数还未进行编写
+        # todo 未完成 这里还需要添加计算时间的函数,该函数还未进行编写
         file_time = calProcTime(self.filepath)
         sendMsg.update({"time": "00:00：00"})
         chsum = crc32asii(sendMsg)
