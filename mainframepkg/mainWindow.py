@@ -143,10 +143,12 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
     def procAudio(self,file_name,id,step):
         """
         WorkThread4AudioChoose的回调函数
-        todo 此处为算法处理模块算法每5s的处理结果存入dicContent中，
         #有个问题如果这三个同时调用了setDicContent会不会混乱,答案是会，当同时调用一个函数的时候就会冲突
         因此需要设置一个mutex进行一个互斥
         设置三个线程三个timer
+
+        加入了step 进行步骤的选择，step0-1是静音检测 1-2是音频分类和语种分类
+        如果后面要继续加其他工作内容可以在这里进行判断，在该函数对应的线程中判断文件进行到哪一步
         :return:
         """
         if (not file_name) and step==2:
@@ -349,6 +351,7 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
             # 写入日志文件
             mainlog("发送平台的信息包头为:data,但发送的内容重复或者为空!!!!!!!", level="warning")
             self.work4SendRstMsg.disconnect()
+            self.mutex4sendresult.unlock()
             return
         text="INFO --发送平台信息包头:{}, 当前处理的音频文件是:{} \n发送时刻(hhmmss):{}, IP地址:{}" \
              ", 是否发送成功:{}, 发送内容查询log".format(sendMsg["head"], sendMsg["file"], retMsg["time"],
@@ -363,8 +366,10 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         self.testDBHelper.testInsert(os.path.join(sendMsg["url"],sendMsg["file"]),os.path.join(sendMsg["url"],"{}.json".format(sendMsg["file"][:-4])))
 
         #写在最后
-        self.mutex4sendresult.unlock()
+        print("--------------解锁------------------")
         self.work4SendRstMsg.disconnect()
+        self.mutex4sendresult.unlock()
+
 
     def updateTmpContent(self):
         self.tmpContent["filedone"]+=1

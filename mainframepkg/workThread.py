@@ -271,6 +271,7 @@ class WorkThread4SendResult(QThread):
     def run(self):
         # struct 4 send message
         self.mutex.lock()
+        print("--------------上锁------------------")
         if not self.dicContent:
             self.trigger.emit({},{})
             return
