@@ -297,7 +297,7 @@ class WorkThread4zmq(QThread):
             error = 700
             returnMsg.update({"Error": "Head is not cmd"})
 
-        # todo 已完成 这里要对需要发送的数据进行组包，network想个好的办法能够获得上面PING运行后的数据同时在sendjson之前发送,如果要计算ping值要进行等待
+
         sendDic = {"head": "rec", "file": str(self.nfs.absolute()), "network": self.network, "ready": ifReady, "error": error}
         # 计算上面json数据包的校验值
         sendChsum = crc32asii(str(sendDic))

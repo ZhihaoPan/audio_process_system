@@ -19,9 +19,6 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
     def __init__(self, file_path, fileNum, fileDict, procFunctions, IP4platform="127.0.0.1", thread_num=3,parent=None):
         """
         todo 暂时不考虑 首先要考虑是否要在界面上加上一定的参数设置，以及加了参数设置之后设置参数传递使得更改应用到模型
-        todo 已完成 其次是如何把每5s一次的信息和线程结合到一起；
-        todo 已完成 最后要做一个文件夹或文件判断知道用户发来的信息中到底是文件还是文件夹
-        todo 未完成 还有 如果对方平台要重新设定检测的文件我们要怎么处理，已完成 把静音检测和数据库的写入加入到现有系统中。
         #下一步的任务 首先再找些数据用之前的算法跑下结果把效果不好的数据放到模型中再次训练
         :param file_path: 文件夹名称
         :param fileNum: 文件数量
@@ -55,6 +52,7 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         self.ip4platform=IP4platform
         self.file_path=file_path
         self.thread_num=thread_num
+        self.dur_time=0
         #初始化模型变量
         self.au_cla_models=None
         self.lang_cla_model=None
@@ -167,6 +165,16 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
                     print("所有文件处理完成")
                     mainlog("所有文件处理完成。","info")
                     self.timer4audiochoose.stop()
+                    result={"result":[
+                        {"ycsyjc":self.tmpContent["num_ycsyjc"]},
+                        {"yzfl":self.tmpContent["num_yzfl"]},
+                        {"swfl":self.tmpContent["num_swfl"]}
+                    ]}
+                    self.work4reportprocessdone=WorkThread4ReportProcessDone(self.file_path,len(self.fileDict),self.dur_time,
+                                                                             self.endtime-self.startime,result,self.ip4platform)
+                    self.work4reportprocessdone.trigger.connect(self.allDoneReport)
+                    self.work4reportprocessdone.start()
+
         elif file_name and step==1:
 
             self.fileDict[file_name]=2
@@ -210,7 +218,7 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         #对全局变量的操作结束可以解锁
         self.mutex4audiochoose.unlock()
         #同时还需要设置界面 设置维护的两个字典，在处理完之后把字典恢复，同时该list中的内容去除
-       #todo 这里是把一个file传入 在线程监控中加上该线程处理的哪个文件 文件时长有多长
+
 
     def showVadProcess(self,success,threadID,file_name,error):
         """
@@ -238,7 +246,7 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
             self.textEdit_9.setText("")
         self.mutex4audioprocess.unlock()
 
-    def setContent(self, Content, threadID, flag):
+    def setContent(self, Content, threadID, flag, dur_time):
         """
         WorkThread4AudioProcess的回调函数
         这里要把threadDict的字典进行设置
@@ -252,6 +260,7 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
             self.plainTextEdit.appendPlainText("ERROR --当前线程：{} 处理音频时发生错误:{}\n".format(threadID, Content["ERROR"]))
             mainlog("当前线程：{} 处理音频{}时发生错误:{}\n".format(threadID, Content["file"], Content["ERROR"]),"error")
         elif flag is 0:
+
             file_done_name = os.path.join(Content["url"], Content["file"])
             try:
                 self.plainTextEdit.appendPlainText("INFO --当前音频处理线程:{},处理的文件是:{},\n处理完成,准备发送处理结果信息...".format(threadID,file_done_name))
@@ -271,6 +280,8 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         elif threadID is 3:
             self.textEdit_6.setText("就绪")
             self.textEdit_9.setText("")
+        if dur_time:
+            self.dur_time += dur_time
 
         self.mutex4audioprocess.unlock()
 
@@ -352,29 +363,35 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
                 :param retMsg: Return Message
                 :return:
                 """
-        if not retMsg:
-            self.plainTextEdit.appendPlainText("WARNING --发送平台的信息包头为:data,但发送的内容重复或者为空")
-            # 写入日志文件
-            mainlog("发送平台的信息包头为:data,但发送的内容重复或者为空!!!!!!!", level="warning")
+        try:
+            if not retMsg:
+                self.plainTextEdit.appendPlainText("WARNING --发送平台的信息包头为:data,但发送的内容重复或者为空")
+                # 写入日志文件
+                mainlog("发送平台的信息包头为:data,但发送的内容重复或者为空!!!!!!!", level="warning")
+                self.work4SendRstMsg.disconnect()
+                self.mutex4sendresult.unlock()
+                return
+            text="INFO --发送平台信息包头:{}, 当前处理的音频文件是:{} \n发送时刻(hhmmss):{}, IP地址:{}" \
+                 ", 是否发送成功:{}, 发送内容查询log".format(sendMsg["head"], sendMsg["file"], retMsg["time"],
+                                                                        retMsg["IP"], retMsg["success"])
+            self.plainTextEdit.appendPlainText(text)
+
+            #写入日志文件
+            mainlog("{},ycsy:{}\n,swfl:{}\n,yzfl:{}".format(text,sendMsg["ycsyjc"],sendMsg["swfl"],sendMsg["yzfl"]),"debug")
+
+            with open(os.path.join(sendMsg["url"],"{}.json".format(sendMsg["file"][:-4])),'w') as f:
+                json.dump(sendMsg,f)
+            self.testDBHelper.testInsert(os.path.join(sendMsg["url"],sendMsg["file"]),os.path.join(sendMsg["url"],"{}.json".format(sendMsg["file"][:-4])))
+
+            #写在最后
+            print("--------------解锁------------------")
             self.work4SendRstMsg.disconnect()
             self.mutex4sendresult.unlock()
-            return
-        text="INFO --发送平台信息包头:{}, 当前处理的音频文件是:{} \n发送时刻(hhmmss):{}, IP地址:{}" \
-             ", 是否发送成功:{}, 发送内容查询log".format(sendMsg["head"], sendMsg["file"], retMsg["time"],
-                                                                    retMsg["IP"], retMsg["success"])
-        self.plainTextEdit.appendPlainText(text)
-
-        #写入日志文件
-        mainlog("{},ycsy:{}\n,swfl:{}\n,yzfl:{}".format(text,sendMsg["ycsyjc"],sendMsg["swfl"],sendMsg["yzfl"]),"debug")
-
-        with open(os.path.join(sendMsg["url"],"{}.json".format(sendMsg["file"][:-4])),'w') as f:
-            json.dump(sendMsg,f)
-        self.testDBHelper.testInsert(os.path.join(sendMsg["url"],sendMsg["file"]),os.path.join(sendMsg["url"],"{}.json".format(sendMsg["file"][:-4])))
-
-        #写在最后
-        print("--------------解锁------------------")
-        self.work4SendRstMsg.disconnect()
-        self.mutex4sendresult.unlock()
+        except Exception as e:
+            print("ERROR --发送结果信息是出现了错误:{}".format(e))
+            mainlog("ERROR --发送结果信息是出现了错误:{}".format(e),"ERROR")
+            self.work4SendRstMsg.disconnect()
+            self.mutex4sendresult.unlock()
 
 
     def setChangeFile(self,changeMsg):
@@ -387,6 +404,14 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
             self.tmpContent["file"]=self.file_path
             file_num, self.fileDict = countWavFile(self.file_path)
             self.lineEdit_2.setText("{:}".format(file_num))
+            if self.work4AudioChoose.isRunning():
+                try:
+                    self.work4AudioChoose.terminate()
+                    if not self.work4AudioChoose.isFinished():
+                        raise Exception("Closed Error")
+                except Exception as e:
+                    mainlog("{}:停止音频选择线程错误".format(e),"error")
+                    self.plainTextEdit.appendPlainText("ERROR --停止音频选择线程错误")
             self.work4AudioChoose = WorkThread4AudioChoose(self.file_path, self.thread_num, self.fileDict,
                                                            self.threadDict, self.mutex4audiochoose)
             self.work4AudioChoose.trigger.connect(self.procAudio)
@@ -395,12 +420,15 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
     def updateTmpContent(self):
         self.tmpContent["filedone"]+=1
         self.endtime=time.clock()
-        self.tmpContent["time_pass"]="{:0>9.2f}".format(self.endtime)
+        self.tmpContent["time_pass"]="{:0>9.2f}".format(self.endtime-self.startime)
         self.tmpContent["time_remain"]="999999"#todo 加上剩余时间估计
         self.tmpContent["num_ycsyjc"]+=len(self.rstContent["ycsyjc"]["content"])
         self.tmpContent["num_yzfl"]+=len(self.rstContent["yzfl"]["content"])
         self.tmpContent["num_swfl"]+=len(self.rstContent["swfl"]["content"])
 
+    def allDoneReport(self,success):
+        if success:
+            self.plainTextEdit.appendPlainText("INFO --所有内容结束,告知平台成果!")
 
 if __name__=="__main__":
     app = QApplication(sys.argv)

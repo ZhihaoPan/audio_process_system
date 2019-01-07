@@ -86,7 +86,7 @@ class WorkThread4ChangeFileMonitor(QThread):
             error = 700
             returnMsg.update({"Error": "Head is not cmd"})
 
-        # todo 已完成 这里要对需要发送的数据进行组包，network想个好的办法能够获得上面PING运行后的数据同时在sendjson之前发送,如果要计算ping值要进行等待
+
         sendDic = {"head": "rec", "file": str(self.nfs.absolute()), "network": 1, "ready": ifReady, "error": error}
         # 计算上面json数据包的校验值
         sendChsum = crc32asii(str(sendDic))
@@ -218,7 +218,7 @@ class WorkThread4AudioProcess(QThread):
     返回的信息中dict为处理后进行发送的数据，int为当前线程的ID,最后一个int为flag判断当前的线程返回的是5s一次（0)还是错误（-1）
     一个音频文件一个线程
     """
-    trigger=pyqtSignal(dict,int,int)
+    trigger=pyqtSignal(dict,int,int,float)
     def __init__(self,ID,mutex,file_path,au_cla_models,ifcuda,lang_cla_model):
         super(WorkThread4AudioProcess, self).__init__()
         self.ThreadID=ID
@@ -229,7 +229,6 @@ class WorkThread4AudioProcess(QThread):
         self.lang_cla_model=lang_cla_model
 
     def run(self):
-        #todo 已完成 此处对加上对音频处理的模型 模型的载入单独列一个线程出来做，能够提高非常多的效率
         try:
             time.sleep(int(self.ThreadID) * 10)
             url=os.path.dirname(self.file_path)
@@ -291,7 +290,7 @@ class WorkThread4AudioProcess(QThread):
 
         except Exception as e:
             self.mutex.lock()
-            self.trigger.emit({"ERROR":e,"file":os.path.join(url,file)},self.ThreadID,-1)
+            self.trigger.emit({"ERROR":e,"file":os.path.join(url,file)},self.ThreadID,-1,0)
             self.quit()
             return
         self.rstContent={"url":url,"file":file,"file_duration":"{:.2f}s".format(dur_time)}
@@ -313,7 +312,7 @@ class WorkThread4AudioProcess(QThread):
 
         print("线程{}运行中".format(self.ThreadID))
         self.mutex.lock()
-        self.trigger.emit(self.rstContent,self.ThreadID,0)
+        self.trigger.emit(self.rstContent,self.ThreadID,0,dur_time)
         self.quit()
 
 class WorkThread4SendResult(QThread):
@@ -367,6 +366,38 @@ class WorkThread4SendResult(QThread):
         retMsg={"time":getCurrentTime(),"IP":self.ip4platform,"success":1}
         self.trigger.emit(retMsg,sendMsg)
         self.quit()
+
+class WorkThread4ReportProcessDone(QThread):
+    trigger=pyqtSignal(bool)
+    def __init__(self,file_path,total_num,total_duration,time_cost,result,IP4platform):
+        super(WorkThread4ReportProcessDone, self).__init__()
+        self.file_path=file_path
+        self.total_num=total_num
+        self.total_duration=total_duration
+        self.time_cost=time_cost
+        self.result=result
+        self.context = zmq.Context(1)
+        self.socket = self.context.socket(zmq.REQ)
+        self.socket.connect("tcp://" + IP4platform + ":5559")
+
+
+    def run(self):
+        sendMsg={"head":"proc_done"}
+        sendMsg.update({"file":self.file_path,"total_num":self.total_num,"total_duration":self.total_duration,
+                        "time_cost":self.time_cost,"result":self.result})
+        print("Sending ReportProcessDone: %s" % str(sendMsg))
+        mainlog("Sending ReportProcessDone:{}".format(sendMsg),"info")
+        self.socket.send_json(sendMsg)
+
+        revMsg = self.socket.recv_json()
+        mainlog("Receive proc_done return :{}".format(revMsg))
+        print("Received  proc_done return: %s" % (revMsg))
+        chsum = revMsg["chsum"]
+        revChstr = getChstr(revMsg)
+        revChsum = crc32asii(revChstr)
+        if revChsum == chsum:
+            self.trigger.emit(1)
+        self.trigger.emit(1)
 
 class WorkThread4LoadingModels(QThread):
     """
