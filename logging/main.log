@@ -1824,3 +1824,779 @@ librosa.util.exceptions.ParameterError: when mode='interp', width=9 cannot excee
 2019-01-07 Monday 15:27:10  INFO :  Sending ReportProcessDone:{'head': 'proc_done', 'file': 'D:\\Dataset\\Gunshot1', 'total_num': 3, 'total_duration': 5455.8303854875285, 'time_cost': 916.3631412698626, 'result': {'result': [{'ycsyjc': 199}, {'yzfl': 108}, {'swfl': 144}]}}
 2019-01-07 Monday 15:27:10  INFO :  所有文件处理完成。
 2019-01-07 Monday 15:27:10  INFO :  Sending ReportProcessDone:{'head': 'proc_done', 'file': 'D:\\Dataset\\Gunshot1', 'total_num': 3, 'total_duration': 5455.8303854875285, 'time_cost': 916.3631412698626, 'result': {'result': [{'ycsyjc': 199}, {'yzfl': 108}, {'swfl': 144}]}}
+2019-01-08 Tuesday 16:01:10  INFO :  user:admin login,Enter second dialog.
+2019-01-08 Tuesday 16:01:12  INFO :  Enter third dialog.
+2019-01-08 Tuesday 16:01:19  INFO :  IP：localhost网络通畅,0
+2019-01-08 Tuesday 16:01:19  INFO :  Reveived Request:{'head': 'cmd', 'file': 'D:\\Dataset\\Gunshot', 'func_ycsyjc': 0, 'func_yzfl': 0, 'func_swfl': 0, 'chsum': '0xf53b5ae7'}
+2019-01-08 Tuesday 16:01:19  INFO :  Send Reply:{'head': 'rec', 'file': 'D:\\Dataset\\Gunshot', 'network': 0, 'ready': 1, 'error': 200, 'chsum': '0x 9617d9a'}
+2019-01-08 Tuesday 16:01:19  INFO :  Send Report:{'head': 'report', 'file': 'D:\\Dataset\\Gunshot', 'file_num': 106, 'time': '00:00：00', 'chsum': '0x86c99e2e'}
+2019-01-08 Tuesday 16:01:19  INFO :  Receive Msg:{'head': 'control', 'file': ' / xxxx / xxxxx', 'stop': 0, 'chsum': '0x2f42a089'}
+2019-01-08 Tuesday 16:02:13  INFO :  user:admin login,Enter second dialog.
+2019-01-08 Tuesday 16:03:46  INFO :  user:admin login,Enter second dialog.
+2019-01-08 Tuesday 16:03:48  INFO :  Enter third dialog.
+2019-01-08 Tuesday 16:03:53  INFO :  IP：localhost网络通畅,0
+2019-01-08 Tuesday 16:03:53  INFO :  Reveived Request:{'head': 'cmd', 'file': 'D:\\Dataset\\Gunshot', 'func_ycsyjc': 0, 'func_yzfl': 0, 'func_swfl': 0, 'chsum': '0xf53b5ae7'}
+2019-01-08 Tuesday 16:03:53  INFO :  Send Reply:{'head': 'rec', 'file': 'D:\\Dataset\\Gunshot', 'network': 0, 'ready': 1, 'error': 200, 'chsum': '0x 9617d9a'}
+2019-01-08 Tuesday 16:03:53  INFO :  Send Report:{'head': 'report', 'file': 'D:\\Dataset\\Gunshot', 'file_num': 106, 'time': '00:00：00', 'chsum': '0x86c99e2e'}
+2019-01-08 Tuesday 16:03:53  INFO :  Receive Msg:{'head': 'control', 'file': ' / xxxx / xxxxx', 'stop': 0, 'chsum': '0x2f42a089'}
+2019-01-08 Tuesday 16:04:46  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:demoCH0+98.wav 
+发送时刻(hhmmss):Tue Jan  8 16:04:46 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:04:53  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:demoCH0+99.wav 
+发送时刻(hhmmss):Tue Jan  8 16:04:53 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:05:04  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:demoCH1+2.wav 
+发送时刻(hhmmss):Tue Jan  8 16:05:04 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,2.0s'], 'content': ['speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:05:13  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:demoCH1+3.wav 
+发送时刻(hhmmss):Tue Jan  8 16:05:13 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:05:32  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:demoCH1+4.wav 
+发送时刻(hhmmss):Tue Jan  8 16:05:32 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['2.0s,4.0s'], 'content': ['gun_shot']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:05:42  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:demoCH1+86.wav 
+发送时刻(hhmmss):Tue Jan  8 16:05:42 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,2.0s', '2.0s,4.0s'], 'content': ['speaking', 'gun_shot']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:05:51  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:demoCH1+5.wav 
+发送时刻(hhmmss):Tue Jan  8 16:05:51 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:06:08  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:demoCH1+87.wav 
+发送时刻(hhmmss):Tue Jan  8 16:06:08 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,2.0s'], 'content': ['speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:06:12  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:demoCH1+88.wav 
+发送时刻(hhmmss):Tue Jan  8 16:06:12 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,2.0s'], 'content': ['speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:06:37  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:demoCH1+89.wav 
+发送时刻(hhmmss):Tue Jan  8 16:06:37 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,2.0s'], 'content': ['speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:06:40  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:demoCH1+91.wav 
+发送时刻(hhmmss):Tue Jan  8 16:06:40 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,2.0s'], 'content': ['speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:06:48  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:demoCH1+93.wav 
+发送时刻(hhmmss):Tue Jan  8 16:06:48 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,2.0s'], 'content': ['speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:07:06  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:demoCH1+94.wav 
+发送时刻(hhmmss):Tue Jan  8 16:07:06 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,2.0s', '2.0s,4.0s'], 'content': ['speaking', 'gun_shot']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:07:28  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:demoCH1+95.wav 
+发送时刻(hhmmss):Tue Jan  8 16:07:28 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,2.0s'], 'content': ['speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:07:29  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:demoCH1+97.wav 
+发送时刻(hhmmss):Tue Jan  8 16:07:29 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,2.0s'], 'content': ['speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:07:34  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:demoCH1+98.wav 
+发送时刻(hhmmss):Tue Jan  8 16:07:34 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,2.0s'], 'content': ['speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:08:02  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:demoCH2+3.wav 
+发送时刻(hhmmss):Tue Jan  8 16:08:02 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:08:09  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:demoCH2+10.wav 
+发送时刻(hhmmss):Tue Jan  8 16:08:09 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,2.0s'], 'content': ['speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:08:17  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:demoCH2+11.wav 
+发送时刻(hhmmss):Tue Jan  8 16:08:17 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,2.0s'], 'content': ['speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:08:31  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:demoCH2+5.wav 
+发送时刻(hhmmss):Tue Jan  8 16:08:31 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['2.0s,4.0s'], 'content': ['gun_shot']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:08:47  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:demoCH2+6.wav 
+发送时刻(hhmmss):Tue Jan  8 16:08:47 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['2.0s,4.0s'], 'content': ['gun_shot']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:09:00  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:demoCH2+8.wav 
+发送时刻(hhmmss):Tue Jan  8 16:09:00 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,2.0s', '2.0s,4.0s'], 'content': ['speaking', 'gun_shot']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:09:07  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:demoCH2+7.wav 
+发送时刻(hhmmss):Tue Jan  8 16:09:07 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['2.0s,4.0s'], 'content': ['gun_shot']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:09:28  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:demoCH2+9.wav 
+发送时刻(hhmmss):Tue Jan  8 16:09:28 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,2.0s'], 'content': ['speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:09:30  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:demoCH2+98.wav 
+发送时刻(hhmmss):Tue Jan  8 16:09:30 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,2.0s'], 'content': ['speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:09:57  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:demoCH2+99.wav 
+发送时刻(hhmmss):Tue Jan  8 16:09:57 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:09:59  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:demoCH28+29.wav 
+发送时刻(hhmmss):Tue Jan  8 16:09:59 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,2.0s'], 'content': ['speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:10:07  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:demoCH28+30.wav 
+发送时刻(hhmmss):Tue Jan  8 16:10:07 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,2.0s'], 'content': ['speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:10:26  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:demoCH28+31.wav 
+发送时刻(hhmmss):Tue Jan  8 16:10:26 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,2.0s'], 'content': ['speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:10:47  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:demoCH28+32.wav 
+发送时刻(hhmmss):Tue Jan  8 16:10:47 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,2.0s'], 'content': ['speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:10:49  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:demoCH28+33.wav 
+发送时刻(hhmmss):Tue Jan  8 16:10:49 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,2.0s'], 'content': ['speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:10:53  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:demoCH28+38.wav 
+发送时刻(hhmmss):Tue Jan  8 16:10:53 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:11:22  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:demoCH28+41.wav 
+发送时刻(hhmmss):Tue Jan  8 16:11:22 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,2.0s', '2.0s,4.0s'], 'content': ['speaking', 'gun_shot']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:11:28  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:demoCH28+39.wav 
+发送时刻(hhmmss):Tue Jan  8 16:11:28 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,2.0s'], 'content': ['speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:26:22  INFO :  所有文件处理完成。
+2019-01-08 Tuesday 16:26:22  INFO :  Sending ReportProcessDone:{'head': 'proc_done', 'file': 'D:\\Dataset\\Gunshot', 'total_num': 106, 'total_duration': 574.8920634920631, 'time_cost': 1339.2042087903576, 'result': {'result': [{'ycsyjc': 63}, {'yzfl': 318}, {'swfl': 424}]}}
+2019-01-08 Tuesday 16:26:22  INFO :  所有文件处理完成。
+2019-01-08 Tuesday 16:26:22  INFO :  Receive proc_done return :{'head': 'rproc_done', 'file': 'D:\\Dataset\\Gunshot', 'chsum': '0'}
+2019-01-08 Tuesday 16:26:22  INFO :  Sending ReportProcessDone:{'head': 'proc_done', 'file': 'D:\\Dataset\\Gunshot', 'total_num': 106, 'total_duration': 574.8920634920631, 'time_cost': 1339.2042087903576, 'result': {'result': [{'ycsyjc': 63}, {'yzfl': 318}, {'swfl': 424}]}}
+2019-01-08 Tuesday 16:26:22  INFO :  所有文件处理完成。
+2019-01-08 Tuesday 16:26:22  INFO :  Sending ReportProcessDone:{'head': 'proc_done', 'file': 'D:\\Dataset\\Gunshot', 'total_num': 106, 'total_duration': 574.8920634920631, 'time_cost': 1339.2042087903576, 'result': {'result': [{'ycsyjc': 63}, {'yzfl': 318}, {'swfl': 424}]}}
+2019-01-08 Tuesday 16:34:51  INFO :  user:admin login,Enter second dialog.
+2019-01-08 Tuesday 16:34:52  INFO :  Enter third dialog.
+2019-01-08 Tuesday 16:35:00  INFO :  IP：localhost网络通畅,0
+2019-01-08 Tuesday 16:35:00  INFO :  Reveived Request:{'head': 'cmd', 'file': 'D:\\Dataset\\Gunshot', 'func_ycsyjc': 0, 'func_yzfl': 0, 'func_swfl': 0, 'chsum': '0xf53b5ae7'}
+2019-01-08 Tuesday 16:35:00  INFO :  Send Reply:{'head': 'rec', 'file': 'D:\\Dataset\\Gunshot', 'network': 0, 'ready': 1, 'error': 200, 'chsum': '0x 9617d9a'}
+2019-01-08 Tuesday 16:35:00  INFO :  Send Report:{'head': 'report', 'file': 'D:\\Dataset\\Gunshot', 'file_num': 79, 'time': '00:00：00', 'chsum': '0xc67816c5'}
+2019-01-08 Tuesday 16:35:00  INFO :  Receive Msg:{'head': 'control', 'file': ' / xxxx / xxxxx', 'stop': 0, 'chsum': '0x2f42a089'}
+2019-01-08 Tuesday 16:35:44  ERROR :  当前线程：1 处理音频D:\Dataset\Gunshot\b7934365.wav时发生错误:Traceback (most recent call last):
+  File "C:\Users\51198\AppData\Local\Programs\Python\Python36\lib\site-packages\torch\utils\data\dataloader.py", line 138, in _worker_loop
+    samples = collate_fn([dataset[i] for i in batch_indices])
+  File "C:\Users\51198\AppData\Local\Programs\Python\Python36\lib\site-packages\torch\utils\data\dataloader.py", line 138, in <listcomp>
+    samples = collate_fn([dataset[i] for i in batch_indices])
+  File "D:\GitRep\pyQt\algorithms\audio_classifier\pre_mel_loader.py", line 221, in __getitem__
+    self.window_type, self.normalize, self.max_len)
+  File "D:\GitRep\pyQt\algorithms\audio_classifier\pre_mel_loader.py", line 65, in logmeldelta_loader
+    delta = librosa.feature.delta(logmel)
+  File "C:\Users\51198\AppData\Local\Programs\Python\Python36\lib\site-packages\librosa\feature\utils.py", line 110, in delta
+    "cannot exceed data.shape[axis]={}".format(width, data.shape[axis]))
+librosa.util.exceptions.ParameterError: when mode='interp', width=9 cannot exceed data.shape[axis]=3
+
+
+2019-01-08 Tuesday 16:35:50  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:ba1126dc.wav 
+发送时刻(hhmmss):Tue Jan  8 16:35:50 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:36:02  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:ba58e2eb.wav 
+发送时刻(hhmmss):Tue Jan  8 16:36:02 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['2.0s,6.0s'], 'content': ['gun_shot']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:36:14  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:ba740bb0.wav 
+发送时刻(hhmmss):Tue Jan  8 16:36:14 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:36:30  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:bd0ccf17.wav 
+发送时刻(hhmmss):Tue Jan  8 16:36:30 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:36:43  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:be75288b.wav 
+发送时刻(hhmmss):Tue Jan  8 16:36:43 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:36:48  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:be4b329a.wav 
+发送时刻(hhmmss):Tue Jan  8 16:36:48 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:37:08  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:be8920cb.wav 
+发送时刻(hhmmss):Tue Jan  8 16:37:08 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:37:10  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:bedf02c7.wav 
+发送时刻(hhmmss):Tue Jan  8 16:37:10 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,4.0s'], 'content': ['gun_shot']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:37:34  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:bee83d50.wav 
+发送时刻(hhmmss):Tue Jan  8 16:37:34 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:37:39  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:bf3bd60f.wav 
+发送时刻(hhmmss):Tue Jan  8 16:37:39 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:37:45  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:bf331561.wav 
+发送时刻(hhmmss):Tue Jan  8 16:37:45 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:38:09  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:c12af920.wav 
+发送时刻(hhmmss):Tue Jan  8 16:38:09 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:38:23  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:bff620df.wav 
+发送时刻(hhmmss):Tue Jan  8 16:38:23 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:38:25  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:c33a994b.wav 
+发送时刻(hhmmss):Tue Jan  8 16:38:25 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:38:38  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:c35b444d.wav 
+发送时刻(hhmmss):Tue Jan  8 16:38:38 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:39:04  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:c382db92.wav 
+发送时刻(hhmmss):Tue Jan  8 16:39:04 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:39:05  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:c5633969.wav 
+发送时刻(hhmmss):Tue Jan  8 16:39:05 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:39:14  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:c4bb507c.wav 
+发送时刻(hhmmss):Tue Jan  8 16:39:14 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:39:33  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:c6082047.wav 
+发送时刻(hhmmss):Tue Jan  8 16:39:33 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:39:43  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:c7030073.wav 
+发送时刻(hhmmss):Tue Jan  8 16:39:43 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:40:00  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:c7969289.wav 
+发送时刻(hhmmss):Tue Jan  8 16:40:00 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:40:03  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:c7823f25.wav 
+发送时刻(hhmmss):Tue Jan  8 16:40:03 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:40:21  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:c8c0280a.wav 
+发送时刻(hhmmss):Tue Jan  8 16:40:21 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:40:29  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:c8ca25cc.wav 
+发送时刻(hhmmss):Tue Jan  8 16:40:29 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:40:48  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:caa629ea.wav 
+发送时刻(hhmmss):Tue Jan  8 16:40:48 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,2.0s'], 'content': ['gun_shot']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:41:00  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:cb011638.wav 
+发送时刻(hhmmss):Tue Jan  8 16:41:00 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['4.0s,6.0s'], 'content': ['scream']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:41:01  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:cab2b1cb.wav 
+发送时刻(hhmmss):Tue Jan  8 16:41:01 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:41:29  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:cf242525.wav 
+发送时刻(hhmmss):Tue Jan  8 16:41:29 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,4.0s'], 'content': ['speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:41:35  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:cdb982ca.wav 
+发送时刻(hhmmss):Tue Jan  8 16:41:35 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:41:39  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:d030ccde.wav 
+发送时刻(hhmmss):Tue Jan  8 16:41:39 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:41:59  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:d0a7e96a.wav 
+发送时刻(hhmmss):Tue Jan  8 16:41:59 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:42:18  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:d10d9393.wav 
+发送时刻(hhmmss):Tue Jan  8 16:42:18 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:42:24  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:d1055ae3.wav 
+发送时刻(hhmmss):Tue Jan  8 16:42:24 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:42:30  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:d1d295bd.wav 
+发送时刻(hhmmss):Tue Jan  8 16:42:30 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:42:54  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:d1e18645.wav 
+发送时刻(hhmmss):Tue Jan  8 16:42:54 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:42:58  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:d4b2f920.wav 
+发送时刻(hhmmss):Tue Jan  8 16:42:58 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:43:14  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:d2b9dbe3.wav 
+发送时刻(hhmmss):Tue Jan  8 16:43:14 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:43:23  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:d60ea378.wav 
+发送时刻(hhmmss):Tue Jan  8 16:43:23 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:43:34  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:d6728aa4.wav 
+发送时刻(hhmmss):Tue Jan  8 16:43:34 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:43:48  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:d78762a7.wav 
+发送时刻(hhmmss):Tue Jan  8 16:43:48 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:44:03  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:d773a9e6.wav 
+发送时刻(hhmmss):Tue Jan  8 16:44:03 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:44:13  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:d80e1c9e.wav 
+发送时刻(hhmmss):Tue Jan  8 16:44:13 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:44:15  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:d8470cab.wav 
+发送时刻(hhmmss):Tue Jan  8 16:44:15 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:44:42  ERROR :  当前线程：1 处理音频D:\Dataset\Gunshot\d920e1dc.wav时发生错误:[Errno 32] Broken pipe
+
+2019-01-08 Tuesday 16:44:47  ERROR :  当前线程：3 处理音频D:\Dataset\Gunshot\d89150d5.wav时发生错误:[Errno 32] Broken pipe
+
+2019-01-08 Tuesday 16:44:49  ERROR :  当前线程：2 处理音频D:\Dataset\Gunshot\d8dee93f.wav时发生错误:[Errno 32] Broken pipe
+
+2019-01-08 Tuesday 16:45:06  ERROR :  当前线程：1 处理音频D:\Dataset\Gunshot\d931fa78.wav时发生错误:[Errno 32] Broken pipe
+
+2019-01-08 Tuesday 16:45:29  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:d9e369bf.wav 
+发送时刻(hhmmss):Tue Jan  8 16:45:29 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:45:34  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:da8665b5.wav 
+发送时刻(hhmmss):Tue Jan  8 16:45:34 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:45:36  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:d93c3a10.wav 
+发送时刻(hhmmss):Tue Jan  8 16:45:36 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['2.0s,4.0s'], 'content': ['gun_shot']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:46:03  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:dbe1946a.wav 
+发送时刻(hhmmss):Tue Jan  8 16:46:03 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:46:08  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:db70f608.wav 
+发送时刻(hhmmss):Tue Jan  8 16:46:08 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:46:23  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:dd845319.wav 
+发送时刻(hhmmss):Tue Jan  8 16:46:23 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:46:29  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:e0d32883.wav 
+发送时刻(hhmmss):Tue Jan  8 16:46:29 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['2.0s,6.0s'], 'content': ['scream']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:46:44  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:e2bfc42d.wav 
+发送时刻(hhmmss):Tue Jan  8 16:46:44 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:46:58  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:e33328ed.wav 
+发送时刻(hhmmss):Tue Jan  8 16:46:58 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:47:08  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:e2d02712.wav 
+发送时刻(hhmmss):Tue Jan  8 16:47:08 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:47:23  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:e53a4c5d.wav 
+发送时刻(hhmmss):Tue Jan  8 16:47:23 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:47:25  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:e54a048a.wav 
+发送时刻(hhmmss):Tue Jan  8 16:47:25 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:47:54  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:e5b10b60.wav 
+发送时刻(hhmmss):Tue Jan  8 16:47:54 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:47:56  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:e7bbd7e7.wav 
+发送时刻(hhmmss):Tue Jan  8 16:47:56 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,18.0s'], 'content': ['speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:48:04  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:e81a0e3d.wav 
+发送时刻(hhmmss):Tue Jan  8 16:48:04 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:48:23  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:eaae094b.wav 
+发送时刻(hhmmss):Tue Jan  8 16:48:23 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:48:44  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:ee6731df.wav 
+发送时刻(hhmmss):Tue Jan  8 16:48:44 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:48:46  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:ec7c9d41.wav 
+发送时刻(hhmmss):Tue Jan  8 16:48:46 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:48:50  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:eeb6f911.wav 
+发送时刻(hhmmss):Tue Jan  8 16:48:50 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:49:18  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:efe2372f.wav 
+发送时刻(hhmmss):Tue Jan  8 16:49:18 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:49:26  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:ef57bfce.wav 
+发送时刻(hhmmss):Tue Jan  8 16:49:26 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:49:33  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:ef73c29c.wav 
+发送时刻(hhmmss):Tue Jan  8 16:49:33 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['2.0s,4.0s'], 'content': ['gun_shot']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:49:46  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:f22b1915.wav 
+发送时刻(hhmmss):Tue Jan  8 16:49:46 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:50:06  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:f2f93dcf.wav 
+发送时刻(hhmmss):Tue Jan  8 16:50:06 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:50:13  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:f473c228.wav 
+发送时刻(hhmmss):Tue Jan  8 16:50:13 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:50:18  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:f4627f0b.wav 
+发送时刻(hhmmss):Tue Jan  8 16:50:18 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:50:39  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:f73fdaf8.wav 
+发送时刻(hhmmss):Tue Jan  8 16:50:39 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:50:44  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:f5ba4a3f.wav 
+发送时刻(hhmmss):Tue Jan  8 16:50:44 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:51:07  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:f7ee6c93.wav 
+发送时刻(hhmmss):Tue Jan  8 16:51:07 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:51:08  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:f9c0004a.wav 
+发送时刻(hhmmss):Tue Jan  8 16:51:08 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:51:24  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:f9f26b10.wav 
+发送时刻(hhmmss):Tue Jan  8 16:51:24 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-08 Tuesday 16:51:28  INFO :  所有文件处理完成。
+2019-01-08 Tuesday 16:51:28  INFO :  所有文件处理完成。
+2019-01-08 Tuesday 16:51:28  INFO :  Sending ReportProcessDone:{'head': 'proc_done', 'file': 'D:\\Dataset\\Gunshot', 'total_num': 79, 'total_duration': 453.46000000000004, 'time_cost': 982.9278371839246, 'result': {'result': [{'ycsyjc': 9}, {'yzfl': 222}, {'swfl': 296}]}}
+2019-01-08 Tuesday 16:51:28  INFO :  Sending ReportProcessDone:{'head': 'proc_done', 'file': 'D:\\Dataset\\Gunshot', 'total_num': 79, 'total_duration': 453.46000000000004, 'time_cost': 982.9278371839246, 'result': {'result': [{'ycsyjc': 9}, {'yzfl': 222}, {'swfl': 296}]}}
+2019-01-08 Tuesday 16:51:28  INFO :  所有文件处理完成。
+2019-01-08 Tuesday 16:51:28  INFO :  Receive proc_done return :{'head': 'rproc_done', 'file': 'D:\\Dataset\\Gunshot', 'chsum': '0'}
+2019-01-08 Tuesday 16:51:28  INFO :  Sending ReportProcessDone:{'head': 'proc_done', 'file': 'D:\\Dataset\\Gunshot', 'total_num': 79, 'total_duration': 453.46000000000004, 'time_cost': 982.9278371839246, 'result': {'result': [{'ycsyjc': 9}, {'yzfl': 222}, {'swfl': 296}]}}
+2019-01-09 Wednesday 14:53:16  INFO :  user:admin login,Enter second dialog.
+2019-01-09 Wednesday 14:53:19  INFO :  Enter third dialog.
+2019-01-09 Wednesday 14:53:23  INFO :  IP：localhost网络通畅,0
+2019-01-09 Wednesday 14:53:23  INFO :  Reveived Request:{'head': 'cmd', 'file': 'D:\\Dataset\\Gunshot', 'func_ycsyjc': 0, 'func_yzfl': 0, 'func_swfl': 0, 'chsum': '0xf53b5ae7'}
+2019-01-09 Wednesday 14:53:23  INFO :  Send Reply:{'head': 'rec', 'file': 'D:\\Dataset\\Gunshot', 'network': 0, 'ready': 1, 'error': 200, 'chsum': '0x 9617d9a'}
+2019-01-09 Wednesday 14:53:23  INFO :  Send Report:{'head': 'report', 'file': 'D:\\Dataset\\Gunshot', 'file_num': 90, 'time': '00:00：00', 'chsum': '0x3f82d1d9'}
+2019-01-09 Wednesday 14:53:23  INFO :  Receive Msg:{'head': 'control', 'file': ' / xxxx / xxxxx', 'stop': 0, 'chsum': '0x2f42a089'}
+2019-01-09 Wednesday 14:59:50  INFO :  user:admin login,Enter second dialog.
+2019-01-09 Wednesday 14:59:52  INFO :  Enter third dialog.
+2019-01-09 Wednesday 14:59:56  INFO :  IP：localhost网络通畅,0
+2019-01-09 Wednesday 14:59:56  INFO :  Reveived Request:{'head': 'cmd', 'file': 'D:\\Dataset\\Gunshot', 'func_ycsyjc': 0, 'func_yzfl': 0, 'func_swfl': 0, 'chsum': '0xf53b5ae7'}
+2019-01-09 Wednesday 14:59:56  INFO :  Send Reply:{'head': 'rec', 'file': 'D:\\Dataset\\Gunshot', 'network': 0, 'ready': 1, 'error': 200, 'chsum': '0x 9617d9a'}
+2019-01-09 Wednesday 14:59:56  INFO :  Send Report:{'head': 'report', 'file': 'D:\\Dataset\\Gunshot', 'file_num': 90, 'time': '00:00：00', 'chsum': '0x3f82d1d9'}
+2019-01-09 Wednesday 14:59:56  INFO :  Receive Msg:{'head': 'control', 'file': ' / xxxx / xxxxx', 'stop': 0, 'chsum': '0x2f42a089'}
+2019-01-09 Wednesday 15:02:30  INFO :  user:admin login,Enter second dialog.
+2019-01-09 Wednesday 15:02:39  INFO :  Enter third dialog.
+2019-01-09 Wednesday 15:02:43  INFO :  IP：localhost网络通畅,0
+2019-01-09 Wednesday 15:02:43  INFO :  Reveived Request:{'head': 'cmd', 'file': 'D:\\Dataset\\Gunshot', 'func_ycsyjc': 0, 'func_yzfl': 0, 'func_swfl': 0, 'chsum': '0xf53b5ae7'}
+2019-01-09 Wednesday 15:02:43  INFO :  Send Reply:{'head': 'rec', 'file': 'D:\\Dataset\\Gunshot', 'network': 0, 'ready': 1, 'error': 200, 'chsum': '0x 9617d9a'}
+2019-01-09 Wednesday 15:02:43  INFO :  Send Report:{'head': 'report', 'file': 'D:\\Dataset\\Gunshot', 'file_num': 75, 'time': '00:00：00', 'chsum': '0xc69df470'}
+2019-01-09 Wednesday 15:02:43  INFO :  Receive Msg:{'head': 'control', 'file': ' / xxxx / xxxxx', 'stop': 0, 'chsum': '0x2f42a089'}
+2019-01-09 Wednesday 15:04:18  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:1_67.wav 
+发送时刻(hhmmss):Wed Jan  9 15:04:18 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,52.0s', '60.0s,100.0s', '104.0s,172.0s', '236.0s,240.0s', '184.0s,270.0s', '274.0s,276.0s', '280.0s,292.0s', '356.0s,452.0s', '396.0s,402.0s', '406.0s,502.0s', '506.0s,524.0s'], 'content': ['speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-09 Wednesday 15:04:31  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:1_68.wav 
+发送时刻(hhmmss):Wed Jan  9 15:04:31 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['22.0s,34.0s', '38.0s,54.0s', '118.0s,120.0s', '68.0s,72.0s', '84.0s,98.0s', '108.0s,110.0s', '130.0s,132.0s', '136.0s,138.0s', '166.0s,168.0s', '236.0s,238.0s', '212.0s,214.0s', '226.0s,228.0s', '240.0s,242.0s', '250.0s,256.0s', '302.0s,304.0s', '322.0s,324.0s', '328.0s,330.0s', '344.0s,350.0s', '418.0s,420.0s', '374.0s,376.0s', '380.0s,384.0s', '396.0s,398.0s', '404.0s,406.0s', '474.0s,480.0s', '426.0s,428.0s', '432.0s,440.0s', '446.0s,456.0s', '464.0s,466.0s', '488.0s,496.0s', '500.0s,502.0s', '514.0s,520.0s', '598.0s,600.0s'], 'content': ['speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'scream', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-09 Wednesday 15:04:36  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:1_69.wav 
+发送时刻(hhmmss):Wed Jan  9 15:04:36 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,14.0s', '18.0s,22.0s', '26.0s,34.0s', '38.0s,70.0s', '82.0s,88.0s', '94.0s,96.0s', '100.0s,106.0s', '114.0s,116.0s', '122.0s,124.0s', '138.0s,142.0s', '154.0s,156.0s', '160.0s,162.0s', '166.0s,168.0s', '174.0s,210.0s', '214.0s,218.0s', '224.0s,228.0s', '232.0s,238.0s', '242.0s,244.0s', '248.0s,252.0s', '256.0s,258.0s', '272.0s,310.0s', '318.0s,320.0s', '334.0s,336.0s', '344.0s,346.0s', '350.0s,356.0s', '364.0s,378.0s', '382.0s,386.0s', '396.0s,406.0s', '470.0s,472.0s', '422.0s,424.0s', '430.0s,464.0s', '532.0s,542.0s', '486.0s,488.0s', '496.0s,502.0s', '510.0s,512.0s', '516.0s,518.0s', '524.0s,530.0s'], 'content': ['speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-09 Wednesday 15:06:14  INFO :  user:admin login,Enter second dialog.
+2019-01-09 Wednesday 15:06:16  INFO :  Enter third dialog.
+2019-01-09 Wednesday 15:06:18  ERROR :  'dialogWait2Rev' object has no attribute 'fileDict'
+2019-01-09 Wednesday 15:06:19  INFO :  IP：localhost网络通畅,0
+2019-01-09 Wednesday 15:06:19  INFO :  Reveived Request:{'head': 'cmd', 'file': 'D:\\Dataset\\Gunshot', 'func_ycsyjc': 0, 'func_yzfl': 0, 'func_swfl': 0, 'chsum': '0xf53b5ae7'}
+2019-01-09 Wednesday 15:06:19  INFO :  Send Reply:{'head': 'rec', 'file': 'D:\\Dataset\\Gunshot', 'network': 0, 'ready': 1, 'error': 200, 'chsum': '0x 9617d9a'}
+2019-01-09 Wednesday 15:06:19  INFO :  Send Report:{'head': 'report', 'file': 'D:\\Dataset\\Gunshot', 'file_num': 75, 'time': '00:00：00', 'chsum': '0xc69df470'}
+2019-01-09 Wednesday 15:06:19  INFO :  Receive Msg:{'head': 'control', 'file': ' / xxxx / xxxxx', 'stop': 0, 'chsum': '0x2f42a089'}
+2019-01-09 Wednesday 15:07:53  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:1_67.wav 
+发送时刻(hhmmss):Wed Jan  9 15:07:53 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,52.0s', '60.0s,100.0s', '104.0s,172.0s', '236.0s,240.0s', '184.0s,270.0s', '274.0s,276.0s', '280.0s,292.0s', '356.0s,452.0s', '396.0s,402.0s', '406.0s,502.0s', '506.0s,524.0s'], 'content': ['speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-09 Wednesday 15:08:09  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:1_68.wav 
+发送时刻(hhmmss):Wed Jan  9 15:08:09 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['22.0s,34.0s', '38.0s,54.0s', '118.0s,120.0s', '68.0s,72.0s', '84.0s,98.0s', '108.0s,110.0s', '130.0s,132.0s', '136.0s,138.0s', '166.0s,168.0s', '236.0s,238.0s', '212.0s,214.0s', '226.0s,228.0s', '240.0s,242.0s', '250.0s,256.0s', '302.0s,304.0s', '322.0s,324.0s', '328.0s,330.0s', '344.0s,350.0s', '418.0s,420.0s', '374.0s,376.0s', '380.0s,384.0s', '396.0s,398.0s', '404.0s,406.0s', '474.0s,480.0s', '426.0s,428.0s', '432.0s,440.0s', '446.0s,456.0s', '464.0s,466.0s', '488.0s,496.0s', '500.0s,502.0s', '514.0s,520.0s', '598.0s,600.0s'], 'content': ['speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'scream', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-09 Wednesday 15:08:16  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:1_69.wav 
+发送时刻(hhmmss):Wed Jan  9 15:08:16 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,14.0s', '18.0s,22.0s', '26.0s,34.0s', '38.0s,70.0s', '82.0s,88.0s', '94.0s,96.0s', '100.0s,106.0s', '114.0s,116.0s', '122.0s,124.0s', '138.0s,142.0s', '154.0s,156.0s', '160.0s,162.0s', '166.0s,168.0s', '174.0s,210.0s', '214.0s,218.0s', '224.0s,228.0s', '232.0s,238.0s', '242.0s,244.0s', '248.0s,252.0s', '256.0s,258.0s', '272.0s,310.0s', '318.0s,320.0s', '334.0s,336.0s', '344.0s,346.0s', '350.0s,356.0s', '364.0s,378.0s', '382.0s,386.0s', '396.0s,406.0s', '470.0s,472.0s', '422.0s,424.0s', '430.0s,464.0s', '532.0s,542.0s', '486.0s,488.0s', '496.0s,502.0s', '510.0s,512.0s', '516.0s,518.0s', '524.0s,530.0s'], 'content': ['speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-09 Wednesday 15:08:53  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:1_70.wav 
+发送时刻(hhmmss):Wed Jan  9 15:08:53 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['2.0s,4.0s', '8.0s,38.0s', '42.0s,54.0s', '54.0s,56.0s', '60.0s,104.0s', '108.0s,142.0s', '146.0s,158.0s', '162.0s,164.0s', '168.0s,170.0s', '174.0s,192.0s', '196.0s,268.0s', '272.0s,286.0s', '358.0s,360.0s', '306.0s,310.0s', '316.0s,322.0s', '328.0s,336.0s', '340.0s,342.0s', '350.0s,364.0s', '370.0s,378.0s', '384.0s,386.0s', '390.0s,396.0s', '402.0s,414.0s', '420.0s,464.0s', '532.0s,534.0s', '538.0s,546.0s', '490.0s,508.0s'], 'content': ['speaking', 'speaking', 'speaking', 'scream', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-09 Wednesday 15:09:28  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:1_71.wav 
+发送时刻(hhmmss):Wed Jan  9 15:09:28 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,70.0s', '76.0s,178.0s', '182.0s,272.0s', '276.0s,302.0s', '306.0s,328.0s', '332.0s,364.0s', '368.0s,388.0s', '392.0s,448.0s', '454.0s,496.0s', '504.0s,530.0s', '594.0s,678.0s'], 'content': ['speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-09 Wednesday 15:09:49  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:1_73.wav 
+发送时刻(hhmmss):Wed Jan  9 15:09:49 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['20.0s,60.0s', '64.0s,94.0s', '98.0s,118.0s', '122.0s,132.0s', '136.0s,144.0s', '150.0s,164.0s', '170.0s,280.0s', '286.0s,308.0s'], 'content': ['speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-09 Wednesday 15:09:51  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:1_72.wav 
+发送时刻(hhmmss):Wed Jan  9 15:09:51 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['2.0s,20.0s', '24.0s,74.0s', '82.0s,92.0s', '98.0s,110.0s', '114.0s,162.0s', '166.0s,204.0s', '208.0s,212.0s', '216.0s,248.0s', '256.0s,278.0s', '288.0s,290.0s', '354.0s,358.0s', '302.0s,306.0s', '312.0s,326.0s', '330.0s,348.0s', '412.0s,436.0s', '380.0s,390.0s', '398.0s,418.0s', '422.0s,438.0s', '442.0s,452.0s', '456.0s,492.0s', '496.0s,500.0s', '506.0s,510.0s', '514.0s,528.0s'], 'content': ['speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-09 Wednesday 15:10:57  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:1_74.wav 
+发送时刻(hhmmss):Wed Jan  9 15:10:57 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,6.0s', '14.0s,20.0s', '24.0s,30.0s', '36.0s,96.0s', '104.0s,106.0s', '110.0s,122.0s', '128.0s,134.0s', '140.0s,142.0s', '152.0s,156.0s', '166.0s,174.0s', '238.0s,242.0s', '186.0s,198.0s', '204.0s,256.0s', '260.0s,266.0s', '270.0s,280.0s', '284.0s,290.0s', '354.0s,376.0s', '324.0s,394.0s', '398.0s,440.0s', '444.0s,446.0s', '450.0s,468.0s', '532.0s,546.0s', '490.0s,584.0s', '648.0s,660.0s'], 'content': ['speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-09 Wednesday 15:11:08  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:1_75.wav 
+发送时刻(hhmmss):Wed Jan  9 15:11:08 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,16.0s', '22.0s,24.0s', '30.0s,32.0s', '38.0s,48.0s', '52.0s,94.0s', '100.0s,136.0s', '142.0s,204.0s', '208.0s,224.0s', '228.0s,298.0s', '310.0s,328.0s', '332.0s,570.0s'], 'content': ['speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-09 Wednesday 15:11:26  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:1_76.wav 
+发送时刻(hhmmss):Wed Jan  9 15:11:26 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,18.0s', '24.0s,46.0s', '50.0s,52.0s', '56.0s,58.0s', '68.0s,70.0s', '74.0s,76.0s', '80.0s,82.0s', '94.0s,96.0s', '102.0s,152.0s', '158.0s,164.0s', '168.0s,176.0s', '180.0s,186.0s', '190.0s,192.0s', '198.0s,222.0s', '226.0s,228.0s', '232.0s,258.0s', '264.0s,268.0s', '280.0s,304.0s', '308.0s,316.0s', '326.0s,328.0s', '332.0s,342.0s', '346.0s,372.0s', '376.0s,378.0s', '382.0s,386.0s', '390.0s,392.0s', '400.0s,406.0s', '470.0s,474.0s', '478.0s,484.0s', '428.0s,464.0s', '530.0s,562.0s', '506.0s,524.0s', '588.0s,604.0s', '550.0s,564.0s'], 'content': ['speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-09 Wednesday 15:12:24  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:1_78.wav 
+发送时刻(hhmmss):Wed Jan  9 15:12:24 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,8.0s', '12.0s,18.0s', '26.0s,34.0s', '38.0s,40.0s', '46.0s,50.0s', '54.0s,90.0s', '94.0s,144.0s', '148.0s,156.0s', '160.0s,164.0s', '170.0s,178.0s', '188.0s,214.0s', '218.0s,272.0s', '276.0s,280.0s', '284.0s,350.0s', '416.0s,444.0s', '400.0s,406.0s', '420.0s,424.0s', '430.0s,434.0s', '438.0s,440.0s', '446.0s,458.0s', '468.0s,470.0s', '536.0s,540.0s', '488.0s,498.0s', '502.0s,504.0s', '508.0s,520.0s', '588.0s,590.0s', '564.0s,588.0s', '652.0s,656.0s'], 'content': ['speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-09 Wednesday 15:12:25  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:1_77.wav 
+发送时刻(hhmmss):Wed Jan  9 15:12:25 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,2.0s', '6.0s,18.0s', '24.0s,142.0s', '146.0s,150.0s', '154.0s,216.0s', '220.0s,226.0s', '232.0s,242.0s', '246.0s,264.0s', '268.0s,308.0s', '316.0s,326.0s', '334.0s,338.0s', '344.0s,362.0s', '368.0s,380.0s', '384.0s,390.0s', '394.0s,442.0s', '450.0s,474.0s', '482.0s,508.0s', '512.0s,540.0s', '546.0s,600.0s', '606.0s,608.0s', '616.0s,618.0s'], 'content': ['speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-09 Wednesday 15:12:48  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:1_79.wav 
+发送时刻(hhmmss):Wed Jan  9 15:12:48 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['28.0s,30.0s', '70.0s,72.0s', '98.0s,100.0s', '124.0s,126.0s', '362.0s,364.0s', '484.0s,486.0s', '578.0s,580.0s'], 'content': ['speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-09 Wednesday 15:13:27  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:1_80.wav 
+发送时刻(hhmmss):Wed Jan  9 15:13:27 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['4.0s,6.0s', '10.0s,18.0s', '22.0s,32.0s', '36.0s,40.0s', '44.0s,52.0s', '56.0s,60.0s', '80.0s,82.0s', '108.0s,110.0s', '128.0s,132.0s', '144.0s,146.0s', '160.0s,168.0s', '174.0s,176.0s', '180.0s,186.0s', '210.0s,220.0s', '298.0s,330.0s', '274.0s,276.0s', '280.0s,290.0s', '300.0s,302.0s', '306.0s,312.0s', '316.0s,320.0s', '326.0s,342.0s', '346.0s,406.0s', '472.0s,492.0s', '438.0s,490.0s', '494.0s,530.0s'], 'content': ['speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-09 Wednesday 15:13:36  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:2_609.wav 
+发送时刻(hhmmss):Wed Jan  9 15:13:36 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,8.0s', '14.0s,16.0s'], 'content': ['speaking', 'speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-09 Wednesday 15:13:46  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:1_81.wav 
+发送时刻(hhmmss):Wed Jan  9 15:13:46 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['2.0s,10.0s', '14.0s,32.0s', '40.0s,66.0s', '70.0s,102.0s', '112.0s,118.0s', '126.0s,142.0s', '146.0s,150.0s', '154.0s,172.0s', '236.0s,238.0s', '182.0s,188.0s', '192.0s,208.0s', '214.0s,216.0s', '222.0s,228.0s', '240.0s,242.0s', '254.0s,256.0s', '274.0s,286.0s', '352.0s,358.0s', '302.0s,312.0s', '320.0s,322.0s', '330.0s,338.0s', '342.0s,348.0s', '416.0s,426.0s', '370.0s,388.0s', '394.0s,406.0s', '472.0s,510.0s', '454.0s,458.0s', '466.0s,484.0s', '490.0s,492.0s', '496.0s,514.0s', '520.0s,532.0s', '596.0s,598.0s', '542.0s,556.0s', '560.0s,562.0s', '566.0s,568.0s'], 'content': ['speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-09 Wednesday 15:13:53  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:2_610.wav 
+发送时刻(hhmmss):Wed Jan  9 15:13:53 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['8.0s,14.0s', '20.0s,22.0s', '34.0s,36.0s', '44.0s,46.0s', '50.0s,52.0s'], 'content': ['speaking', 'speaking', 'speaking', 'speaking', 'speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-09 Wednesday 15:14:15  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:2_613.wav 
+发送时刻(hhmmss):Wed Jan  9 15:14:15 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-09 Wednesday 15:14:26  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:2_612.wav 
+发送时刻(hhmmss):Wed Jan  9 15:14:26 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,4.0s', '14.0s,16.0s', '32.0s,34.0s', '48.0s,50.0s', '118.0s,120.0s'], 'content': ['speaking', 'speaking', 'speaking', 'speaking', 'speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-09 Wednesday 15:14:27  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:2_611.wav 
+发送时刻(hhmmss):Wed Jan  9 15:14:27 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['4.0s,6.0s', '12.0s,30.0s', '38.0s,40.0s', '50.0s,56.0s', '60.0s,80.0s', '84.0s,86.0s'], 'content': ['speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-09 Wednesday 15:15:05  ERROR :  当前线程：2 处理音频D:\Dataset\Gunshot\2_615.wav时发生错误:Traceback (most recent call last):
+  File "C:\Users\51198\AppData\Local\Programs\Python\Python36\lib\site-packages\torch\utils\data\dataloader.py", line 138, in _worker_loop
+    samples = collate_fn([dataset[i] for i in batch_indices])
+  File "C:\Users\51198\AppData\Local\Programs\Python\Python36\lib\site-packages\torch\utils\data\dataloader.py", line 138, in <listcomp>
+    samples = collate_fn([dataset[i] for i in batch_indices])
+  File "D:\GitRep\pyQt\algorithms\audio_classifier\pre_mel_loader.py", line 221, in __getitem__
+    self.window_type, self.normalize, self.max_len)
+  File "D:\GitRep\pyQt\algorithms\audio_classifier\pre_mel_loader.py", line 65, in logmeldelta_loader
+    delta = librosa.feature.delta(logmel)
+  File "C:\Users\51198\AppData\Local\Programs\Python\Python36\lib\site-packages\librosa\feature\utils.py", line 110, in delta
+    "cannot exceed data.shape[axis]={}".format(width, data.shape[axis]))
+librosa.util.exceptions.ParameterError: when mode='interp', width=9 cannot exceed data.shape[axis]=7
+
+
+2019-01-09 Wednesday 15:15:05  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:2_614.wav 
+发送时刻(hhmmss):Wed Jan  9 15:15:05 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['84.0s,90.0s', '180.0s,182.0s', '190.0s,192.0s', '256.0s,258.0s', '338.0s,340.0s', '396.0s,398.0s', '442.0s,444.0s', '460.0s,462.0s'], 'content': ['speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-09 Wednesday 15:15:10  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:2_616.wav 
+发送时刻(hhmmss):Wed Jan  9 15:15:10 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': [], 'content': []}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-09 Wednesday 15:15:36  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:2_618.wav 
+发送时刻(hhmmss):Wed Jan  9 15:15:36 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['2.0s,4.0s', '18.0s,26.0s', '30.0s,34.0s', '40.0s,42.0s', '46.0s,50.0s', '68.0s,76.0s', '100.0s,102.0s'], 'content': ['speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-09 Wednesday 15:15:56  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:2_617.wav 
+发送时刻(hhmmss):Wed Jan  9 15:15:56 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['6.0s,10.0s', '20.0s,22.0s', '50.0s,58.0s', '78.0s,80.0s', '84.0s,86.0s', '110.0s,112.0s', '176.0s,186.0s', '136.0s,146.0s', '236.0s,238.0s', '186.0s,190.0s', '210.0s,212.0s', '220.0s,222.0s', '226.0s,232.0s', '296.0s,298.0s', '254.0s,274.0s', '284.0s,298.0s'], 'content': ['speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-09 Wednesday 15:15:59  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:2_619.wav 
+发送时刻(hhmmss):Wed Jan  9 15:15:59 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,6.0s', '10.0s,16.0s', '22.0s,24.0s', '32.0s,34.0s', '118.0s,120.0s'], 'content': ['speaking', 'speaking', 'speaking', 'speaking', 'speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-09 Wednesday 15:16:01  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:2_620.wav 
+发送时刻(hhmmss):Wed Jan  9 15:16:01 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,6.0s', '10.0s,18.0s'], 'content': ['speaking', 'speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-09 Wednesday 15:16:27  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:2_623.wav 
+发送时刻(hhmmss):Wed Jan  9 15:16:27 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['12.0s,14.0s', '42.0s,44.0s', '46.0s,48.0s'], 'content': ['speaking', 'speaking', 'gun_shot']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-09 Wednesday 15:16:30  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:2_621.wav 
+发送时刻(hhmmss):Wed Jan  9 15:16:30 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,6.0s'], 'content': ['speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-09 Wednesday 15:16:41  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:2_622.wav 
+发送时刻(hhmmss):Wed Jan  9 15:16:41 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,18.0s'], 'content': ['speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-09 Wednesday 15:16:42  ERROR :  当前线程：1 处理音频D:\Dataset\Gunshot\2_624.wav时发生错误:[Errno 2] No such file or directory: 'D:\\Dataset\\Gunshot\\2_624.wav'
+
+2019-01-09 Wednesday 15:16:51  ERROR :  当前线程：2 处理音频D:\Dataset\Gunshot\2_625.wav时发生错误:[Errno 2] No such file or directory: 'D:\\Dataset\\Gunshot\\2_625.wav'
+
+2019-01-09 Wednesday 15:16:55  ERROR :  当前线程：1 处理音频D:\Dataset\Gunshot\2_626.wav时发生错误:[Errno 2] No such file or directory: 'D:\\Dataset\\Gunshot\\2_626.wav'
+
+2019-01-09 Wednesday 15:17:05  ERROR :  当前线程：1 处理音频D:\Dataset\Gunshot\2_628.wav时发生错误:[Errno 2] No such file or directory: 'D:\\Dataset\\Gunshot\\2_628.wav'
+
+2019-01-09 Wednesday 15:17:15  ERROR :  当前线程：3 处理音频D:\Dataset\Gunshot\2_627.wav时发生错误:[Errno 2] No such file or directory: 'D:\\Dataset\\Gunshot\\2_627.wav'
+
+2019-01-09 Wednesday 15:17:15  ERROR :  当前线程：2 处理音频D:\Dataset\Gunshot\2_629.wav时发生错误:[Errno 2] No such file or directory: 'D:\\Dataset\\Gunshot\\2_629.wav'
+
+2019-01-09 Wednesday 15:17:20  ERROR :  当前线程：1 处理音频D:\Dataset\Gunshot\2_630.wav时发生错误:[Errno 2] No such file or directory: 'D:\\Dataset\\Gunshot\\2_630.wav'
+
+2019-01-09 Wednesday 15:17:35  ERROR :  当前线程：1 处理音频D:\Dataset\Gunshot\2_633.wav时发生错误:[Errno 2] No such file or directory: 'D:\\Dataset\\Gunshot\\2_633.wav'
+
+2019-01-09 Wednesday 15:17:40  ERROR :  当前线程：2 处理音频D:\Dataset\Gunshot\2_631.wav时发生错误:[Errno 2] No such file or directory: 'D:\\Dataset\\Gunshot\\2_631.wav'
+
+2019-01-09 Wednesday 15:17:45  ERROR :  当前线程：1 处理音频D:\Dataset\Gunshot\2_634.wav时发生错误:[Errno 2] No such file or directory: 'D:\\Dataset\\Gunshot\\2_634.wav'
+
+2019-01-09 Wednesday 15:17:50  ERROR :  当前线程：3 处理音频D:\Dataset\Gunshot\2_632.wav时发生错误:[Errno 2] No such file or directory: 'D:\\Dataset\\Gunshot\\2_632.wav'
+
+2019-01-09 Wednesday 15:18:00  ERROR :  当前线程：1 处理音频D:\Dataset\Gunshot\2_636.wav时发生错误:[Errno 2] No such file or directory: 'D:\\Dataset\\Gunshot\\2_636.wav'
+
+2019-01-09 Wednesday 15:18:05  ERROR :  当前线程：2 处理音频D:\Dataset\Gunshot\2_635.wav时发生错误:[Errno 2] No such file or directory: 'D:\\Dataset\\Gunshot\\2_635.wav'
+
+2019-01-09 Wednesday 15:18:15  ERROR :  当前线程：1 处理音频D:\Dataset\Gunshot\2_638.wav时发生错误:[Errno 2] No such file or directory: 'D:\\Dataset\\Gunshot\\2_638.wav'
+
+2019-01-09 Wednesday 15:18:25  ERROR :  当前线程：3 处理音频D:\Dataset\Gunshot\2_637.wav时发生错误:[Errno 2] No such file or directory: 'D:\\Dataset\\Gunshot\\2_637.wav'
+
+2019-01-09 Wednesday 15:18:25  ERROR :  当前线程：2 处理音频D:\Dataset\Gunshot\3_167.wav时发生错误:[Errno 2] No such file or directory: 'D:\\Dataset\\Gunshot\\3_167.wav'
+
+2019-01-09 Wednesday 15:18:30  ERROR :  当前线程：1 处理音频D:\Dataset\Gunshot\3_168.wav时发生错误:[Errno 2] No such file or directory: 'D:\\Dataset\\Gunshot\\3_168.wav'
+
+2019-01-09 Wednesday 15:18:45  ERROR :  当前线程：1 处理音频D:\Dataset\Gunshot\3_171.wav时发生错误:[Errno 2] No such file or directory: 'D:\\Dataset\\Gunshot\\3_171.wav'
+
+2019-01-09 Wednesday 15:18:50  ERROR :  当前线程：2 处理音频D:\Dataset\Gunshot\3_169.wav时发生错误:[Errno 2] No such file or directory: 'D:\\Dataset\\Gunshot\\3_169.wav'
+
+2019-01-09 Wednesday 15:18:55  ERROR :  当前线程：1 处理音频D:\Dataset\Gunshot\3_172.wav时发生错误:[Errno 2] No such file or directory: 'D:\\Dataset\\Gunshot\\3_172.wav'
+
+2019-01-09 Wednesday 15:19:00  ERROR :  当前线程：3 处理音频D:\Dataset\Gunshot\3_170.wav时发生错误:[Errno 2] No such file or directory: 'D:\\Dataset\\Gunshot\\3_170.wav'
+
+2019-01-09 Wednesday 15:19:10  ERROR :  当前线程：1 处理音频D:\Dataset\Gunshot\3_174.wav时发生错误:[Errno 2] No such file or directory: 'D:\\Dataset\\Gunshot\\3_174.wav'
+
+2019-01-09 Wednesday 15:19:10  ERROR :  当前线程：2 处理音频D:\Dataset\Gunshot\3_173.wav时发生错误:[Errno 2] No such file or directory: 'D:\\Dataset\\Gunshot\\3_173.wav'
+
+2019-01-09 Wednesday 15:19:20  ERROR :  当前线程：1 处理音频D:\Dataset\Gunshot\3_176.wav时发生错误:[Errno 2] No such file or directory: 'D:\\Dataset\\Gunshot\\3_176.wav'
+
+2019-01-09 Wednesday 15:19:30  ERROR :  当前线程：1 处理音频D:\Dataset\Gunshot\3_178.wav时发生错误:[Errno 2] No such file or directory: 'D:\\Dataset\\Gunshot\\3_178.wav'
+
+2019-01-09 Wednesday 15:19:35  ERROR :  当前线程：2 处理音频D:\Dataset\Gunshot\3_177.wav时发生错误:[Errno 2] No such file or directory: 'D:\\Dataset\\Gunshot\\3_177.wav'
+
+2019-01-09 Wednesday 15:19:35  ERROR :  当前线程：3 处理音频D:\Dataset\Gunshot\3_175.wav时发生错误:[Errno 2] No such file or directory: 'D:\\Dataset\\Gunshot\\3_175.wav'
+
+2019-01-09 Wednesday 15:19:45  ERROR :  当前线程：1 处理音频D:\Dataset\Gunshot\3_179.wav时发生错误:[Errno 2] No such file or directory: 'D:\\Dataset\\Gunshot\\3_179.wav'
+
+2019-01-09 Wednesday 15:19:55  ERROR :  当前线程：2 处理音频D:\Dataset\Gunshot\3_180.wav时发生错误:[Errno 2] No such file or directory: 'D:\\Dataset\\Gunshot\\3_180.wav'
+
+2019-01-09 Wednesday 15:20:00  ERROR :  当前线程：1 处理音频D:\Dataset\Gunshot\3_182.wav时发生错误:[Errno 2] No such file or directory: 'D:\\Dataset\\Gunshot\\3_182.wav'
+
+2019-01-09 Wednesday 15:20:05  ERROR :  当前线程：3 处理音频D:\Dataset\Gunshot\3_181.wav时发生错误:[Errno 2] No such file or directory: 'D:\\Dataset\\Gunshot\\3_181.wav'
+
+2019-01-09 Wednesday 15:20:15  ERROR :  当前线程：1 处理音频D:\Dataset\Gunshot\3_184.wav时发生错误:[Errno 2] No such file or directory: 'D:\\Dataset\\Gunshot\\3_184.wav'
+
+2019-01-09 Wednesday 15:20:20  ERROR :  当前线程：2 处理音频D:\Dataset\Gunshot\3_183.wav时发生错误:[Errno 2] No such file or directory: 'D:\\Dataset\\Gunshot\\3_183.wav'
+
+2019-01-09 Wednesday 15:20:25  ERROR :  当前线程：1 处理音频D:\Dataset\Gunshot\3_186.wav时发生错误:[Errno 2] No such file or directory: 'D:\\Dataset\\Gunshot\\3_186.wav'
+
+2019-01-09 Wednesday 15:20:40  ERROR :  当前线程：3 处理音频D:\Dataset\Gunshot\3_185.wav时发生错误:[Errno 2] No such file or directory: 'D:\\Dataset\\Gunshot\\3_185.wav'
+
+2019-01-09 Wednesday 15:20:45  ERROR :  当前线程：2 处理音频D:\Dataset\Gunshot\3_187.wav时发生错误:[Errno 2] No such file or directory: 'D:\\Dataset\\Gunshot\\3_187.wav'
+
+2019-01-09 Wednesday 15:20:52  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:3_188.wav 
+发送时刻(hhmmss):Wed Jan  9 15:20:52 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['4.0s,40.0s', '44.0s,54.0s'], 'content': ['speaking', 'speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-09 Wednesday 15:21:19  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:3_191.wav 
+发送时刻(hhmmss):Wed Jan  9 15:21:19 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['16.0s,28.0s', '32.0s,64.0s', '70.0s,74.0s'], 'content': ['speaking', 'speaking', 'speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-09 Wednesday 15:21:24  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:3_190.wav 
+发送时刻(hhmmss):Wed Jan  9 15:21:24 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,64.0s'], 'content': ['speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-09 Wednesday 15:21:27  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:3_189.wav 
+发送时刻(hhmmss):Wed Jan  9 15:21:27 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['2.0s,10.0s', '14.0s,18.0s', '24.0s,36.0s', '40.0s,42.0s', '48.0s,68.0s', '76.0s,78.0s', '84.0s,90.0s'], 'content': ['speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-09 Wednesday 15:21:45  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:3_192.wav 
+发送时刻(hhmmss):Wed Jan  9 15:21:45 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,8.0s', '14.0s,18.0s', '22.0s,34.0s', '38.0s,52.0s', '56.0s,80.0s'], 'content': ['speaking', 'speaking', 'speaking', 'speaking', 'speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-09 Wednesday 15:22:01  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:3_193.wav 
+发送时刻(hhmmss):Wed Jan  9 15:22:01 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['2.0s,16.0s', '20.0s,56.0s', '60.0s,64.0s', '70.0s,80.0s', '90.0s,114.0s'], 'content': ['speaking', 'speaking', 'speaking', 'speaking', 'speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-09 Wednesday 15:22:18  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:3_195.wav 
+发送时刻(hhmmss):Wed Jan  9 15:22:18 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['12.0s,14.0s', '22.0s,24.0s', '32.0s,48.0s', '56.0s,60.0s', '66.0s,72.0s', '82.0s,84.0s', '102.0s,104.0s'], 'content': ['speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-09 Wednesday 15:22:22  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:3_194.wav 
+发送时刻(hhmmss):Wed Jan  9 15:22:22 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['0.0s,2.0s', '8.0s,12.0s', '16.0s,32.0s', '36.0s,38.0s', '48.0s,50.0s', '76.0s,78.0s', '86.0s,92.0s', '98.0s,100.0s', '106.0s,108.0s', '120.0s,122.0s', '132.0s,134.0s', '138.0s,140.0s', '158.0s,160.0s'], 'content': ['speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking', 'speaking']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-09 Wednesday 15:22:38  DEBUG :  INFO --发送平台信息包头:data, 当前处理的音频文件是:3_196.wav 
+发送时刻(hhmmss):Wed Jan  9 15:22:38 2019, IP地址:localhost, 是否发送成功:1, 发送内容查询log,ycsy:{'timesteps': ['4.0s,6.0s', '10.0s,16.0s', '24.0s,26.0s', '38.0s,40.0s', '62.0s,64.0s'], 'content': ['speaking', 'speaking', 'speaking', 'speaking', 'gun_shot']}
+,swfl:{'timesteps': ['20.123s,23.456s', '30.111s,35.222s', '36.000s,37.000s', '38.000s,40.000s'], 'content': ['id00001', 'id00003', 'id00001', 'id00002'], 'newid': ['id00003']}
+,yzfl:{'timesteps': ['00.000s,11.111s', '11.111s,22.222s', '22.222s,33.333s'], 'content': ['mandarin', 'english', 'uygur']}
+2019-01-09 Wednesday 15:22:40  INFO :  所有文件处理完成。
+2019-01-09 Wednesday 15:22:40  INFO :  所有文件处理完成。
+2019-01-09 Wednesday 15:22:40  INFO :  Sending ReportProcessDone:{'head': 'proc_done', 'file': 'D:\\Dataset\\Gunshot', 'total_num': 75, 'total_duration': 10617.65945578231, 'time_cost': 977.8668780831898, 'result': {'result': [{'ycsyjc': 440}, {'yzfl': 114}, {'swfl': 152}]}}
+2019-01-09 Wednesday 15:22:40  INFO :  Sending ReportProcessDone:{'head': 'proc_done', 'file': 'D:\\Dataset\\Gunshot', 'total_num': 75, 'total_duration': 10617.65945578231, 'time_cost': 977.8668780831898, 'result': {'result': [{'ycsyjc': 440}, {'yzfl': 114}, {'swfl': 152}]}}
+2019-01-09 Wednesday 15:22:40  INFO :  Receive proc_done return :{'head': 'rproc_done', 'file': 'D:\\Dataset\\Gunshot', 'chsum': '0'}
+2019-01-09 Wednesday 15:22:40  INFO :  所有文件处理完成。
+2019-01-09 Wednesday 15:22:40  INFO :  Sending ReportProcessDone:{'head': 'proc_done', 'file': 'D:\\Dataset\\Gunshot', 'total_num': 75, 'total_duration': 10617.65945578231, 'time_cost': 977.8668780831898, 'result': {'result': [{'ycsyjc': 440}, {'yzfl': 114}, {'swfl': 152}]}}

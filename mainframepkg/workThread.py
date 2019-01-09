@@ -203,7 +203,6 @@ class WorkThread4VAD(QThread):
         #首先进行静音检测得到文件字典{"a.wav":1....}
         try:
             vad_file_dict=jingyinfenge(self.file_path,os.path.dirname(self.file_path))
-            os.remove(self.file_path)
             self.mutex.lock()
             self.fileDict.update(vad_file_dict)
             self.trigger.emit(1,self.ThreadID,self.file_path,None)
@@ -409,7 +408,7 @@ class WorkThread4LoadingModels(QThread):
 
     def run(self):
         try:
-            au_cla_models, ifcuda = loading_audio_classifier_models({"ResNet101": 0.3, "resnext": 0.6,
+            au_cla_models, ifcuda = loading_audio_classifier_models({"ResNet101": 0.2, "resnext": 0.7,
                                                                      "VGG16": 0.1})
             lang_cla_model={}
             # lang_cla_model = loading_language_classifier_model()

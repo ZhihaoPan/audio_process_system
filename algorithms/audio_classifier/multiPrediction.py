@@ -11,7 +11,7 @@ import torch.nn.functional as F
 from torch.autograd import Variable
 import torch,time
 import numpy as np
-
+#10.144.4.26
 
 from algorithms.audio_classifier.custom_wav_loader import wavLoader
 from algorithms.audio_classifier.cut_audio import cut_Audio,speaking_audio_concat
@@ -111,7 +111,7 @@ def audio_class_predict(audio_file, modellist, cuda):
     #对预测出的结果进行调整
     pre_label = adjust_labels(pre_label)
     print(pre_label)
-    #cut_Audio(audio_file, pre_label)
+    cut_Audio(audio_file, pre_label)
     speaking_time_dict = speaking_audio_concat(pre_label)
     return pre_label, dur_time, speaking_time_dict
 
@@ -133,7 +133,7 @@ def predict(loader, modellist, cuda, mode, class2index, verbose=True):
                 outputs = output * weight
             else:
                 outputs.add_(output * weight)
-        if outputs.data.max(1, keepdim=True)[0]>0.20: #and outputs.data.max(1, keepdim=True)[0]>0.10:
+        if outputs.data.max(1, keepdim=True)[0]>0.50: #and outputs.data.max(1, keepdim=True)[0]>0.10:
                 #print(outputs.data.max(1, keepdim=True)[1])
             pred=outputs.data.max(1, keepdim=True)[1] # get the index of the max log-probability
             #print(pred)

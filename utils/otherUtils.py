@@ -130,79 +130,79 @@ if __name__ == "__main__":
     import zmq,threading,time
     #
     context = zmq.Context()
-    #
-    # #  Socket to talk to server
-    # print("Connecting to hello world server…")
-    # socket1 = context.socket(zmq.REQ)
-    # socket1.connect("tcp://localhost:5555")
-    #
-    # #  Do 10 requests, waiting each time for a response
-    # print("Sending request %s …" % 1)
-    # dic = {"head": "cmd", "file": r"D:\Dataset\Gunshot", "func_ycsyjc": 0, "func_yzfl": 0, "func_swfl": 0,
-    #        "chsum": "0xf53b5ae7"}
-    #
-    # socket1.send_json(dic)
-    # #  Get the reply.
-    # message = socket1.recv_json()
-    # print("Received reply %s [ %s ]" % (1, message))
-    #
-    # socket1.disable_monitor()
-    #
-    # socket2 = context.socket(zmq.REP)
-    # socket2.bind("tcp://*:5556")
-    # message = dict(socket2.recv_json())
-    # print("receive request:%s" % str(message))
-    #
-    # dic = {"head": "control", "file": " / xxxx / xxxxx", "stop": 0,}
-    # chsum = crc32asii(dic)
-    # dic.update({"chsum":chsum})
-    # socket2.send_json(dic)
-    #
-    # # #主界面信息5s传递
-    # context = zmq.Context(1)
-    # socket3=context.socket(zmq.SUB)
-    # socket3.connect("tcp://127.0.0.1:5557")
-    #
-    # context1 = zmq.Context(1)
-    # socket4 = context1.socket(zmq.SUB)
-    # socket4.connect("tcp://127.0.0.1:5558")
-    # socket3.setsockopt(zmq.SUBSCRIBE, b'')
-    # socket4.setsockopt(zmq.SUBSCRIBE, b'')
-    # def test():
-    #
-    #     msg=dict(socket3.recv_json())
-    #     print("mainwindow receive:%s" % str(msg))
-    #     #
-    #     msg1 = dict(socket4.recv_json())
-    #     print("mainwindow receive:%s" % str(msg1))
-    #
-    #     global timer
-    #     timer = threading.Timer(10, test)
-    #     timer.start()
-    #
-    # #threading.Thread(target=test).start()
-    # timer=threading.Timer(1,test)
-    # timer.start()
-    #
-    # socket5 = context.socket(zmq.REP)
-    # socket5.bind("tcp://*:5559")
-    # message = dict(socket5.recv_json())
-    # print("All done message{}".format(message))
-    # dic = {"head": "rproc_done", "file": r"D:\Dataset\Gunshot", "chsum": "0"}
-    # socket5.send_json(dic)
-    # # 主界面信息传递
-    #
-    socket = context.socket(zmq.REQ)
-    socket.connect("tcp://localhost:5555")
+
+    #  Socket to talk to server
+    print("Connecting to hello world server…")
+    socket1 = context.socket(zmq.REQ)
+    socket1.connect("tcp://localhost:5555")
 
     #  Do 10 requests, waiting each time for a response
-    print("Sending --- request %s …" % 1)
-    dic = {"head": "cmd", "file": r"D:\Dataset\Gunshot1", "func_ycsyjc": 0, "func_yzfl": 0, "func_swfl": 0,
+    print("Sending request %s …" % 1)
+    dic = {"head": "cmd", "file": r"D:\Dataset\Gunshot", "func_ycsyjc": 0, "func_yzfl": 0, "func_swfl": 0,
            "chsum": "0xf53b5ae7"}
 
-    socket.send_json(dic)
-    message = socket.recv_json()
-    print("Received --- reply %s [ %s ]" % (1, message))
+    socket1.send_json(dic)
+    #  Get the reply.
+    message = socket1.recv_json()
+    print("Received reply %s [ %s ]" % (1, message))
+
+    socket1.disable_monitor()
+
+    socket2 = context.socket(zmq.REP)
+    socket2.bind("tcp://*:5556")
+    message = dict(socket2.recv_json())
+    print("receive request:%s" % str(message))
+
+    dic = {"head": "control", "file": " / xxxx / xxxxx", "stop": 0,}
+    chsum = crc32asii(dic)
+    dic.update({"chsum":chsum})
+    socket2.send_json(dic)
+
+    # #主界面信息5s传递
+    context = zmq.Context(1)
+    socket3=context.socket(zmq.SUB)
+    socket3.connect("tcp://127.0.0.1:5557")
+
+    context1 = zmq.Context(1)
+    socket4 = context1.socket(zmq.SUB)
+    socket4.connect("tcp://127.0.0.1:5558")
+    socket3.setsockopt(zmq.SUBSCRIBE, b'')
+    socket4.setsockopt(zmq.SUBSCRIBE, b'')
+    def test():
+
+        msg=dict(socket3.recv_json())
+        print("mainwindow receive:%s" % str(msg))
+        #
+        msg1 = dict(socket4.recv_json())
+        print("mainwindow receive:%s" % str(msg1))
+
+        global timer
+        timer = threading.Timer(10, test)
+        timer.start()
+
+    #threading.Thread(target=test).start()
+    timer=threading.Timer(1,test)
+    timer.start()
+
+    socket5 = context.socket(zmq.REP)
+    socket5.bind("tcp://*:5559")
+    message = dict(socket5.recv_json())
+    print("All done message{}".format(message))
+    dic = {"head": "rproc_done", "file": r"D:\Dataset\Gunshot", "chsum": "0"}
+    socket5.send_json(dic)
+    # 主界面信息传递
+
+    # socket = context.socket(zmq.REQ)
+    # socket.connect("tcp://localhost:5555")
+    #
+    # #  Do 10 requests, waiting each time for a response
+    # print("Sending --- request %s …" % 1)
+    # dic = {"head": "cmd", "file": r"D:\Dataset\Gunshot1", "func_ycsyjc": 0, "func_yzfl": 0, "func_swfl": 0,
+    #        "chsum": "0xf53b5ae7"}
+    #
+    # socket.send_json(dic)
+    # message = socket.recv_json()
+    # print("Received --- reply %s [ %s ]" % (1, message))
 
 
 

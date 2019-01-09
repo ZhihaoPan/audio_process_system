@@ -3,7 +3,7 @@ import os
 import random
 import wave
 import time
-
+#ba58e2eb bedf02c7 c12af920 caa629ea c8ca25cc cb011638 cf242525
 import numpy as np
 import pyaudio
 
@@ -56,12 +56,12 @@ def cut_Audio(audio_file, dict_labels):
             continue
         else:
             if tmp_st:#不同且非空的情况下就切割前一个的tmp_label
-                if tmp_lab in ['gun_shot', 'scream', 'speaking']:
+                if tmp_lab in ['gun_shot', 'scream', 'speaking','multispeaker','stLaughter']:
                     cut_method(audio_file,tmp_lab,start_time=tmp_st,dur_time="{:0>2d}:{:0>2d}:{:0>2d}.0".format((2*cnt)//3600,((2 * cnt) % 3600) // 60,(2*cnt)%60))
                 cnt=1
         tmp_st=start_time
         tmp_lab=label
-    if tmp_lab in ['gun_shot', 'scream', 'speaking']:
+    if tmp_lab in ['gun_shot', 'scream', 'speaking','multispeaker','stLaughter']:
         cut_method(audio_file, tmp_lab, start_time=tmp_st,
                    dur_time="{:0>2d}:{:0>2d}:{:0>2d}.0".format((2 * cnt) // 3600, ((2 * cnt) % 3600) // 60, (2 * cnt) % 60))
 
@@ -69,7 +69,6 @@ def cut_Audio(audio_file, dict_labels):
 def cut_method(audio_in_path,classes,start_time="00:00:00.0",dur_time="00:00:02.0"):
     """
     在检测的文件夹下创建一个类别的文件夹保存该类别的信息
-    todo 是否要将speaking的文件融合在一起
     :param audio_in_path:
     :param classes:
     :param start_time:
@@ -90,7 +89,7 @@ def cut_method(audio_in_path,classes,start_time="00:00:00.0",dur_time="00:00:02.
                                                                    ,os.path.basename(audio_in_path)))
 
     #dname=os.path.basename(audio_in_path)
-    ffmpeg_command=['D:\\ffmpeg\\bin\\ffmpeg.exe','-y','-i',audio_in_path,'-ss',start_time,'-t',dur_time,'-acodec','copy','-vcodec','copy',
+    ffmpeg_command=['D:\\ffmpeg\\bin\\ffmpeg.exe','-loglevel','quiet','-y','-i',audio_in_path,'-ss',start_time,'-t',dur_time,'-acodec','copy','-vcodec','copy',
                     '-async','1',audio_out_path]
     print(ffmpeg_command)
     subprocess.call(ffmpeg_command)
@@ -181,5 +180,10 @@ if __name__ == '__main__':
     # print(a,b)
     # list(a.keys())[list(a.values()).index(2)]
     # 以上两种办法都可以得到一个字典中values为2的key而且效率很高
-    import zmq
-    pass
+    import os
+    path=r"D:\Dataset\Gunshot\telephone"
+    count = random.randint(1, 1)
+    for i in os.listdir(path):
+        os.rename(os.path.join(path,i),os.path.join(path,str(count)+"_tele.wav"))
+        #count = random.randint(1, 10000)
+        count+=1

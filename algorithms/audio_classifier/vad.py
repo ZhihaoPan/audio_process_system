@@ -23,10 +23,14 @@ def jingyinfenge(input_file,output_dir):
 
     # 把原始输出转成文件的格式，得到静音检测后所有的音频list
     split_files = {}
+    tmpFilePath=""
     for file in output.split('\r\n'):
         if file:
             file_name = file.replace(' ','-')+'.wav'
-            split_files.update({os.path.join(output_dir,file_name):1})
+            tmpFilePath=os.path.join(output_dir,file_name)
+            split_files.update({tmpFilePath:1})
+    if os.path.isfile(tmpFilePath):
+        os.remove(input_file)
     #split_files.pop() # 删掉最后一个元素
     return  split_files
 
