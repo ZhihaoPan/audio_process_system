@@ -7,11 +7,12 @@ from utils.getState import *
 from revpkg.dialogWait2Rev import dialogWait2Rev
 
 class dialogSelfCheck(QDialog, selfCheck.Ui_Dialog):
+    #todo 自检的时候要自检端口是否被占用
     def __init__(self,paerent=None):
         super(dialogSelfCheck,self).__init__()
         self.setupUi(self)
         self.selfCheckSta = 200#default
-
+        self.device_num=0
         self.timer=QTimer(self)
         self.timer.timeout.connect(self.start)
         self.timer.setSingleShot(True)
@@ -39,11 +40,16 @@ class dialogSelfCheck(QDialog, selfCheck.Ui_Dialog):
         self.plainTextEdit.setPlainText(dic["gpu"])
 
         self.label_6.setText("自检完成")
+
+        match_word = "Device:.(\d)"
+        match_device = re.findall(match_word, getGPUstate())
+        self.device_num = len(match_device)
+
         #QApplication.processEvents()
 
     def btnContinue(self):
         mainlog("Enter third dialog.")
-        self.nextwindow=dialogWait2Rev(self.selfCheckSta)
+        self.nextwindow=dialogWait2Rev(self.selfCheckSta,self.device_num)
         self.nextwindow.show()
         self.close()
 

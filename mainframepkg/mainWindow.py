@@ -195,6 +195,28 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
             elif id is 3:
                 self.textEdit_6.setText("运行分类")
                 self.textEdit_9.setText("{}".format(os.path.basename(file_name)))
+            elif id is 4:
+                self.textEdit_11.setText("运行分类")
+                self.textEdit_10.setText("{}".format(os.path.basename(file_name)))
+            elif id is 5:
+                self.textEdit_13.setText("运行分类")
+                self.textEdit_12.setText("{}".format(os.path.basename(file_name)))
+            elif id is 6:
+                self.textEdit_19.setText("运行分类")
+                self.textEdit_18.setText("{}".format(os.path.basename(file_name)))
+            elif id is 7:
+                self.textEdit_14.setText("运行分类")
+                self.textEdit_15.setText("{}".format(os.path.basename(file_name)))
+            elif id is 8:
+                self.textEdit_16.setText("运行分类")
+                self.textEdit_17.setText("{}".format(os.path.basename(file_name)))
+            elif id is 9:
+                self.textEdit_21.setText("运行分类")
+                self.textEdit_20.setText("{}".format(os.path.basename(file_name)))
+            elif id is 10:
+                self.textEdit_22.setText("运行分类")
+                self.textEdit_23.setText("{}".format(os.path.basename(file_name)))
+
         #对音频进行静音处理
         elif file_name and step==0:
             self.fileDict.pop(file_name)
@@ -214,6 +236,27 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
             elif id is 3:
                 self.textEdit_6.setText("运行Vad")
                 self.textEdit_9.setText("{}".format(os.path.basename(file_name)))
+            elif id is 4:
+                self.textEdit_11.setText("运行Vad")
+                self.textEdit_10.setText("{}".format(os.path.basename(file_name)))
+            elif id is 5:
+                self.textEdit_13.setText("运行Vad")
+                self.textEdit_12.setText("{}".format(os.path.basename(file_name)))
+            elif id is 6:
+                self.textEdit_19.setText("运行Vad")
+                self.textEdit_18.setText("{}".format(os.path.basename(file_name)))
+            elif id is 7:
+                self.textEdit_14.setText("运行Vad")
+                self.textEdit_15.setText("{}".format(os.path.basename(file_name)))
+            elif id is 8:
+                self.textEdit_16.setText("运行Vad")
+                self.textEdit_17.setText("{}".format(os.path.basename(file_name)))
+            elif id is 9:
+                self.textEdit_21.setText("运行Vad")
+                self.textEdit_20.setText("{}".format(os.path.basename(file_name)))
+            elif id is 10:
+                self.textEdit_22.setText("运行Vad")
+                self.textEdit_23.setText("{}".format(os.path.basename(file_name)))
 
 
         #对全局变量的操作结束可以解锁
@@ -245,6 +288,28 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         elif threadID is 3:
             self.textEdit_6.setText("就绪")
             self.textEdit_9.setText("")
+        elif threadID is 4:
+            self.textEdit_11.setText("就绪")
+            self.textEdit_10.setText("")
+        elif threadID is 5:
+            self.textEdit_13.setText("就绪")
+            self.textEdit_12.setText("")
+        elif threadID is 6:
+            self.textEdit_19.setText("就绪")
+            self.textEdit_18.setText("")
+        elif threadID is 7:
+            self.textEdit_14.setText("就绪")
+            self.textEdit_15.setText("")
+        elif threadID is 8:
+            self.textEdit_16.setText("就绪")
+            self.textEdit_17.setText("")
+        elif threadID is 9:
+            self.textEdit_21.setText("就绪")
+            self.textEdit_20.setText("")
+        elif threadID is 10:
+            self.textEdit_22.setText("就绪")
+            self.textEdit_23.setText("")
+
         self.mutex4audioprocess.unlock()
 
     def setContent(self, Content, threadID, flag, dur_time):
@@ -281,6 +346,28 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         elif threadID is 3:
             self.textEdit_6.setText("就绪")
             self.textEdit_9.setText("")
+        elif threadID is 4:
+            self.textEdit_11.setText("就绪")
+            self.textEdit_10.setText("")
+        elif threadID is 5:
+            self.textEdit_13.setText("就绪")
+            self.textEdit_12.setText("")
+        elif threadID is 6:
+            self.textEdit_19.setText("就绪")
+            self.textEdit_18.setText("")
+        elif threadID is 7:
+            self.textEdit_14.setText("就绪")
+            self.textEdit_15.setText("")
+        elif threadID is 8:
+            self.textEdit_16.setText("就绪")
+            self.textEdit_17.setText("")
+        elif threadID is 9:
+            self.textEdit_21.setText("就绪")
+            self.textEdit_20.setText("")
+        elif threadID is 10:
+            self.textEdit_22.setText("就绪")
+            self.textEdit_23.setText("")
+
         if dur_time:
             self.dur_time += dur_time
 
@@ -315,15 +402,17 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
 
         currentTime = time.asctime(time.localtime(time.time()))
         self.lineEdit_11.setText(currentTime)
-        if self.tmpContent["filedone"]/(len(self.fileDict))<1:
-            self.progressBar.setValue(self.tmpContent["filedone"]/(len(self.fileDict))*100)
-        else:
-            self.progressBar.setValue(100)
-        if not self.tmpContent["filedone"]:
-            self.lineEdit_4.setText("{}秒一个文件".format("NAN"))
-        else:
-            self.lineEdit_4.setText("{:.2f}秒一个文件".format((self.endtime-self.startime)/self.tmpContent["filedone"]))
-            self.lineEdit_5.setText("{:.2f}s".format((self.endtime-self.startime)/self.tmpContent["filedone"]*(len(self.fileDict)-self.tmpContent["filedone"])))
+        if len(self.fileDict)!=0:
+            if self.tmpContent["filedone"]/(len(self.fileDict))<1:
+                self.progressBar.setValue(self.tmpContent["filedone"]/(len(self.fileDict))*100)
+            else:
+                self.progressBar.setValue(100)
+
+            if not self.tmpContent["filedone"]:
+                self.lineEdit_4.setText("{}秒一个文件".format("NAN"))
+            else:
+                self.lineEdit_4.setText("{:.2f}秒一个文件".format((self.endtime-self.startime)/self.tmpContent["filedone"]))
+                self.lineEdit_5.setText("{:.2f}s".format((self.endtime-self.startime)/self.tmpContent["filedone"]*(len(self.fileDict)-self.tmpContent["filedone"])))
 
         self.work4monitor.start()
         self.work4changefilemonitor.start()

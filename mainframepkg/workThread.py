@@ -229,7 +229,7 @@ class WorkThread4AudioProcess(QThread):
 
     def run(self):
         try:
-            time.sleep(int(self.ThreadID) * 10)
+            time.sleep(int(self.ThreadID) * 1)
             url=os.path.dirname(self.file_path)
             file=os.path.basename(self.file_path)
             #file_path = r"/home/panzh/Downloads/demoAudio/test/0.wav"

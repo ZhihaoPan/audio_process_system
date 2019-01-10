@@ -38,7 +38,7 @@ class dialogWait2Rev(QDialog, Ui_Dialog):
     同时在第一个线程WorkThread4zmq连接的函数showMsg中也建立了一个线程，
     该线程用于时序图中的3、4流程。
     """
-    def __init__(self, selfCheckSta=200, parent=None):
+    def __init__(self, selfCheckSta=200, GPU_num=0, parent=None):
         super(dialogWait2Rev, self).__init__()
         self.setupUi(self)
         # self.IP4platform = IP4platform
@@ -52,6 +52,9 @@ class dialogWait2Rev(QDialog, Ui_Dialog):
             self.plainTextEdit.appendPlainText("上一步自检出现错误请求上报信息：" + str(self.selfCheckSta))
         else:
             self.plainTextEdit.appendPlainText("上一步自检无误上报信息：" + str(self.selfCheckSta))
+        self.GPU_num=GPU_num
+        self.spinBox.setValue(5)
+        self.lineEdit_14.setText("{}".format(self.GPU_num))
 
         # Timer进行计时的反馈，给ZMQ开了一个线程
         self.timer1 = QTimer()
@@ -86,10 +89,12 @@ class dialogWait2Rev(QDialog, Ui_Dialog):
             if not self.radioButton.isChecked():
                 for tmpfile in self.fileDict.keys():
                     self.fileDict[tmpfile]=1
+            if not self.spinBox.value() or self.spinBox.value()<0:
+                QMessageBox.critical(self, "警告", "请确认线程开启数目！", QMessageBox.Yes | QMessageBox.No)
             dicFunc={"func_ycsyjc":self.Msg["func_ycsyjc"],
                      "func_yzfl":self.Msg["func_yzfl"],
                      "func_swfl":self.Msg["func_swfl"]}
-            self.nextwindow=windowMainProc(self.Msg["file"],self.info["file_num"], self.fileDict, dicFunc,self.IP4platform)
+            self.nextwindow=windowMainProc(self.Msg["file"],self.info["file_num"], self.fileDict, dicFunc,self.IP4platform, self.spinBox.value()*self.GPU_num)
             self.nextwindow.show()
             #关闭该界面上的所有线程和Timer!!!!!!,要不下个界面Timer还会运行
             self.work4Net.terminate()
