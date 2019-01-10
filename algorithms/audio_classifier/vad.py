@@ -9,7 +9,7 @@ def jingyinfenge(input_file,output_dir):
     # 检查目录是否存在，不存在就新建目录
     if not os.path.isdir(output_dir):
         os.makedirs(output_dir)
-
+    split_files = {}
     #command=["auditok","-m","1000000000000000","-s","3","-i",input_file.__str__(),"-o",output_dir.__str__(),"{N}-{start}-{end}.wav"]
     command = "auditok -m 1000000000000000 -s 3 -i {}".format(input_file)+" -o {}".format(output_dir) + "/{N}-{start}-{end}.wav"
     # print(command)
@@ -20,17 +20,19 @@ def jingyinfenge(input_file,output_dir):
         print(errors)
     output=str(output,encoding="utf-8")
     print(output)  # 原始输出（就是打印在控制台上面的）
-
+    if output.startswith("auditok:"):
+        split_files.update({input_file:1})
     # 把原始输出转成文件的格式，得到静音检测后所有的音频list
-    split_files = {}
-    tmpFilePath=""
-    for file in output.split('\r\n'):
-        if file:
-            file_name = file.replace(' ','-')+'.wav'
-            tmpFilePath=os.path.join(output_dir,file_name)
-            split_files.update({tmpFilePath:1})
-    if os.path.isfile(tmpFilePath):
+    else:
+        tmpFilePath=""
         os.remove(input_file)
+        for file in output.split('\r\n'):
+            if file:
+                file_name = file.replace(' ','-')+'.wav'
+                tmpFilePath=os.path.join(output_dir,file_name)
+                split_files.update({tmpFilePath:1})
+    # if os.path.isfile(tmpFilePath):
+    #
     #split_files.pop() # 删掉最后一个元素
     return  split_files
 

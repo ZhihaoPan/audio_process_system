@@ -92,7 +92,7 @@ class SpectrogramGenerator(object):
         file_name=os.path.join(file_path,file_name)
         file_name=file_name.__str__()
         # print(file_name)
-        print(os.path.exists(file),file.__str__())
+        #print(os.path.exists(file),file.__str__())
         # command = ['sox', '-V1', file.__str__(), '-n', 'channel', '1', '-m', '-r', '-o', file_name,
         #            'rate', '10k', 'spectrogram', '-y', str(height), '-X',
         #            str(pixel_per_sec)]

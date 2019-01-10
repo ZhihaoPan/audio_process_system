@@ -47,6 +47,7 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         self.testDBHelper = TestDBHelper()#todo 后面再修改其中的数据库细节
         #初始化部分成员变量
         self.startime=time.clock()
+        self.endtime=0
         self.fileDict=fileDict  #用于判断该音频文件是否已经被处理
         self.procFunctions=procFunctions
         self.ip4platform=IP4platform
@@ -263,7 +264,7 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
 
             file_done_name = os.path.join(Content["url"], Content["file"])
             try:
-                self.plainTextEdit.appendPlainText("INFO --当前音频处理线程:{},处理的文件是:{},\n处理完成,准备发送处理结果信息...".format(threadID,file_done_name))
+                self.plainTextEdit.appendPlainText("INFO --当前音频处理线程:{},处理的文件是:{},处理完成,准备发送处理结果信息...".format(threadID,file_done_name))
                 self.rstContent.update(Content)
                 self.updateTmpContent()
                 self.sendRstMsg()
@@ -314,6 +315,16 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
 
         currentTime = time.asctime(time.localtime(time.time()))
         self.lineEdit_11.setText(currentTime)
+        if self.tmpContent["filedone"]/(len(self.fileDict))<1:
+            self.progressBar.setValue(self.tmpContent["filedone"]/(len(self.fileDict))*100)
+        else:
+            self.progressBar.setValue(100)
+        if not self.tmpContent["filedone"]:
+            self.lineEdit_4.setText("{}秒一个文件".format("NAN"))
+        else:
+            self.lineEdit_4.setText("{:.2f}秒一个文件".format((self.endtime-self.startime)/self.tmpContent["filedone"]))
+            self.lineEdit_5.setText("{:.2f}s".format((self.endtime-self.startime)/self.tmpContent["filedone"]*(len(self.fileDict)-self.tmpContent["filedone"])))
+
         self.work4monitor.start()
         self.work4changefilemonitor.start()
 
@@ -345,8 +356,8 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
             self.work4SendTempMsg.disconnect()
             return
         text="INFO --发送平台信息包头:{}, 当前处理的音频文件是:{}" \
-             "\n发送时刻(hhmmss):{}, IP地址:{}" \
-             " \n是否发送成功:{}".format(retMsg["head"], retMsg["file"],retMsg["time"], retMsg["IP"], retMsg["success"])
+             "发送时刻(hhmmss):{}, IP地址:{}" \
+             " 是否发送成功:{}".format(retMsg["head"], retMsg["file"],retMsg["time"], retMsg["IP"], retMsg["success"])
         self.plainTextEdit.appendPlainText(text)
         # 写入日志文件
         #mainlog(text)

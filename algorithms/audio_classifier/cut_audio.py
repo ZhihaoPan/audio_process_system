@@ -180,10 +180,19 @@ if __name__ == '__main__':
     # print(a,b)
     # list(a.keys())[list(a.values()).index(2)]
     # 以上两种办法都可以得到一个字典中values为2的key而且效率很高
-    import os
-    path=r"D:\Dataset\Gunshot\telephone"
-    count = random.randint(1, 1)
+    # import os
+    # path=r"D:\Dataset\Gunshot\telephone"
+    # count = random.randint(1, 1)
+    # for i in os.listdir(path):
+    #     os.rename(os.path.join(path,i),os.path.join(path,str(count)+"_tele.wav"))
+    #     #count = random.randint(1, 10000)
+    #     count+=1
+
+    path=r"D:\Dataset\TUT-rare-sound-events-2017-development.mixture_data.9\TUT-rare-sound-events-2017-development\data\mixture_data\devtrain\20b255387a2d0cddc0a3dff5014875e7\audio"
     for i in os.listdir(path):
-        os.rename(os.path.join(path,i),os.path.join(path,str(count)+"_tele.wav"))
-        #count = random.randint(1, 10000)
-        count+=1
+        audio_in_path=os.path.join(path,i)
+        audio_out_path=os.path.join(path,"_"+i)
+        ffmpeg_command = ['D:\\ffmpeg\\bin\\ffmpeg.exe', '-loglevel', 'quiet', '-y', '-i', audio_in_path, '-async', '1',
+                          audio_out_path]
+        print(ffmpeg_command)
+        subprocess.call(ffmpeg_command)

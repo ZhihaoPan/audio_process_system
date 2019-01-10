@@ -172,7 +172,7 @@ if __name__ == "__main__":
 
         msg=dict(socket3.recv_json())
         print("mainwindow receive:%s" % str(msg))
-        #
+        #librosa.util.exceptions.ParameterError: when mode='interp', width=9 cannot exceed data.shape[axis]=1
         msg1 = dict(socket4.recv_json())
         print("mainwindow receive:%s" % str(msg1))
 

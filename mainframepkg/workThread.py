@@ -240,7 +240,7 @@ class WorkThread4AudioProcess(QThread):
             # lang_cla_labels = {"timesteps": [], "content": []}
             # if speaking_time_dict:  # 如果改字典非空的话
             #     for stTime, duTime in speaking_time_dict.items():
-            #         speaking_audio_url, max_prob_label, time_len = get_prediction(self.file_path, self.lang_cla_model["model], stTime, duTime)
+            #         speaking_audio_url, max_prob_label, time_len = get_prediction(self.file_path, self.lang_cla_model["model"], stTime, duTime)
             #         lang_cla_labels["timesteps"].append(
             #             "{}s,{}s".format(strTime2Seconds(stTime), strTime2Seconds(stTime) + strTime2Seconds(duTime)))
             #         lang_cla_labels["content"].append(max_prob_label)
