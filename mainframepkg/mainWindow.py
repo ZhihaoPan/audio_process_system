@@ -110,7 +110,7 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         #该timer用于音频处理块的开始
         self.timer4audiochoose=QTimer()
         self.timer4audiochoose.setSingleShot(0)
-        self.timer4audiochoose.start(5000)
+        self.timer4audiochoose.start(4000)
         #self.timer4audiochoose.start(5000)
         self.timer4audiochoose.timeout.connect(self.audioThreadChoose)
 
@@ -130,11 +130,11 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         :return:
         """
         #self.plainTextEdit.appendPlainText("文件线程选择Thread启动...")
-        if not self.loadingModelList:
+        if self.au_cla_models and self.ifcuda and self.lang_cla_model:
             self.work4AudioChoose.start()
 
     def timerLoadingModel(self):
-        self.plainTextEdit.appendPlainText("在{}个GPU上预加载模型".format(self.gpu_device))
+
         for device in range(self.gpu_device):
             self.loadingModelList.append(WorkThread4LoadingModels(device, self.mutex4loadingmodel))
             self.loadingModelList[device].trigger.connect(self.loadingModel)
@@ -148,11 +148,13 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         :param lang_cla_model:
         :return:
         """
+
         self.au_cla_models.append(au_cla_models)
         self.ifcuda.append(ifcuda)
         self.lang_cla_model.append(lang_cla_model)
         self.mutex4loadingmodel.unlock()
 
+        print("-------模型加载解锁--------")
 
 
     #处理音频信息块
@@ -201,7 +203,7 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
                                                                     ifcuda=self.ifcuda[0],
                                                                     lang_cla_model=self.lang_cla_model[0],
                                                                     gpu_device=0)})
-            elif id>self.thread_num/self.gpu_device and len(self.au_cla_models)==2:
+            elif id > self.thread_num / self.gpu_device and len(self.au_cla_models) == 2:
                 self.ThreadList.update({id: WorkThread4AudioProcess(ID=id, mutex=self.mutex4audioprocess,
                                                                     file_path=file_name,
                                                                     au_cla_models=self.au_cla_models[1],
@@ -427,17 +429,20 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
 
         currentTime = time.asctime(time.localtime(time.time()))
         self.lineEdit_11.setText(currentTime)
-        if len(self.fileDict)!=0:
-            if self.tmpContent["filedone"]/(len(self.fileDict))<1:
-                self.progressBar.setValue(self.tmpContent["filedone"]/(len(self.fileDict))*100)
+        if len(self.fileDict) != 0:
+            if self.tmpContent["filedone"] / (len(self.fileDict)) < 1:
+                self.progressBar.setValue(self.tmpContent["filedone"] / (len(self.fileDict)) * 100)
             else:
                 self.progressBar.setValue(100)
 
             if not self.tmpContent["filedone"]:
                 self.lineEdit_4.setText("{}秒一个文件".format("NAN"))
             else:
-                self.lineEdit_4.setText("{:.2f}秒一个文件".format((self.endtime-self.startime)/self.tmpContent["filedone"]))
-                self.lineEdit_5.setText("{:.2f}s".format((self.endtime-self.startime)/self.tmpContent["filedone"]*(len(self.fileDict)-self.tmpContent["filedone"])))
+                self.lineEdit_4.setText(
+                    "{:.2f}秒一个文件".format((self.endtime - self.startime) / self.tmpContent["filedone"]))
+                self.lineEdit_5.setText("{:.2f}s".format(
+                    (self.endtime - self.startime) / self.tmpContent["filedone"] * (
+                                len(self.fileDict) - self.tmpContent["filedone"])))
 
         self.work4monitor.start()
         self.work4changefilemonitor.start()
