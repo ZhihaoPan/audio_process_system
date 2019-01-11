@@ -21,7 +21,7 @@ from algorithms.audio_classifier.models.network_MTOresnext import waveResnext101
 from algorithms.audio_classifier.models.crnn import CRNN, CRNN_GRU
 from algorithms.audio_classifier.pre_mel_loader import melLoader as premelLoader
 
-def loading_audio_classifier_models(models,gpu_device):
+def loading_audio_classifier_models(models, gpu_device):
     if torch.cuda.is_available():
         torch.cuda.set_device(gpu_device)
         #idx = torch.cuda.current_device()
@@ -68,7 +68,7 @@ def loading_audio_classifier_models(models,gpu_device):
         modellist.update({model: weight})
     return modellist,cuda
 
-def audio_class_predict(audio_file, modellist, cuda):
+def audio_class_predict(audio_file, modellist, cuda,gpu_device):
     """
     音频类别检测函数，如果要修改类别再下面allLabels中进行修改
     :param audio_file:
@@ -109,23 +109,25 @@ def audio_class_predict(audio_file, modellist, cuda):
 
 
     print('\nStart predicting...')
-    pre_label=predict(demo_loader, modellist, cuda, mode='Test loss', class2index=demo_dataset.getClass2Index())
-
+    try:
+        pre_label=predict(demo_loader, modellist, gpu_device, mode='Test loss', class2index=demo_dataset.getClass2Index())
+    except Exception as e:
+        print("Error happen predict:{}".format(e))
     #对预测出的结果进行调整
     pre_label = adjust_labels(pre_label)
     print(pre_label)
-    cut_Audio(audio_file, pre_label)
+    #cut_Audio(audio_file, pre_label)
     speaking_time_dict = speaking_audio_concat(pre_label)
     return pre_label, dur_time, speaking_time_dict
 
-def predict(loader, modellist, cuda, mode, class2index, verbose=True):
+def predict(loader, modellist, gpu_device, mode, class2index, verbose=True):
     start=time.clock()
     for model,weight in modellist.items():
         model.eval()
     dic_count = {}
     for data, begin in loader:
-        if cuda:
-            data= data.cuda()
+        if gpu_device!=-1:
+            data= data.cuda(device=gpu_device)
         else:
             data =Variable(data)
         outputs = []
@@ -141,7 +143,7 @@ def predict(loader, modellist, cuda, mode, class2index, verbose=True):
             pred=outputs.data.max(1, keepdim=True)[1] # get the index of the max log-probability
             #print(pred)
         else:
-            pred=torch.tensor([[0]]).cuda()
+            pred=torch.tensor([[0]]).cuda(gpu_device)
 
         # #get prediction labels
         # pred = outputs.data.max(1, keepdim=True)[1]  # get the index of the max log-probability

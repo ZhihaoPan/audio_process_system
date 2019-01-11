@@ -195,14 +195,19 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
             self.threadDict[id]=1
             #todo 此处做GPu使用的判断前一半线程用GPU0 后一半线程用GPU1
             if id <=self.thread_num/self.gpu_device and len(self.au_cla_models)==1:
-                self.ThreadList.update({id:WorkThread4AudioProcess(ID=id,mutex=self.mutex4audioprocess,file_path=file_name,
-                                                                   au_cla_models=self.au_cla_models[0],ifcuda=self.ifcuda[0],lang_cla_model=self.lang_cla_model[0])})
+                self.ThreadList.update({id: WorkThread4AudioProcess(ID=id, mutex=self.mutex4audioprocess,
+                                                                    file_path=file_name,
+                                                                    au_cla_models=self.au_cla_models[0],
+                                                                    ifcuda=self.ifcuda[0],
+                                                                    lang_cla_model=self.lang_cla_model[0],
+                                                                    gpu_device=0)})
             elif id>self.thread_num/self.gpu_device and len(self.au_cla_models)==2:
                 self.ThreadList.update({id: WorkThread4AudioProcess(ID=id, mutex=self.mutex4audioprocess,
                                                                     file_path=file_name,
                                                                     au_cla_models=self.au_cla_models[1],
                                                                     ifcuda=self.ifcuda[1],
-                                                                    lang_cla_model=self.lang_cla_model[1])})
+                                                                    lang_cla_model=self.lang_cla_model[1],
+                                                                    gpu_device=1)})
             self.ThreadList[id].trigger.connect(self.setContent)
             self.ThreadList[id].start(id)
             #设置界面

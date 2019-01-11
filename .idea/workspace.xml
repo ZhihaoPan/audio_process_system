@@ -1,18 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9184afb0-a423-4a00-b808-94d748d38236" name="Default Changelist" comment="一些小修改">
+    <list default="true" id="9184afb0-a423-4a00-b808-94d748d38236" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms/audio_classifier/cut_audio.py" beforeDir="false" afterPath="$PROJECT_DIR$/algorithms/audio_classifier/cut_audio.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logging/main.log" beforeDir="false" afterPath="$PROJECT_DIR$/logging/main.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mainframepkg/mainFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainframepkg/mainFrame.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mainframepkg/mainFrame.ui" beforeDir="false" afterPath="$PROJECT_DIR$/mainframepkg/mainFrame.ui" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mainframepkg/mainWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainframepkg/mainWindow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mainframepkg/workThread.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainframepkg/workThread.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/revpkg/dialogWait2Rev.py" beforeDir="false" afterPath="$PROJECT_DIR$/revpkg/dialogWait2Rev.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/revpkg/wait2Rev.py" beforeDir="false" afterPath="$PROJECT_DIR$/revpkg/wait2Rev.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/revpkg/wait2Rev.ui" beforeDir="false" afterPath="$PROJECT_DIR$/revpkg/wait2Rev.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/selfcheck/dialogSelfCheck.py" beforeDir="false" afterPath="$PROJECT_DIR$/selfcheck/dialogSelfCheck.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -122,30 +113,30 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="dummy" value="67" />
+          <entry key="dummy" value="72" />
           <entry key="log" value="12" />
-          <entry key="py" value="41581" />
-          <entry key="txt" value="525" />
+          <entry key="py" value="42345" />
+          <entry key="txt" value="533" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="604" />
-          <entry key="Python" value="41581" />
+          <entry key="PLAIN_TEXT" value="617" />
+          <entry key="Python" value="42345" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="log" value="39" />
           <entry key="model" value="1" />
-          <entry key="py" value="350" />
+          <entry key="py" value="351" />
           <entry key="txt" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="PLAIN_TEXT" value="44" />
-          <entry key="Python" value="350" />
+          <entry key="Python" value="351" />
         </counts>
       </usages-collector>
     </session>
@@ -155,8 +146,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/revpkg/dialogWait2Rev.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="96" column="157" selection-start-line="96" selection-start-column="157" selection-end-line="96" selection-end-column="157" />
+            <state relative-caret-position="169">
+              <caret line="93" column="30" selection-start-line="93" selection-start-column="30" selection-end-line="93" selection-end-column="30" />
               <folding>
                 <element signature="e#275#301#0" expanded="true" />
               </folding>
@@ -167,14 +158,32 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mainframepkg/mainWindow.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="417" column="43" lean-forward="true" selection-start-line="402" selection-start-column="8" selection-end-line="417" selection-end-column="43" />
+            <state relative-caret-position="122">
+              <caret line="196" column="52" selection-start-line="196" selection-start-column="52" selection-end-line="196" selection-end-column="82" />
               <folding>
                 <element signature="e#24#37#0" expanded="true" />
-                <marker date="1547129832360" expanded="true" signature="4768:5357" ph="..." />
-                <marker date="1547129832360" expanded="true" signature="5350:5357" ph="..." />
-                <marker date="1547129832360" expanded="true" signature="21147:21152" ph="..." />
-                <marker date="1547129832360" expanded="true" signature="21179:21188" ph="..." />
+                <marker date="1547196806479" expanded="true" signature="4806:5851" ph="..." />
+                <marker date="1547196806479" expanded="true" signature="5194:5427" ph="..." />
+                <marker date="1547196806479" expanded="true" signature="5844:5851" ph="..." />
+                <marker date="1547196806479" expanded="true" signature="22751:22756" ph="..." />
+                <marker date="1547196806479" expanded="true" signature="22783:22792" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mainframepkg/workThread.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4272">
+              <caret line="415" column="48" selection-start-line="415" selection-start-column="48" selection-end-line="415" selection-end-column="48" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+                <marker date="1547182964380" expanded="true" signature="1134:3602" ph="..." />
+                <marker date="1547182964380" expanded="true" signature="5555:5557" ph="..." />
+                <marker date="1547182964380" expanded="true" signature="5595:7864" ph="..." />
+                <marker date="1547182964380" expanded="true" signature="15080:16358" ph="..." />
+                <marker date="1547182964380" expanded="true" signature="16398:17275" ph="..." />
               </folding>
             </state>
           </provider>
@@ -195,30 +204,13 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mainframepkg/workThread.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="410" column="48" selection-start-line="410" selection-start-column="48" selection-end-line="410" selection-end-column="48" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-                <marker date="1547128689478" expanded="true" signature="1134:3602" ph="..." />
-                <marker date="1547128689478" expanded="true" signature="5555:5557" ph="..." />
-                <marker date="1547128689478" expanded="true" signature="5595:7864" ph="..." />
-                <marker date="1547128689478" expanded="true" signature="15080:16358" ph="..." />
-                <marker date="1547128689478" expanded="true" signature="16398:17081" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/algorithms/audio_classifier/multiPrediction.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="32" column="26" lean-forward="true" selection-start-line="32" selection-start-column="26" selection-end-line="32" selection-end-column="26" />
+            <state relative-caret-position="1719">
+              <caret line="126" column="16" lean-forward="true" selection-start-line="126" selection-start-column="16" selection-end-line="126" selection-end-column="16" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
-                <marker date="1547018652876" expanded="true" signature="7714:8902" ph="..." />
+                <marker date="1547181752201" expanded="true" signature="7897:9085" ph="..." />
               </folding>
             </state>
           </provider>
@@ -293,15 +285,15 @@
         <option value="$PROJECT_DIR$/algorithms/language_classifier/requirements.txt" />
         <option value="$PROJECT_DIR$/utils/writeLog.py" />
         <option value="$PROJECT_DIR$/algorithms/audio_classifier/pre_mel_loader.py" />
-        <option value="$PROJECT_DIR$/algorithms/audio_classifier/multiPrediction.py" />
         <option value="$PROJECT_DIR$/utils/otherUtils.py" />
         <option value="$PROJECT_DIR$/algorithms/audio_classifier/vad.py" />
         <option value="$PROJECT_DIR$/utils/getState.py" />
         <option value="$PROJECT_DIR$/algorithms/language_classifier/data_loaders/SpectrogramGenerator.py" />
         <option value="$PROJECT_DIR$/selfcheck/dialogSelfCheck.py" />
         <option value="$PROJECT_DIR$/algorithms/audio_classifier/cut_audio.py" />
-        <option value="$PROJECT_DIR$/revpkg/dialogWait2Rev.py" />
         <option value="$PROJECT_DIR$/mainframepkg/workThread.py" />
+        <option value="$PROJECT_DIR$/revpkg/dialogWait2Rev.py" />
+        <option value="$PROJECT_DIR$/algorithms/audio_classifier/multiPrediction.py" />
         <option value="$PROJECT_DIR$/mainframepkg/mainWindow.py" />
       </list>
     </option>
@@ -363,6 +355,11 @@
               <item name="PyQt" type="b2602c69:ProjectViewProjectNode" />
               <item name="pyQt" type="462c0819:PsiDirectoryNode" />
               <item name="logging" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PyQt" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pyQt" type="462c0819:PsiDirectoryNode" />
+              <item name="revpkg" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="PyQt" type="b2602c69:ProjectViewProjectNode" />
@@ -872,7 +869,21 @@
       <option name="project" value="LOCAL" />
       <updated>1547121988075</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="加了很多线程">
+      <created>1547130995082</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1547130995082</updated>
+    </task>
+    <task id="LOCAL-00048" summary="加了很多线程">
+      <created>1547196170852</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1547196170852</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TodoView">
@@ -892,9 +903,9 @@
       <window_info id="Structure" order="1" sideWeight="0.5057208" side_tool="true" weight="0.16085792" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49932975" weight="0.42691752" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4919571" weight="0.28776187" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.6018767" visible="true" weight="0.37626627" />
+      <window_info active="true" anchor="bottom" id="Find" order="1" sideWeight="0.49932975" visible="true" weight="0.42691752" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4919571" weight="0.28654125" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.6018767" weight="0.22431259" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49798927" weight="0.28075254" />
@@ -1017,7 +1028,8 @@
     <MESSAGE value="加入了系统实时监控,能够进行线程的重启;同时也加入了是否进行静音检测的选项." />
     <MESSAGE value="加入了全部处理完成后的信息传递,加了一个线程用于改工作." />
     <MESSAGE value="一些小修改" />
-    <option name="LAST_COMMIT_MESSAGE" value="一些小修改" />
+    <MESSAGE value="加了很多线程" />
+    <option name="LAST_COMMIT_MESSAGE" value="加了很多线程" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1070,13 +1082,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/numpy/core/fromnumeric.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="82" selection-start-line="82" selection-end-line="82" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/torch/nn/parallel/data_parallel.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
@@ -1423,52 +1428,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/revpkg/dialogWait2Rev.py">
+    <entry file="file://$PROJECT_DIR$/selfcheck/selfCheck.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="96" column="157" selection-start-line="96" selection-start-column="157" selection-end-line="96" selection-end-column="157" />
-          <folding>
-            <element signature="e#275#301#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-1449">
+          <caret line="54" column="10" selection-start-line="54" selection-start-column="10" selection-end-line="54" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mainframepkg/workThread.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="410" column="48" selection-start-line="410" selection-start-column="48" selection-end-line="410" selection-end-column="48" />
+        <state relative-caret-position="4272">
+          <caret line="415" column="48" selection-start-line="415" selection-start-column="48" selection-end-line="415" selection-end-column="48" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <marker date="1547128689478" expanded="true" signature="1134:3602" ph="..." />
-            <marker date="1547128689478" expanded="true" signature="5555:5557" ph="..." />
-            <marker date="1547128689478" expanded="true" signature="5595:7864" ph="..." />
-            <marker date="1547128689478" expanded="true" signature="15080:16358" ph="..." />
-            <marker date="1547128689478" expanded="true" signature="16398:17081" ph="..." />
+            <marker date="1547182964380" expanded="true" signature="1134:3602" ph="..." />
+            <marker date="1547182964380" expanded="true" signature="5555:5557" ph="..." />
+            <marker date="1547182964380" expanded="true" signature="5595:7864" ph="..." />
+            <marker date="1547182964380" expanded="true" signature="15080:16358" ph="..." />
+            <marker date="1547182964380" expanded="true" signature="16398:17275" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/algorithms/audio_classifier/multiPrediction.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="32" column="26" lean-forward="true" selection-start-line="32" selection-start-column="26" selection-end-line="32" selection-end-column="26" />
+        <state relative-caret-position="1719">
+          <caret line="126" column="16" lean-forward="true" selection-start-line="126" selection-start-column="16" selection-end-line="126" selection-end-column="16" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
-            <marker date="1547018652876" expanded="true" signature="7714:8902" ph="..." />
+            <marker date="1547181752201" expanded="true" signature="7897:9085" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/revpkg/dialogWait2Rev.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="93" column="30" selection-start-line="93" selection-start-column="30" selection-end-line="93" selection-end-column="30" />
+          <folding>
+            <element signature="e#275#301#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mainframepkg/mainWindow.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="417" column="43" lean-forward="true" selection-start-line="402" selection-start-column="8" selection-end-line="417" selection-end-column="43" />
+        <state relative-caret-position="122">
+          <caret line="196" column="52" selection-start-line="196" selection-start-column="52" selection-end-line="196" selection-end-column="82" />
           <folding>
             <element signature="e#24#37#0" expanded="true" />
-            <marker date="1547129832360" expanded="true" signature="4768:5357" ph="..." />
-            <marker date="1547129832360" expanded="true" signature="5350:5357" ph="..." />
-            <marker date="1547129832360" expanded="true" signature="21147:21152" ph="..." />
-            <marker date="1547129832360" expanded="true" signature="21179:21188" ph="..." />
+            <marker date="1547196806479" expanded="true" signature="4806:5851" ph="..." />
+            <marker date="1547196806479" expanded="true" signature="5194:5427" ph="..." />
+            <marker date="1547196806479" expanded="true" signature="5844:5851" ph="..." />
+            <marker date="1547196806479" expanded="true" signature="22751:22756" ph="..." />
+            <marker date="1547196806479" expanded="true" signature="22783:22792" ph="..." />
           </folding>
         </state>
       </provider>
