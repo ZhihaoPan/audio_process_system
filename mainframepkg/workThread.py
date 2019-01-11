@@ -218,7 +218,7 @@ class WorkThread4AudioProcess(QThread):
     一个音频文件一个线程
     """
     trigger=pyqtSignal(dict,int,int,float)
-    def __init__(self,ID,mutex,file_path,au_cla_models,ifcuda,lang_cla_model):
+    def __init__(self,ID,mutex,file_path,au_cla_models,ifcuda,lang_cla_model,gpu_device):
         super(WorkThread4AudioProcess, self).__init__()
         self.ThreadID=ID
         self.mutex=mutex
@@ -226,6 +226,7 @@ class WorkThread4AudioProcess(QThread):
         self.au_cla_models=au_cla_models
         self.ifcuda=ifcuda
         self.lang_cla_model=lang_cla_model
+        self.gpu_device=gpu_device
 
     def run(self):
         try:
@@ -235,7 +236,7 @@ class WorkThread4AudioProcess(QThread):
             #file_path = r"/home/panzh/Downloads/demoAudio/test/0.wav"
             #au_cla_models, ifcuda = loading_audio_classifier_models({"ResNet101": 0.3, "resnext": 0.6, "VGG16": 0.1})
             #lang_cla_model = loading_language_classifier_model()
-            au_cla_labels,dur_time,speaking_time_dict=audio_class_predict(self.file_path, self.au_cla_models, self.ifcuda)
+            au_cla_labels,dur_time,speaking_time_dict=audio_class_predict(self.file_path, self.au_cla_models, self.ifcuda,self.gpu_device)
             # 我系潘记号 这是你前所未见的全新版本
             # lang_cla_labels = {"timesteps": [], "content": []}
             # if speaking_time_dict:  # 如果改字典非空的话
@@ -410,12 +411,13 @@ class WorkThread4LoadingModels(QThread):
 
     def run(self):
         try:
+            self.mutex.lock()
+            print("-------模型加载锁--------")
             au_cla_models, ifcuda = loading_audio_classifier_models({"ResNet101": 0.2, "resnext": 0.7,
                                                                      "VGG16": 0.1},self.gpu_device)
             lang_cla_model={}
             # lang_cla_model = loading_language_classifier_model()
-            self.mutex.lock()
-            print("-------模型加载锁--------")
+
             self.trigger.emit(au_cla_models, ifcuda, lang_cla_model)
         except Exception as e:
             self.mutex.lock()

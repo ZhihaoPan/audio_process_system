@@ -3530,3 +3530,37 @@ librosa.util.exceptions.ParameterError: when mode='interp', width=9 cannot excee
 2019-01-11 Friday 17:01:09  INFO :  Send Reply:{'head': 'rec', 'file': 'D:\\Dataset\\Gunshot', 'network': 0, 'ready': 1, 'error': 200, 'chsum': '0x 9617d9a'}
 2019-01-11 Friday 17:01:09  INFO :  Send Report:{'head': 'report', 'file': 'D:\\Dataset\\Gunshot', 'file_num': 105, 'time': '00:00：00', 'chsum': '0xf02ca713'}
 2019-01-11 Friday 17:01:09  INFO :  Receive Msg:{'head': 'control', 'file': ' / xxxx / xxxxx', 'stop': 0, 'chsum': '0x2f42a089'}
+2019-01-11 Friday 17:03:05  INFO :  user:admin login fail.
+2019-01-11 Friday 17:03:10  INFO :  user:admin login,Enter second dialog.
+2019-01-11 Friday 17:03:12  INFO :  Enter third dialog.
+2019-01-11 Friday 17:03:16  INFO :  IP：localhost网络通畅,0
+2019-01-11 Friday 17:03:16  INFO :  Reveived Request:{'head': 'cmd', 'file': 'D:\\Dataset\\Gunshot', 'func_ycsyjc': 0, 'func_yzfl': 0, 'func_swfl': 0, 'chsum': '0xf53b5ae7'}
+2019-01-11 Friday 17:03:16  INFO :  Send Reply:{'head': 'rec', 'file': 'D:\\Dataset\\Gunshot', 'network': 0, 'ready': 1, 'error': 200, 'chsum': '0x 9617d9a'}
+2019-01-11 Friday 17:03:16  INFO :  Send Report:{'head': 'report', 'file': 'D:\\Dataset\\Gunshot', 'file_num': 105, 'time': '00:00：00', 'chsum': '0xf02ca713'}
+2019-01-11 Friday 17:03:16  INFO :  Receive Msg:{'head': 'control', 'file': ' / xxxx / xxxxx', 'stop': 0, 'chsum': '0x2f42a089'}
+2019-01-11 Friday 17:04:34  INFO :  user:admin login,Enter second dialog.
+2019-01-11 Friday 17:04:36  INFO :  Enter third dialog.
+2019-01-11 Friday 17:04:44  INFO :  IP：localhost网络通畅,0
+2019-01-11 Friday 17:04:44  INFO :  Reveived Request:{'head': 'cmd', 'file': 'D:\\Dataset\\Gunshot', 'func_ycsyjc': 0, 'func_yzfl': 0, 'func_swfl': 0, 'chsum': '0xf53b5ae7'}
+2019-01-11 Friday 17:04:44  INFO :  Send Reply:{'head': 'rec', 'file': 'D:\\Dataset\\Gunshot', 'network': 0, 'ready': 1, 'error': 200, 'chsum': '0x 9617d9a'}
+2019-01-11 Friday 17:04:44  INFO :  Send Report:{'head': 'report', 'file': 'D:\\Dataset\\Gunshot', 'file_num': 105, 'time': '00:00：00', 'chsum': '0xf02ca713'}
+2019-01-11 Friday 17:04:44  INFO :  Receive Msg:{'head': 'control', 'file': ' / xxxx / xxxxx', 'stop': 0, 'chsum': '0x2f42a089'}
+2019-01-11 Friday 17:08:39  INFO :  user:admin login,Enter second dialog.
+2019-01-11 Friday 17:08:40  INFO :  Enter third dialog.
+2019-01-11 Friday 17:08:49  INFO :  IP：localhost网络通畅,0
+2019-01-11 Friday 17:08:49  INFO :  Reveived Request:{'head': 'cmd', 'file': 'D:\\Dataset\\Gunshot', 'func_ycsyjc': 0, 'func_yzfl': 0, 'func_swfl': 0, 'chsum': '0xf53b5ae7'}
+2019-01-11 Friday 17:08:49  INFO :  Send Reply:{'head': 'rec', 'file': 'D:\\Dataset\\Gunshot', 'network': 0, 'ready': 1, 'error': 200, 'chsum': '0x 9617d9a'}
+2019-01-11 Friday 17:08:50  INFO :  Send Report:{'head': 'report', 'file': 'D:\\Dataset\\Gunshot', 'file_num': 105, 'time': '00:00：00', 'chsum': '0xf02ca713'}
+2019-01-11 Friday 17:08:50  INFO :  Receive Msg:{'head': 'control', 'file': ' / xxxx / xxxxx', 'stop': 0, 'chsum': '0x2f42a089'}
+2019-01-11 Friday 17:09:34  ERROR :  当前线程：2 处理音频D:\Dataset\Gunshot\gun_shot\gun_shot_000000_1-0.00-25.50.wav时发生错误:local variable 'pre_label' referenced before assignment
+
+2019-01-11 Friday 17:09:34  ERROR :  当前线程：1 处理音频D:\Dataset\Gunshot\gun_shot\gun_shot_000000_1-0.00-24.23.wav时发生错误:local variable 'pre_label' referenced before assignment
+
+2019-01-11 Friday 17:09:52  ERROR :  当前线程：1 处理音频D:\Dataset\Gunshot\gun_shot\gun_shot_000000_1-0.07-3.08.wav时发生错误:local variable 'pre_label' referenced before assignment
+
+2019-01-11 Friday 17:09:54  ERROR :  当前线程：2 处理音频D:\Dataset\Gunshot\gun_shot\gun_shot_000000_1-0.16-3.24.wav时发生错误:local variable 'pre_label' referenced before assignment
+
+2019-01-11 Friday 17:10:12  ERROR :  当前线程：1 处理音频D:\Dataset\Gunshot\gun_shot\gun_shot_000000_1-0.18-3.31.wav时发生错误:local variable 'pre_label' referenced before assignment
+
+2019-01-11 Friday 17:10:14  ERROR :  当前线程：2 处理音频D:\Dataset\Gunshot\gun_shot\gun_shot_000000_1-0.24-3.63.wav时发生错误:local variable 'pre_label' referenced before assignment
+

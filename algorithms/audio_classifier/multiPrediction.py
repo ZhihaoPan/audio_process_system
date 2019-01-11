@@ -109,10 +109,9 @@ def audio_class_predict(audio_file, modellist, cuda,gpu_device):
 
 
     print('\nStart predicting...')
-    try:
-        pre_label=predict(demo_loader, modellist, gpu_device, mode='Test loss', class2index=demo_dataset.getClass2Index())
-    except Exception as e:
-        print("Error happen predict:{}".format(e))
+
+    pre_label=predict(demo_loader, modellist, gpu_device, mode='Test loss', class2index=demo_dataset.getClass2Index())
+
     #对预测出的结果进行调整
     pre_label = adjust_labels(pre_label)
     print(pre_label)
