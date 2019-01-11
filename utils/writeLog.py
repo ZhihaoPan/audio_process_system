@@ -5,7 +5,8 @@ def mainlog(msg,level='info'):
                         datefmt='%Y-%m-%d %A %H:%M:%S', filename='./logging/main.log', filemode='a')
 
     if level is 'debug':
-        logging.debug(msg)
+        pass
+        #logging.debug(msg)
     elif level is 'info':
         logging.info(msg)
     elif level is 'error':

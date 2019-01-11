@@ -34,9 +34,8 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         self.lineEdit.setText(file_path)
         self.lineEdit_2.setText("{:}".format(fileNum))
         self.lineEdit_3.setText("{}".format(0))
-        self.textEdit_4.setText("就绪")
-        self.textEdit_5.setText("就绪")
-        self.textEdit_6.setText("就绪")
+        for i in range(10):
+            self.showThreadMsg(i+1, "就绪", "")
         tmpmsg='正在测试中......'
         self.lineEdit_6.setText(tmpmsg)
         self.textEdit.setText(tmpmsg)
@@ -169,122 +168,68 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         如果后面要继续加其他工作内容可以在这里进行判断，在该函数对应的线程中判断文件进行到哪一步
         :return:
         """
-        if (not file_name) and step==2:
-            try:
-                threaddone=list(self.threadDict.keys())[list(self.threadDict.values()).index(1)]
-            except:
-                threaddone=None
-            if not threaddone:
-                if self.textEdit_4.toPlainText()=="就绪" and self.textEdit_5.toPlainText()=="就绪" and self.textEdit_6.toPlainText()=="就绪":
-                    self.plainTextEdit.appendPlainText("INFO -- 所有文件处理完成")
-                    print("所有文件处理完成")
-                    mainlog("所有文件处理完成。","info")
-                    self.timer4audiochoose.stop()
-                    result={"result":[
-                        {"ycsyjc":self.tmpContent["num_ycsyjc"]},
-                        {"yzfl":self.tmpContent["num_yzfl"]},
-                        {"swfl":self.tmpContent["num_swfl"]}
-                    ]}
-                    self.work4reportprocessdone=WorkThread4ReportProcessDone(self.file_path,len(self.fileDict),self.dur_time,
-                                                                             self.endtime-self.startime,result,self.ip4platform)
-                    self.work4reportprocessdone.trigger.connect(self.allDoneReport)
-                    self.work4reportprocessdone.start()
+        try:
+            if (not file_name) and step==2:
+                try:
+                    threaddone=list(self.threadDict.keys())[list(self.threadDict.values()).index(1)]
+                except:
+                    threaddone=None
+                if not threaddone:
+                    if self.textEdit_4.toPlainText()=="就绪" and self.textEdit_5.toPlainText()=="就绪" and self.textEdit_6.toPlainText()=="就绪":
+                        self.plainTextEdit.appendPlainText("INFO -- 所有文件处理完成")
+                        print("所有文件处理完成")
+                        mainlog("所有文件处理完成。","info")
+                        self.timer4audiochoose.stop()
+                        result={"result":[
+                            {"ycsyjc":self.tmpContent["num_ycsyjc"]},
+                            {"yzfl":self.tmpContent["num_yzfl"]},
+                            {"swfl":self.tmpContent["num_swfl"]}
+                        ]}
+                        self.work4reportprocessdone=WorkThread4ReportProcessDone(self.file_path,len(self.fileDict),self.dur_time,
+                                                                                 self.endtime-self.startime,result,self.ip4platform)
+                        self.work4reportprocessdone.trigger.connect(self.allDoneReport)
+                        self.work4reportprocessdone.start()
 
-        elif file_name and step==1:
+            elif file_name and step==1:
 
-            self.fileDict[file_name]=2
-            #self.fileDict.pop(file_name)
-            self.threadDict[id]=1
-            #todo 此处做GPu使用的判断前一半线程用GPU0 后一半线程用GPU1
-            if id <=self.thread_num/self.gpu_device and len(self.au_cla_models)==1:
-                self.ThreadList.update({id: WorkThread4AudioProcess(ID=id, mutex=self.mutex4audioprocess,
-                                                                    file_path=file_name,
-                                                                    au_cla_models=self.au_cla_models[0],
-                                                                    ifcuda=self.ifcuda[0],
-                                                                    lang_cla_model=self.lang_cla_model[0],
-                                                                    gpu_device=0)})
-            elif id > self.thread_num / self.gpu_device and len(self.au_cla_models) == 2:
-                self.ThreadList.update({id: WorkThread4AudioProcess(ID=id, mutex=self.mutex4audioprocess,
-                                                                    file_path=file_name,
-                                                                    au_cla_models=self.au_cla_models[1],
-                                                                    ifcuda=self.ifcuda[1],
-                                                                    lang_cla_model=self.lang_cla_model[1],
-                                                                    gpu_device=1)})
-            self.ThreadList[id].trigger.connect(self.setContent)
-            self.ThreadList[id].start(id)
-            #设置界面
-            if id is 1:
-                self.textEdit_4.setText("运行分类")
-                self.textEdit_7.setText("{}".format(os.path.basename(file_name)))
-            elif id is 2:
-                self.textEdit_5.setText("运行分类")
-                self.textEdit_8.setText("{}".format(os.path.basename(file_name)))
-            elif id is 3:
-                self.textEdit_6.setText("运行分类")
-                self.textEdit_9.setText("{}".format(os.path.basename(file_name)))
-            elif id is 4:
-                self.textEdit_11.setText("运行分类")
-                self.textEdit_10.setText("{}".format(os.path.basename(file_name)))
-            elif id is 5:
-                self.textEdit_13.setText("运行分类")
-                self.textEdit_12.setText("{}".format(os.path.basename(file_name)))
-            elif id is 6:
-                self.textEdit_19.setText("运行分类")
-                self.textEdit_18.setText("{}".format(os.path.basename(file_name)))
-            elif id is 7:
-                self.textEdit_14.setText("运行分类")
-                self.textEdit_15.setText("{}".format(os.path.basename(file_name)))
-            elif id is 8:
-                self.textEdit_16.setText("运行分类")
-                self.textEdit_17.setText("{}".format(os.path.basename(file_name)))
-            elif id is 9:
-                self.textEdit_21.setText("运行分类")
-                self.textEdit_20.setText("{}".format(os.path.basename(file_name)))
-            elif id is 10:
-                self.textEdit_22.setText("运行分类")
-                self.textEdit_23.setText("{}".format(os.path.basename(file_name)))
+                self.fileDict[file_name]=2
+                #self.fileDict.pop(file_name)
+                self.threadDict[id]=1
+                #todo 此处做GPu使用的判断前一半线程用GPU0 后一半线程用GPU1
+                if id <=self.thread_num/self.gpu_device and len(self.au_cla_models)==1:
+                    self.ThreadList.update({id: WorkThread4AudioProcess(ID=id, mutex=self.mutex4audioprocess,
+                                                                        file_path=file_name,
+                                                                        au_cla_models=self.au_cla_models[0],
+                                                                        ifcuda=self.ifcuda[0],
+                                                                        lang_cla_model=self.lang_cla_model[0],
+                                                                        gpu_device=0)})
+                elif id > self.thread_num / self.gpu_device and len(self.au_cla_models) == 2:
+                    self.ThreadList.update({id: WorkThread4AudioProcess(ID=id, mutex=self.mutex4audioprocess,
+                                                                        file_path=file_name,
+                                                                        au_cla_models=self.au_cla_models[1],
+                                                                        ifcuda=self.ifcuda[1],
+                                                                        lang_cla_model=self.lang_cla_model[1],
+                                                                        gpu_device=1)})
+                self.ThreadList[id].trigger.connect(self.setContent)
+                self.ThreadList[id].start(id)
+                #设置界面 更改线程显示信息
+                self.showThreadMsg(id, "运行分类", "{}".format(os.path.basename(file_name)))
 
-        #对音频进行静音处理
-        elif file_name and step==0:
-            self.fileDict.pop(file_name)
-            #self.fileDict[file_name]=2
-            self.threadDict[id] = 1
-            self.ThreadList.update(
-                {id: WorkThread4VAD(ID=id, mutex=self.mutex4audioprocess, file_path=file_name,fileDict=self.fileDict)})
-            self.ThreadList[id].trigger.connect(self.setContent)
-            self.ThreadList[id].start(id)
-            # 设置界面
-            if id is 1:
-                self.textEdit_4.setText("运行Vad")
-                self.textEdit_7.setText("{}".format(os.path.basename(file_name)))
-            elif id is 2:
-                self.textEdit_5.setText("运行Vad")
-                self.textEdit_8.setText("{}".format(os.path.basename(file_name)))
-            elif id is 3:
-                self.textEdit_6.setText("运行Vad")
-                self.textEdit_9.setText("{}".format(os.path.basename(file_name)))
-            elif id is 4:
-                self.textEdit_11.setText("运行Vad")
-                self.textEdit_10.setText("{}".format(os.path.basename(file_name)))
-            elif id is 5:
-                self.textEdit_13.setText("运行Vad")
-                self.textEdit_12.setText("{}".format(os.path.basename(file_name)))
-            elif id is 6:
-                self.textEdit_19.setText("运行Vad")
-                self.textEdit_18.setText("{}".format(os.path.basename(file_name)))
-            elif id is 7:
-                self.textEdit_14.setText("运行Vad")
-                self.textEdit_15.setText("{}".format(os.path.basename(file_name)))
-            elif id is 8:
-                self.textEdit_16.setText("运行Vad")
-                self.textEdit_17.setText("{}".format(os.path.basename(file_name)))
-            elif id is 9:
-                self.textEdit_21.setText("运行Vad")
-                self.textEdit_20.setText("{}".format(os.path.basename(file_name)))
-            elif id is 10:
-                self.textEdit_22.setText("运行Vad")
-                self.textEdit_23.setText("{}".format(os.path.basename(file_name)))
-
+            #对音频进行静音处理
+            elif file_name and step==0:
+                self.fileDict.pop(file_name)
+                #self.fileDict[file_name]=2
+                self.threadDict[id] = 1
+                self.ThreadList.update(
+                    {id: WorkThread4VAD(ID=id, mutex=self.mutex4audioprocess, file_path=file_name,fileDict=self.fileDict)})
+                self.ThreadList[id].trigger.connect(self.showVadProcess)
+                self.ThreadList[id].start(id)
+                # 设置界面
+                # 更改线程显示信息
+                self.showThreadMsg(id, "运行Vad", "{}".format(os.path.basename(file_name)))
+        except Exception as e :
+            #这样可以保证一定解锁
+            print("Error happen in audiochoose 的回调函数中：{}".format(e))
 
         #对全局变量的操作结束可以解锁
         self.mutex4audiochoose.unlock()
@@ -300,43 +245,17 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         :param error:
         :return:
         """
-        if success:
-            self.plainTextEdit.appendPlainText("INFO --VAD Process-- :{}静音检测完成".format(file_name))
-        else:
-            self.plainTextEdit.appendPlainText("ERROR --VAD Process-- :{}静音检测失败,错误为{}".format(file_name,error))
+        try:
+            if success:
+                self.plainTextEdit.appendPlainText("INFO --VAD Process-- :{}静音检测完成".format(file_name))
+            else:
+                self.plainTextEdit.appendPlainText("ERROR --VAD Process-- :{}静音检测失败,错误为{}".format(file_name,error))
 
-        self.threadDict[threadID]=0
-        if threadID is 1:
-            self.textEdit_4.setText("就绪")
-            self.textEdit_7.setText("")
-        elif threadID is 2:
-            self.textEdit_5.setText("就绪")
-            self.textEdit_8.setText("")
-        elif threadID is 3:
-            self.textEdit_6.setText("就绪")
-            self.textEdit_9.setText("")
-        elif threadID is 4:
-            self.textEdit_11.setText("就绪")
-            self.textEdit_10.setText("")
-        elif threadID is 5:
-            self.textEdit_13.setText("就绪")
-            self.textEdit_12.setText("")
-        elif threadID is 6:
-            self.textEdit_19.setText("就绪")
-            self.textEdit_18.setText("")
-        elif threadID is 7:
-            self.textEdit_14.setText("就绪")
-            self.textEdit_15.setText("")
-        elif threadID is 8:
-            self.textEdit_16.setText("就绪")
-            self.textEdit_17.setText("")
-        elif threadID is 9:
-            self.textEdit_21.setText("就绪")
-            self.textEdit_20.setText("")
-        elif threadID is 10:
-            self.textEdit_22.setText("就绪")
-            self.textEdit_23.setText("")
-
+            self.threadDict[threadID]=0
+            # 更改线程显示信息
+            self.showThreadMsg(threadID, "就绪", "")
+        except:
+            pass
         self.mutex4audioprocess.unlock()
 
     def setContent(self, Content, threadID, flag, dur_time):
@@ -349,58 +268,33 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         :return:
         """
         #
-        if flag is -1:
-            self.plainTextEdit.appendPlainText("ERROR --当前线程：{} 处理音频时发生错误:{}\n".format(threadID, Content["ERROR"]))
-            mainlog("当前线程：{} 处理音频{}时发生错误:{}\n".format(threadID, Content["file"], Content["ERROR"]),"error")
-        elif flag is 0:
+        try:
+            if flag is -1:
+                self.plainTextEdit.appendPlainText("ERROR --当前线程：{} 处理音频时发生错误:{}\n".format(threadID, Content["ERROR"]))
+                mainlog("当前线程：{} 处理音频{}时发生错误:{}\n".format(threadID, Content["file"], Content["ERROR"]),"error")
+            elif flag is 0:
 
-            file_done_name = os.path.join(Content["url"], Content["file"])
-            try:
-                self.plainTextEdit.appendPlainText("INFO --当前音频处理线程:{},处理的文件是:{},处理完成,准备发送处理结果信息...".format(threadID,file_done_name))
-                self.rstContent.update(Content)
-                self.updateTmpContent()
-                self.sendRstMsg()
-            except Exception as e:
-                self.plainTextEdit.appendPlainText("ERROR --当前的文件名不存在在fileDict内：{} Error:{}".format(file_done_name, e))
+                file_done_name = os.path.join(Content["url"], Content["file"])
+                try:
+                    self.plainTextEdit.appendPlainText("INFO --当前音频处理线程:{},处理的文件是:{},处理完成,准备发送处理结果信息...".format(threadID,file_done_name))
+                    self.rstContent.update(Content)
+                    self.updateTmpContent()
+                    self.sendRstMsg()
+                except Exception as e:
+                    self.plainTextEdit.appendPlainText("ERROR --当前的文件名不存在在fileDict内：{} Error:{}".format(file_done_name, e))
 
-        self.threadDict[threadID]=0
-        if threadID is 1:
-            self.textEdit_4.setText("就绪")
-            self.textEdit_7.setText("")
-        elif threadID is 2:
-            self.textEdit_5.setText("就绪")
-            self.textEdit_8.setText("")
-        elif threadID is 3:
-            self.textEdit_6.setText("就绪")
-            self.textEdit_9.setText("")
-        elif threadID is 4:
-            self.textEdit_11.setText("就绪")
-            self.textEdit_10.setText("")
-        elif threadID is 5:
-            self.textEdit_13.setText("就绪")
-            self.textEdit_12.setText("")
-        elif threadID is 6:
-            self.textEdit_19.setText("就绪")
-            self.textEdit_18.setText("")
-        elif threadID is 7:
-            self.textEdit_14.setText("就绪")
-            self.textEdit_15.setText("")
-        elif threadID is 8:
-            self.textEdit_16.setText("就绪")
-            self.textEdit_17.setText("")
-        elif threadID is 9:
-            self.textEdit_21.setText("就绪")
-            self.textEdit_20.setText("")
-        elif threadID is 10:
-            self.textEdit_22.setText("就绪")
-            self.textEdit_23.setText("")
+            self.threadDict[threadID]=0
 
-        if dur_time:
-            self.dur_time += dur_time
+            #更改线程显示信息
+            self.showThreadMsg(threadID,"就绪","")
 
-        self.mutex4audioprocess.unlock()
+            if dur_time:
+                self.dur_time += dur_time
+        except Exception as e:
+            print("Error happen in setContent():{}".format(e))
 
-
+        #测试
+        #self.mutex4audioprocess.unlock()
 
     #发送处理信息部
     def sendTempMsg(self):
@@ -507,7 +401,7 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
             self.plainTextEdit.appendPlainText(text)
 
             #写入日志文件
-            mainlog("{},ycsy:{}\n,swfl:{}\n,yzfl:{}".format(text,sendMsg["ycsyjc"],sendMsg["swfl"],sendMsg["yzfl"]),"debug")
+            mainlog("{},ycsy:{}\n,swfl:{}\n,yzfl:{}".format(text,sendMsg["ycsyjc"],sendMsg["swfl"],sendMsg["yzfl"]),"info")
 
             with open(os.path.join(sendMsg["url"],"{}.json".format(sendMsg["file"][:-4])),'w') as f:
                 json.dump(sendMsg,f)
@@ -518,11 +412,12 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
             self.work4SendRstMsg.disconnect()
             self.mutex4sendresult.unlock()
         except Exception as e:
+            print("--------------解锁------------------")
             print("ERROR --发送结果信息是出现了错误:{}".format(e))
             mainlog("ERROR --发送结果信息是出现了错误:{}".format(e),"ERROR")
             self.work4SendRstMsg.disconnect()
             self.mutex4sendresult.unlock()
-
+        self.mutex4audioprocess.unlock()
 
     def setChangeFile(self,changeMsg):
         if changeMsg:
@@ -559,6 +454,39 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
     def allDoneReport(self,success):
         if success:
             self.plainTextEdit.appendPlainText("INFO --所有内容结束,告知平台成果!")
+
+    def showThreadMsg(self,threadID,content1,content2):
+        if threadID is 1:
+            self.textEdit_4.setText(content1)
+            self.textEdit_7.setText(content2)
+        elif threadID is 2:
+            self.textEdit_5.setText(content1)
+            self.textEdit_8.setText(content2)
+        elif threadID is 3:
+            self.textEdit_6.setText(content1)
+            self.textEdit_9.setText(content2)
+        elif threadID is 4:
+            self.textEdit_11.setText(content1)
+            self.textEdit_10.setText(content2)
+        elif threadID is 5:
+            self.textEdit_13.setText(content1)
+            self.textEdit_12.setText(content2)
+        elif threadID is 6:
+            self.textEdit_19.setText(content1)
+            self.textEdit_18.setText(content2)
+        elif threadID is 7:
+            self.textEdit_14.setText(content1)
+            self.textEdit_15.setText(content2)
+        elif threadID is 8:
+            self.textEdit_16.setText(content1)
+            self.textEdit_17.setText(content2)
+        elif threadID is 9:
+            self.textEdit_21.setText(content1)
+            self.textEdit_20.setText(content2)
+        elif threadID is 10:
+            self.textEdit_22.setText(content1)
+            self.textEdit_23.setText(content2)
+
 
 if __name__=="__main__":
     app = QApplication(sys.argv)
