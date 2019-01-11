@@ -152,7 +152,7 @@ class Ui_Dialog(object):
         self.label_17.setGeometry(QtCore.QRect(220, 670, 71, 21))
         self.label_17.setObjectName("label_17")
         self.lineEdit_14 = QtWidgets.QLineEdit(Dialog)
-        self.lineEdit_14.setEnabled(False)
+        self.lineEdit_14.setEnabled(True)
         self.lineEdit_14.setGeometry(QtCore.QRect(300, 670, 61, 21))
         self.lineEdit_14.setObjectName("lineEdit_14")
         self.spinBox = QtWidgets.QSpinBox(Dialog)

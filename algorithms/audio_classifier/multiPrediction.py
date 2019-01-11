@@ -21,13 +21,13 @@ from algorithms.audio_classifier.models.network_MTOresnext import waveResnext101
 from algorithms.audio_classifier.models.crnn import CRNN, CRNN_GRU
 from algorithms.audio_classifier.pre_mel_loader import melLoader as premelLoader
 
-def loading_audio_classifier_models(models):
+def loading_audio_classifier_models(models,gpu_device):
     if torch.cuda.is_available():
-        torch.cuda.set_device(0)
+        torch.cuda.set_device(gpu_device)
         #idx = torch.cuda.current_device()
-        idx=0
+        idx=gpu_device
         print("Current GPU:" + str(idx))
-    device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
+    device = torch.device("cuda:{}".format(gpu_device) if torch.cuda.is_available() else "cpu")
 
     modellist = {}
     for arc, weight in models.items():
@@ -55,7 +55,10 @@ def loading_audio_classifier_models(models):
         try:
             #todo 在不同环境下地址要改
             model_path=os.path.join(sys.path[0],'algorithms\\audio_classifier\\checkpoint\\' + str(arc) + '.pth')
-            state = torch.load(model_path, map_location={'cuda:1': 'cuda:0'})
+            if gpu_device==1:
+                state = torch.load(model_path, map_location={'cuda:0': 'cuda:1'})
+            else:
+                state = torch.load(model_path, map_location={'cuda:1': 'cuda:0'})
             print('load pre-trained model of ' + str(arc) + '\n')
             # print(state)
             model.load_state_dict(state['state_dict'])

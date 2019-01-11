@@ -403,18 +403,22 @@ class WorkThread4LoadingModels(QThread):
     该线程用于在系统启动时初始化模型以便后面快速使用
     """
     trigger=pyqtSignal(dict,bool,dict)
-    def __init__(self):
+    def __init__(self,gpu_device,mutex):
         super(WorkThread4LoadingModels, self).__init__()
+        self.gpu_device=gpu_device
+        self.mutex=mutex
 
     def run(self):
         try:
             au_cla_models, ifcuda = loading_audio_classifier_models({"ResNet101": 0.2, "resnext": 0.7,
-                                                                     "VGG16": 0.1})
+                                                                     "VGG16": 0.1},self.gpu_device)
             lang_cla_model={}
             # lang_cla_model = loading_language_classifier_model()
-
+            self.mutex.lock()
+            print("-------模型加载锁--------")
             self.trigger.emit(au_cla_models, ifcuda, lang_cla_model)
         except Exception as e:
+            self.mutex.lock()
             mainlog("加载模型出现错误！！！！！:{}".format(e),"error")
             self.trigger.emit({},0,{})
 

@@ -16,7 +16,7 @@ from utils.getState import *
 
 
 class windowMainProc(QMainWindow,Ui_MainWindow):
-    def __init__(self, file_path, fileNum, fileDict, procFunctions, IP4platform="127.0.0.1", thread_num=3,parent=None):
+    def __init__(self, file_path, fileNum, fileDict, procFunctions, IP4platform="127.0.0.1", thread_num=3,gpu_device=1,parent=None):
         """
         todo 暂时不考虑 首先要考虑是否要在界面上加上一定的参数设置，以及加了参数设置之后设置参数传递使得更改应用到模型
         #下一步的任务 首先再找些数据用之前的算法跑下结果把效果不好的数据放到模型中再次训练
@@ -53,11 +53,12 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         self.ip4platform=IP4platform
         self.file_path=file_path
         self.thread_num=thread_num
+        self.gpu_device=gpu_device
         self.dur_time=0
         #初始化模型变量
-        self.au_cla_models=None
-        self.lang_cla_model=None
-        self.ifcuda=False
+        self.au_cla_models=[]
+        self.lang_cla_model=[]
+        self.ifcuda=[]
 
         #初始化字典变量
         self.tmpContent={"file":self.file_path,"filedone":0,"time_pass":"000000",
@@ -65,6 +66,8 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         self.rstContent={}
         self.threadDict={}
         self.ThreadList={}
+        self.loadingModelList=[]
+
         #创建Thread ID的字典 0表示该线程没有被使用 1表示该线程被使用中 threadId从1开始计算
         for tmp in range(self.thread_num):
             self.threadDict.update({tmp+1:0})
@@ -72,8 +75,9 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         # 给线程的部分内容加锁，保证线程不会混乱
         self.mutex4audioprocess = QMutex()
         self.mutex4audiochoose = QMutex()
-        self.mutex4procaudio=QMutex()
-        self.mutex4sendresult=QMutex()
+        self.mutex4procaudio = QMutex()
+        self.mutex4sendresult = QMutex()
+        self.mutex4loadingmodel = QMutex()
 
         #设置第一个Timer用于界面显示后的监控模型显示,网络情况每10s一次检测，其他信息每秒检测一次
         self.timer4monitor=QTimer()
@@ -85,13 +89,11 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         self.timer4monitor.start(1000)
         self.timer4monitor.timeout.connect(self.showCurrentTime)
 
-        #初始化加载模型的Timer和线程
+        #初始化加载模型的Timer和线程一次性
         self.timer4loadingmodel=QTimer()
         self.timer4loadingmodel.setSingleShot(True)
         self.timer4loadingmodel.start()
-        self.work4LoadingModel=WorkThread4LoadingModels()
-        self.work4LoadingModel.trigger.connect(self.loadingModel)
-        self.timer4loadingmodel.timeout.connect(self.work4LoadingModel.start)
+        self.timer4loadingmodel.timeout.connect(self.timerLoadingModel)
 
         #该timer用于发送每10s一次的信息
         self.timer4sendtmpmsg=QTimer()
@@ -108,6 +110,7 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         #该timer用于音频处理块的开始
         self.timer4audiochoose=QTimer()
         self.timer4audiochoose.setSingleShot(0)
+        self.timer4audiochoose.start(5000)
         #self.timer4audiochoose.start(5000)
         self.timer4audiochoose.timeout.connect(self.audioThreadChoose)
 
@@ -127,7 +130,15 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         :return:
         """
         #self.plainTextEdit.appendPlainText("文件线程选择Thread启动...")
-        self.work4AudioChoose.start()
+        if not self.loadingModelList:
+            self.work4AudioChoose.start()
+
+    def timerLoadingModel(self):
+        self.plainTextEdit.appendPlainText("在{}个GPU上预加载模型".format(self.gpu_device))
+        for device in range(self.gpu_device):
+            self.loadingModelList.append(WorkThread4LoadingModels(device, self.mutex4loadingmodel))
+            self.loadingModelList[device].trigger.connect(self.loadingModel)
+            self.loadingModelList[device].start()
 
     def loadingModel(self,au_cla_models,ifcuda,lang_cla_model):
         """
@@ -137,10 +148,11 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         :param lang_cla_model:
         :return:
         """
-        self.au_cla_models=au_cla_models
-        self.ifcuda=ifcuda
-        self.lang_cla_model=lang_cla_model
-        self.timer4audiochoose.start(5000)
+        self.au_cla_models.append(au_cla_models)
+        self.ifcuda.append(ifcuda)
+        self.lang_cla_model.append(lang_cla_model)
+        self.mutex4loadingmodel.unlock()
+
 
 
     #处理音频信息块
@@ -181,8 +193,16 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
             self.fileDict[file_name]=2
             #self.fileDict.pop(file_name)
             self.threadDict[id]=1
-            self.ThreadList.update({id:WorkThread4AudioProcess(ID=id,mutex=self.mutex4audioprocess,file_path=file_name,
-                                                               au_cla_models=self.au_cla_models,ifcuda=self.ifcuda,lang_cla_model=self.lang_cla_model)})
+            #todo 此处做GPu使用的判断前一半线程用GPU0 后一半线程用GPU1
+            if id <=self.thread_num/self.gpu_device and len(self.au_cla_models)==1:
+                self.ThreadList.update({id:WorkThread4AudioProcess(ID=id,mutex=self.mutex4audioprocess,file_path=file_name,
+                                                                   au_cla_models=self.au_cla_models[0],ifcuda=self.ifcuda[0],lang_cla_model=self.lang_cla_model[0])})
+            elif id>self.thread_num/self.gpu_device and len(self.au_cla_models)==2:
+                self.ThreadList.update({id: WorkThread4AudioProcess(ID=id, mutex=self.mutex4audioprocess,
+                                                                    file_path=file_name,
+                                                                    au_cla_models=self.au_cla_models[1],
+                                                                    ifcuda=self.ifcuda[1],
+                                                                    lang_cla_model=self.lang_cla_model[1])})
             self.ThreadList[id].trigger.connect(self.setContent)
             self.ThreadList[id].start(id)
             #设置界面

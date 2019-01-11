@@ -91,10 +91,14 @@ class dialogWait2Rev(QDialog, Ui_Dialog):
                     self.fileDict[tmpfile]=1
             if not self.spinBox.value() or self.spinBox.value()<0:
                 QMessageBox.critical(self, "警告", "请确认线程开启数目！", QMessageBox.Yes | QMessageBox.No)
+            #todo 这里要确认是否错误输入的
+            self.GPU_num=int(self.lineEdit_14.text())
+
             dicFunc={"func_ycsyjc":self.Msg["func_ycsyjc"],
                      "func_yzfl":self.Msg["func_yzfl"],
                      "func_swfl":self.Msg["func_swfl"]}
-            self.nextwindow=windowMainProc(self.Msg["file"],self.info["file_num"], self.fileDict, dicFunc,self.IP4platform, self.spinBox.value()*self.GPU_num)
+            self.nextwindow=windowMainProc(self.Msg["file"], self.info["file_num"], self.fileDict, dicFunc,
+                                           self.IP4platform, self.spinBox.value()*self.GPU_num, self.GPU_num)
             self.nextwindow.show()
             #关闭该界面上的所有线程和Timer!!!!!!,要不下个界面Timer还会运行
             self.work4Net.terminate()
