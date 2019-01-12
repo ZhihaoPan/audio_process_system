@@ -136,7 +136,7 @@ class WorkThread4SendTempMsg(QThread):
             self.trigger.emit(retMsg)
             return
         time.sleep(1)
-        print("Sending processing message......:%s" % str(sendMsg))
+        #print("Sending processing message......:%s" % str(sendMsg))
         self.socket.send_json(sendMsg)
         self.lastMsg=sendMsg
 
@@ -144,7 +144,8 @@ class WorkThread4SendTempMsg(QThread):
         retMsg={"time":sendMsg["time"],"IP":self.ip4platform,"success":1,"head":sendMsg["head"]
                 , "file":sendMsg["file"],"filedone":sendMsg["filedone"], "time_remain":sendMsg["time_remain"]}
         self.trigger.emit(retMsg)
-        self.quit()
+        return
+        #self.quit()
 
 
 class WorkThread4AudioChoose(QThread):
@@ -174,12 +175,12 @@ class WorkThread4AudioChoose(QThread):
                 try:
                     file_name=list(self.FileDoneFlags.keys())[list(self.FileDoneFlags.values()).index(0)]
                     step=0
-                    print(file_name)
+                    #print(file_name)
                 except:
                     try:
                         file_name = list(self.FileDoneFlags.keys())[list(self.FileDoneFlags.values()).index(1)]
                         step=1
-                        print(file_name)
+                        #print(file_name)
                     except:
                         file_name=None
                         step=2
@@ -230,7 +231,7 @@ class WorkThread4AudioProcess(QThread):
 
     def run(self):
         try:
-            time.sleep(int(self.ThreadID) * 1)
+            #time.sleep(int(self.ThreadID) * 1)
             url=os.path.dirname(self.file_path)
             file=os.path.basename(self.file_path)
             #file_path = r"/home/panzh/Downloads/demoAudio/test/0.wav"
@@ -314,6 +315,7 @@ class WorkThread4AudioProcess(QThread):
         self.mutex.lock()
         self.trigger.emit(self.rstContent,self.ThreadID,0,dur_time)
         self.quit()
+        return
 
 class WorkThread4SendResult(QThread):
     trigger = pyqtSignal(dict,dict)
@@ -336,8 +338,8 @@ class WorkThread4SendResult(QThread):
 
     def run(self):
         # struct 4 send message
-        self.mutex.lock()
-        print("--------------上锁------------------")
+        #self.mutex.lock()
+        #print("Debug--------------SendResult------------------")
         if not self.dicContent:
             self.trigger.emit({},{})
             return
@@ -365,7 +367,9 @@ class WorkThread4SendResult(QThread):
         #           "url":sendMsg["url"],"file":sendMsg["file"],"ycsyjc":sendMsg["ycsyjc"],"yzfl":sendMsg["yzfl"],"swfl":sendMsg["swfl"]}
         retMsg={"time":getCurrentTime(),"IP":self.ip4platform,"success":1}
         self.trigger.emit(retMsg,sendMsg)
-        self.quit()
+        #self.quit()
+        #print("Debug--------------SendResult return------------------")
+        return
 
 class WorkThread4ReportProcessDone(QThread):
     trigger=pyqtSignal(bool)
