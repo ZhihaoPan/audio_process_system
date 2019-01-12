@@ -229,9 +229,9 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
                 # 设置界面
                 # 更改线程显示信息
                 self.showThreadMsg(id, "运行Vad", "{}".format(os.path.basename(file_name)))
-        except Exception as e :
+        except Exception as e:
             #这样可以保证一定解锁
-            print("Error happen in audiochoose 的回调函数中：{}".format(e))
+            print("Error happen in audiochoose 的回调函数procAudio()中：{}".format(e))
 
         #对全局变量的操作结束可以解锁
         self.mutex4audiochoose.unlock()
@@ -269,13 +269,12 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         :param flag: 如果flag为0则为5s一次信息，flag为1则为result信息
         :return:
         """
-        self.test+=1
-        print("-------------------------{}--------------------------".format(self.test))
+
         try:
             if flag is -1:
                 self.plainTextEdit.appendPlainText("ERROR --当前线程：{} 处理音频时发生错误:{}\n".format(threadID, Content["ERROR"]))
                 mainlog("当前线程：{} 处理音频{}时发生错误:{}\n".format(threadID, Content["file"], Content["ERROR"]),"error")
-                #print("当前线程：{} 处理音频{}时发生错误:{}\n".format(threadID, Content["file"], Content["ERROR"]))
+                print("当前线程：{} 处理音频{}时发生错误:{}\n".format(threadID, Content["file"], Content["ERROR"]))
                 self.threadDict[threadID] = 0
 
                 # 更改线程显示信息
@@ -284,8 +283,8 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
                 if dur_time:
                     self.dur_time += dur_time
                 self.mutex4audioprocess.unlock()
-                #print("--------------mutex4audioprocess解锁------------------")
-                self.test -= 1
+
+
             elif flag is 0:
 
                 file_done_name = os.path.join(Content["url"], Content["file"])
@@ -328,6 +327,7 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         发送线程处理的总结果
         :return:
         """
+        print("Debug-- 运行到sendRstMsg")
         self.work4SendRstMsg.setSendContent(self.rstContent)
         self.work4SendRstMsg.start()
 
@@ -407,7 +407,6 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
                 # 写入日志文件
                 mainlog("发送平台的信息包头为:data,但发送的内容重复或者为空!!!!!!!", level="warning")
                 self.work4SendRstMsg.disconnect()
-                #self.mutex4sendresult.unlock()
                 return
             text="INFO --发送平台信息包头:{}, 当前处理的音频文件是:{} \n发送时刻(hhmmss):{}, IP地址:{}" \
                  ", 是否发送成功:{}, 发送内容查询log".format(sendMsg["head"], sendMsg["file"], retMsg["time"],
@@ -421,19 +420,13 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
                 json.dump(sendMsg,f)
             #self.testDBHelper.testInsert(os.path.join(sendMsg["url"],sendMsg["file"]),os.path.join(sendMsg["url"],"{}.json".format(sendMsg["file"][:-4])))
 
-            #写在最后
-            #print("--------------work4SendRstMsg解锁------------------")
-            #self.work4SendRstMsg.disconnect()
-            #self.mutex4sendresult.unlock()
+
         except Exception as e:
-            #print("--------------work4SendRstMsg解锁------------------")
             print("ERROR --发送结果信息是出现了错误:{}".format(e))
             mainlog("ERROR --发送结果信息是出现了错误:{}".format(e),"ERROR")
-            #self.work4SendRstMsg.disconnect()
-            #self.mutex4sendresult.unlock()
-        print("--------------mutex4audioprocess解锁------------------")
+
         self.mutex4audioprocess.unlock()
-        self.test-=1
+
 
     def setChangeFile(self,changeMsg):
         if changeMsg:
