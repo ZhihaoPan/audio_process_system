@@ -30,6 +30,7 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         """
         super(windowMainProc,self).__init__(parent)
         self.setupUi(self)
+        self.test=0
         #初始化界面
         self.lineEdit.setText(file_path)
         self.lineEdit_2.setText("{:}".format(fileNum))
@@ -97,7 +98,7 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         #该timer用于发送每10s一次的信息
         self.timer4sendtmpmsg=QTimer()
         self.timer4sendtmpmsg.setSingleShot(0)
-        self.timer4sendtmpmsg.start(30000)
+        self.timer4sendtmpmsg.start(5000)
         self.timer4sendtmpmsg.timeout.connect(self.sendTempMsg)
         #该线程只初始化一次
         self.work4SendTempMsg = WorkThread4SendTempMsg(self.ip4platform)
@@ -267,7 +268,8 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         :param flag: 如果flag为0则为5s一次信息，flag为1则为result信息
         :return:
         """
-        #
+        self.test+=1
+        print("-------------------------{}--------------------------".format(self.test))
         try:
             if flag is -1:
                 self.plainTextEdit.appendPlainText("ERROR --当前线程：{} 处理音频时发生错误:{}\n".format(threadID, Content["ERROR"]))
@@ -408,16 +410,18 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
             self.testDBHelper.testInsert(os.path.join(sendMsg["url"],sendMsg["file"]),os.path.join(sendMsg["url"],"{}.json".format(sendMsg["file"][:-4])))
 
             #写在最后
-            print("--------------解锁------------------")
+            #print("--------------work4SendRstMsg解锁------------------")
             self.work4SendRstMsg.disconnect()
-            self.mutex4sendresult.unlock()
+            #self.mutex4sendresult.unlock()
         except Exception as e:
-            print("--------------解锁------------------")
+            #print("--------------work4SendRstMsg解锁------------------")
             print("ERROR --发送结果信息是出现了错误:{}".format(e))
             mainlog("ERROR --发送结果信息是出现了错误:{}".format(e),"ERROR")
             self.work4SendRstMsg.disconnect()
-            self.mutex4sendresult.unlock()
+            #self.mutex4sendresult.unlock()
+        print("--------------mutex4audioprocess解锁------------------")
         self.mutex4audioprocess.unlock()
+        self.test-=1
 
     def setChangeFile(self,changeMsg):
         if changeMsg:
