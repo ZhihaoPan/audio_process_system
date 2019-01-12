@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9184afb0-a423-4a00-b808-94d748d38236" name="Default Changelist" comment="加了很多线程">
+    <list default="true" id="9184afb0-a423-4a00-b808-94d748d38236" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mainframepkg/mainWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainframepkg/mainWindow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/writeLog.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/writeLog.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -116,14 +114,14 @@
         <counts>
           <entry key="dummy" value="72" />
           <entry key="log" value="12" />
-          <entry key="py" value="42721" />
+          <entry key="py" value="42723" />
           <entry key="txt" value="533" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="617" />
-          <entry key="Python" value="42721" />
+          <entry key="Python" value="42723" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -180,12 +178,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mainframepkg/mainWindow.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
-              <caret line="102" column="40" selection-start-line="102" selection-start-column="40" selection-end-line="102" selection-end-column="40" />
+            <state relative-caret-position="7989">
+              <caret line="449" column="38" lean-forward="true" selection-start-line="449" selection-start-column="38" selection-end-line="449" selection-end-column="38" />
               <folding>
                 <element signature="e#24#37#0" expanded="true" />
-                <marker date="1547213961726" expanded="true" signature="18470:18475" ph="..." />
-                <marker date="1547213961726" expanded="true" signature="18502:18511" ph="..." />
+                <marker date="1547275702947" expanded="true" signature="18714:18719" ph="..." />
+                <marker date="1547275702947" expanded="true" signature="18746:18755" ph="..." />
               </folding>
             </state>
           </provider>
@@ -253,6 +251,7 @@
       <find>5556</find>
       <find>555</find>
       <find>5558</find>
+      <find>lock</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -563,20 +562,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1541309979165</updated>
-    </task>
-    <task id="LOCAL-00003" summary="201811071832">
-      <created>1541588763535</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1541588763535</updated>
-    </task>
-    <task id="LOCAL-00004" summary="add sendjson">
-      <created>1541660647631</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1541660647651</updated>
     </task>
     <task id="LOCAL-00005" summary="add sendjson">
       <created>1541662371180</created>
@@ -907,7 +892,21 @@
       <option name="project" value="LOCAL" />
       <updated>1547210502367</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="加了很多线程">
+      <created>1547213998860</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1547213998860</updated>
+    </task>
+    <task id="LOCAL-00053" summary="加了很多线程">
+      <created>1547276256968</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1547276256968</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TodoView">
@@ -929,7 +928,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49932975" weight="0.28364688" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4919571" weight="0.28654125" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.6018767" visible="true" weight="0.31403762" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.6018767" weight="0.31403762" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49798927" weight="0.28075254" />
@@ -937,7 +936,7 @@
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5080429" side_tool="true" weight="0.37771347" />
       <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49865952" weight="0.32850942" />
-      <window_info anchor="bottom" id="Version Control" order="11" sideWeight="0.558311" weight="0.31403762" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="11" sideWeight="0.558311" visible="true" weight="0.31403762" />
       <window_info anchor="bottom" id="Messages" order="12" />
       <window_info anchor="bottom" id="Python Console" order="13" sideWeight="0.49798927" weight="0.039073806" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -1495,12 +1494,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mainframepkg/mainWindow.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="102" column="40" selection-start-line="102" selection-start-column="40" selection-end-line="102" selection-end-column="40" />
+        <state relative-caret-position="7989">
+          <caret line="449" column="38" lean-forward="true" selection-start-line="449" selection-start-column="38" selection-end-line="449" selection-end-column="38" />
           <folding>
             <element signature="e#24#37#0" expanded="true" />
-            <marker date="1547213961726" expanded="true" signature="18470:18475" ph="..." />
-            <marker date="1547213961726" expanded="true" signature="18502:18511" ph="..." />
+            <marker date="1547275702947" expanded="true" signature="18714:18719" ph="..." />
+            <marker date="1547275702947" expanded="true" signature="18746:18755" ph="..." />
           </folding>
         </state>
       </provider>

@@ -103,6 +103,7 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         #该线程只初始化一次
         self.work4SendTempMsg = WorkThread4SendTempMsg(self.ip4platform)
         self.work4SendRstMsg = WorkThread4SendResult(self.ip4platform,self.mutex4sendresult)
+        self.work4SendRstMsg.trigger.connect(self.showRstMsg)
 
         #初始化线程和处理文件选择的线程，该线程进行文件和线程的调度
         self.work4AudioChoose = WorkThread4AudioChoose(self.file_path,self.thread_num,self.fileDict,self.threadDict,self.mutex4audiochoose)
@@ -274,6 +275,17 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
             if flag is -1:
                 self.plainTextEdit.appendPlainText("ERROR --当前线程：{} 处理音频时发生错误:{}\n".format(threadID, Content["ERROR"]))
                 mainlog("当前线程：{} 处理音频{}时发生错误:{}\n".format(threadID, Content["file"], Content["ERROR"]),"error")
+                #print("当前线程：{} 处理音频{}时发生错误:{}\n".format(threadID, Content["file"], Content["ERROR"]))
+                self.threadDict[threadID] = 0
+
+                # 更改线程显示信息
+                self.showThreadMsg(threadID, "就绪", "")
+
+                if dur_time:
+                    self.dur_time += dur_time
+                self.mutex4audioprocess.unlock()
+                #print("--------------mutex4audioprocess解锁------------------")
+                self.test -= 1
             elif flag is 0:
 
                 file_done_name = os.path.join(Content["url"], Content["file"])
@@ -285,13 +297,13 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
                 except Exception as e:
                     self.plainTextEdit.appendPlainText("ERROR --当前的文件名不存在在fileDict内：{} Error:{}".format(file_done_name, e))
 
-            self.threadDict[threadID]=0
+                self.threadDict[threadID]=0
 
-            #更改线程显示信息
-            self.showThreadMsg(threadID,"就绪","")
+                #更改线程显示信息
+                self.showThreadMsg(threadID,"就绪","")
 
-            if dur_time:
-                self.dur_time += dur_time
+                if dur_time:
+                    self.dur_time += dur_time
         except Exception as e:
             print("Error happen in setContent():{}".format(e))
 
@@ -318,7 +330,7 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         """
         self.work4SendRstMsg.setSendContent(self.rstContent)
         self.work4SendRstMsg.start()
-        self.work4SendRstMsg.trigger.connect(self.showRstMsg)
+
 
     #界面显示信息部分
     def showCurrentTime(self):
@@ -360,7 +372,7 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
 
     def showTmpMsg(self, retMsg):
         """
-        本地发送数据给平台后在此写入日志同时显示在界面上的框内
+        WorkThread4SendTmpMsg的回调函数 本地发送数据给平台后在此写入日志同时显示在界面上的框内
         :param retMsg:
         :return:
         """
@@ -385,17 +397,17 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
 
     def showRstMsg(self,retMsg,sendMsg):
         """
-                本地发送数据给平台后在此写入日志同时显示在界面上的框内
-                :param retMsg: Return Message
-                :return:
-                """
+        WorkThread4endRstMsg的回调函数 本地发送数据给平台后在此写入日志同时显示在界面上的框内
+        :param retMsg: Return Message
+        :return:
+        """
         try:
             if not retMsg:
                 self.plainTextEdit.appendPlainText("WARNING --发送平台的信息包头为:data,但发送的内容重复或者为空")
                 # 写入日志文件
                 mainlog("发送平台的信息包头为:data,但发送的内容重复或者为空!!!!!!!", level="warning")
                 self.work4SendRstMsg.disconnect()
-                self.mutex4sendresult.unlock()
+                #self.mutex4sendresult.unlock()
                 return
             text="INFO --发送平台信息包头:{}, 当前处理的音频文件是:{} \n发送时刻(hhmmss):{}, IP地址:{}" \
                  ", 是否发送成功:{}, 发送内容查询log".format(sendMsg["head"], sendMsg["file"], retMsg["time"],
@@ -407,17 +419,17 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
 
             with open(os.path.join(sendMsg["url"],"{}.json".format(sendMsg["file"][:-4])),'w') as f:
                 json.dump(sendMsg,f)
-            self.testDBHelper.testInsert(os.path.join(sendMsg["url"],sendMsg["file"]),os.path.join(sendMsg["url"],"{}.json".format(sendMsg["file"][:-4])))
+            #self.testDBHelper.testInsert(os.path.join(sendMsg["url"],sendMsg["file"]),os.path.join(sendMsg["url"],"{}.json".format(sendMsg["file"][:-4])))
 
             #写在最后
             #print("--------------work4SendRstMsg解锁------------------")
-            self.work4SendRstMsg.disconnect()
+            #self.work4SendRstMsg.disconnect()
             #self.mutex4sendresult.unlock()
         except Exception as e:
             #print("--------------work4SendRstMsg解锁------------------")
             print("ERROR --发送结果信息是出现了错误:{}".format(e))
             mainlog("ERROR --发送结果信息是出现了错误:{}".format(e),"ERROR")
-            self.work4SendRstMsg.disconnect()
+            #self.work4SendRstMsg.disconnect()
             #self.mutex4sendresult.unlock()
         print("--------------mutex4audioprocess解锁------------------")
         self.mutex4audioprocess.unlock()
