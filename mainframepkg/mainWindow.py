@@ -111,7 +111,7 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         #该timer用于音频处理块的开始
         self.timer4audiochoose=QTimer()
         self.timer4audiochoose.setSingleShot(0)
-        self.timer4audiochoose.start(4000)
+
         #self.timer4audiochoose.start(5000)
         self.timer4audiochoose.timeout.connect(self.audioThreadChoose)
 
@@ -154,7 +154,8 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         self.ifcuda.update({gpu_device:ifcuda})
         self.lang_cla_model.update({gpu_device:lang_cla_model})
         self.mutex4loadingmodel.unlock()
-
+        if len(self.au_cla_models)==self.gpu_device:
+            self.timer4audiochoose.start(4000)
         print("-------模型加载解锁--------")
 
 
@@ -199,25 +200,27 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
                 self.threadDict[id]=1
                 #todo 此处做GPu使用的判断前一半线程用GPU0 后一半线程用GPU1
                 if id <=(self.thread_num/self.gpu_device) and len(self.au_cla_models)>=1:
+                    gpu_device= 0
                     print("加载AudioProcess{}".format(id))
                     self.ThreadList.update({id: WorkThread4AudioProcess(ID=id, mutex=self.mutex4audioprocess,
                                                                         file_path=file_name,
-                                                                        au_cla_models=self.au_cla_models[0],
-                                                                        ifcuda=self.ifcuda[0],
-                                                                        lang_cla_model=self.lang_cla_model[0],
-                                                                        gpu_device=1)})
+                                                                        au_cla_models=self.au_cla_models[gpu_device],
+                                                                        ifcuda=self.ifcuda[gpu_device],
+                                                                        lang_cla_model=self.lang_cla_model[gpu_device],
+                                                                        gpu_device=gpu_device)})
                     self.ThreadList[id].trigger.connect(self.setContent)
                     self.ThreadList[id].start(id)
                     # 设置界面 更改线程显示信息
                     self.showThreadMsg(id, "运行分类", ",GPU0,{}".format(os.path.basename(file_name)))
                 elif id > (self.thread_num / self.gpu_device) and len(self.au_cla_models) == 2:
+                    gpu_device = 1
                     print("加载AudioProcess{}".format(id))
                     self.ThreadList.update({id: WorkThread4AudioProcess(ID=id, mutex=self.mutex4audioprocess,
                                                                         file_path=file_name,
-                                                                        au_cla_models=self.au_cla_models[1],
-                                                                        ifcuda=self.ifcuda[1],
-                                                                        lang_cla_model=self.lang_cla_model[1],
-                                                                        gpu_device=1)})
+                                                                        au_cla_models=self.au_cla_models[gpu_device],
+                                                                        ifcuda=self.ifcuda[gpu_device],
+                                                                        lang_cla_model=self.lang_cla_model[gpu_device],
+                                                                        gpu_device=gpu_device)})
                     self.ThreadList[id].trigger.connect(self.setContent)
                     self.ThreadList[id].start(id)
                     # 设置界面 更改线程显示信息
