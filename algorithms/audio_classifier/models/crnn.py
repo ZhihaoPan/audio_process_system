@@ -109,14 +109,14 @@ class CRNN_GRU(nn.Module):
         )
 
     def forward(self, input):
-        out = self.features(input).cuda()
+        out = self.features(input)
         out = out.squeeze(2)
         hidden = self.init_hidden(out.size(0), next(self.parameters()).is_cuda)
-        out = self.features_to_sequence(out).cuda()
+        out = self.features_to_sequence(out)
         seq, hidden = self.rnn(out, hidden)
-        seq = seq.view(seq.size(1), -1).cuda()
-        seq = self.classifier(seq).cuda()
-        seq = F.log_softmax(seq, dim=1).cuda()
+        seq = seq.view(seq.size(1), -1)
+        seq = self.classifier(seq)
+        seq = F.log_softmax(seq, dim=1)
         return seq
 
     def init_hidden(self, batch_size, gpu=True):

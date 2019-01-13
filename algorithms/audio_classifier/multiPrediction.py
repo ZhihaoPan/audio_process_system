@@ -47,7 +47,7 @@ def loading_audio_classifier_models(models, gpu_device):
         # build model
         if str(device) == "cuda:1" or str(device) == "cuda:0":
             cuda = True
-            model = torch.nn.DataParallel(model.cuda(), device_ids=[idx])
+            model = torch.nn.DataParallel(model.cuda(device=idx), device_ids=[idx])
             print("Using cuda for model...")
         else:
             cuda = False
@@ -143,7 +143,7 @@ def predict(loader, modellist, gpu_device, mode, class2index, verbose=True):
             pred=outputs.data.max(1, keepdim=True)[1] # get the index of the max log-probability
             #print(pred)
         else:
-            pred=torch.tensor([[0]]).cuda(gpu_device)
+            pred=torch.tensor([[0]]).cuda(device=gpu_device)
 
         # #get prediction labels
         # pred = outputs.data.max(1, keepdim=True)[1]  # get the index of the max log-probability

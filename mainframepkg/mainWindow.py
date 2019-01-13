@@ -149,7 +149,6 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         :param lang_cla_model:
         :return:
         """
-
         self.au_cla_models.update({gpu_device:au_cla_models})
         self.ifcuda.update({gpu_device:ifcuda})
         self.lang_cla_model.update({gpu_device:lang_cla_model})
