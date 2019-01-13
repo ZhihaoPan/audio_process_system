@@ -16,7 +16,7 @@ from utils.getState import *
 
 
 class windowMainProc(QMainWindow,Ui_MainWindow):
-    def __init__(self, file_path, fileNum, fileDict, procFunctions, IP4platform="127.0.0.1", thread_num=3,gpu_device=1,parent=None):
+    def __init__(self, file_path, fileNum, fileDict, procFunctions, IP4platform="127.0.0.1", thread_num=3, gpu_device_num=1, parent=None):
         """
         todo 暂时不考虑 首先要考虑是否要在界面上加上一定的参数设置，以及加了参数设置之后设置参数传递使得更改应用到模型
         #下一步的任务 首先再找些数据用之前的算法跑下结果把效果不好的数据放到模型中再次训练
@@ -53,7 +53,7 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         self.ip4platform=IP4platform
         self.file_path=file_path
         self.thread_num=thread_num
-        self.gpu_device=gpu_device
+        self.gpu_device_num=gpu_device_num
         self.dur_time=0
         #初始化模型变量
         self.au_cla_models={}
@@ -136,7 +136,7 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
 
     def timerLoadingModel(self):
 
-        for device in range(self.gpu_device):
+        for device in range(self.gpu_device_num):
             self.loadingModelList.append(WorkThread4LoadingModels(device, self.mutex4loadingmodel))
             self.loadingModelList[device].trigger.connect(self.loadingModel)
             self.loadingModelList[device].start()
@@ -153,7 +153,7 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         self.ifcuda.update({gpu_device:ifcuda})
         self.lang_cla_model.update({gpu_device:lang_cla_model})
         self.mutex4loadingmodel.unlock()
-        if len(self.au_cla_models)==self.gpu_device:
+        if len(self.au_cla_models)==self.gpu_device_num:
             self.timer4audiochoose.start(4000)
         print("-------模型加载解锁--------")
 
@@ -198,7 +198,7 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
                 #self.fileDict.pop(file_name)
                 self.threadDict[id]=1
                 #todo 此处做GPu使用的判断前一半线程用GPU0 后一半线程用GPU1
-                if id <=(self.thread_num/self.gpu_device) and len(self.au_cla_models)>=1:
+                if id <=(self.thread_num/self.gpu_device_num) and len(self.au_cla_models)>=1:
                     gpu_device= 0
                     print("加载AudioProcess{}".format(id))
                     self.ThreadList.update({id: WorkThread4AudioProcess(ID=id, mutex=self.mutex4audioprocess,
@@ -211,7 +211,7 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
                     self.ThreadList[id].start(id)
                     # 设置界面 更改线程显示信息
                     self.showThreadMsg(id, "运行分类", ",GPU0,{}".format(os.path.basename(file_name)))
-                elif id > (self.thread_num / self.gpu_device) and len(self.au_cla_models) == 2:
+                elif id > (self.thread_num / self.gpu_device_num) and len(self.au_cla_models) == 2:
                     gpu_device = 1
                     print("加载AudioProcess{}".format(id))
                     self.ThreadList.update({id: WorkThread4AudioProcess(ID=id, mutex=self.mutex4audioprocess,
