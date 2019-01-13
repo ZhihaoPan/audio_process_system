@@ -3564,3 +3564,192 @@ librosa.util.exceptions.ParameterError: when mode='interp', width=9 cannot excee
 
 2019-01-11 Friday 17:10:14  ERROR :  当前线程：2 处理音频D:\Dataset\Gunshot\gun_shot\gun_shot_000000_1-0.24-3.63.wav时发生错误:local variable 'pre_label' referenced before assignment
 
+2019-01-13 Sunday 13:44:44  INFO :  user:admin login,Enter second dialog.
+2019-01-13 Sunday 13:44:46  INFO :  Enter third dialog.
+2019-01-13 Sunday 13:44:55  INFO :  IP：localhost网络通畅,0
+2019-01-13 Sunday 13:44:55  INFO :  Reveived Request:{'head': 'cmd', 'file': 'D:\\Dataset\\Gunshot', 'func_ycsyjc': 0, 'func_yzfl': 0, 'func_swfl': 0, 'chsum': '0xf53b5ae7'}
+2019-01-13 Sunday 13:44:55  INFO :  Send Reply:{'head': 'rec', 'file': 'D:\\Dataset\\Gunshot', 'network': 0, 'ready': 1, 'error': 200, 'chsum': '0x 9617d9a'}
+2019-01-13 Sunday 13:44:56  INFO :  Send Report:{'head': 'report', 'file': 'D:\\Dataset\\Gunshot', 'file_num': 105, 'time': '00:00：00', 'chsum': '0xf02ca713'}
+2019-01-13 Sunday 13:44:56  INFO :  Receive Msg:{'head': 'control', 'file': ' / xxxx / xxxxx', 'stop': 0, 'chsum': '0x2f42a089'}
+2019-01-13 Sunday 13:45:51  ERROR :  当前线程：1 处理音频D:\Dataset\Gunshot\gun_shot\gun_shot_000000_1-0.00-24.23.wav时发生错误:Traceback (most recent call last):
+  File "C:\Users\51198\AppData\Local\Programs\Python\Python36\lib\site-packages\torch\utils\data\dataloader.py", line 138, in _worker_loop
+    samples = collate_fn([dataset[i] for i in batch_indices])
+  File "C:\Users\51198\AppData\Local\Programs\Python\Python36\lib\site-packages\torch\utils\data\dataloader.py", line 138, in <listcomp>
+    samples = collate_fn([dataset[i] for i in batch_indices])
+  File "D:\GitRep\pyQt\algorithms\audio_classifier\pre_mel_loader.py", line 221, in __getitem__
+    self.window_type, self.normalize, self.max_len)
+  File "D:\GitRep\pyQt\algorithms\audio_classifier\pre_mel_loader.py", line 65, in logmeldelta_loader
+    delta = librosa.feature.delta(logmel)
+  File "C:\Users\51198\AppData\Local\Programs\Python\Python36\lib\site-packages\librosa\feature\utils.py", line 110, in delta
+    "cannot exceed data.shape[axis]={}".format(width, data.shape[axis]))
+librosa.util.exceptions.ParameterError: when mode='interp', width=9 cannot exceed data.shape[axis]=5
+
+
+2019-01-13 Sunday 13:48:32  ERROR :  当前线程：1 处理音频D:\Dataset\Gunshot\gun_shot\gun_shot_000000_1-0.00-24.23.wav时发生错误:Traceback (most recent call last):
+  File "C:\Users\51198\AppData\Local\Programs\Python\Python36\lib\site-packages\torch\utils\data\dataloader.py", line 138, in _worker_loop
+    samples = collate_fn([dataset[i] for i in batch_indices])
+  File "C:\Users\51198\AppData\Local\Programs\Python\Python36\lib\site-packages\torch\utils\data\dataloader.py", line 138, in <listcomp>
+    samples = collate_fn([dataset[i] for i in batch_indices])
+  File "D:\GitRep\pyQt\algorithms\audio_classifier\pre_mel_loader.py", line 221, in __getitem__
+    self.window_type, self.normalize, self.max_len)
+  File "D:\GitRep\pyQt\algorithms\audio_classifier\pre_mel_loader.py", line 65, in logmeldelta_loader
+    delta = librosa.feature.delta(logmel)
+  File "C:\Users\51198\AppData\Local\Programs\Python\Python36\lib\site-packages\librosa\feature\utils.py", line 110, in delta
+    "cannot exceed data.shape[axis]={}".format(width, data.shape[axis]))
+librosa.util.exceptions.ParameterError: when mode='interp', width=9 cannot exceed data.shape[axis]=5
+
+
+2019-01-13 Sunday 13:48:32  ERROR :  当前线程：1 处理音频D:\Dataset\Gunshot\gun_shot\gun_shot_000000_1-0.00-24.23.wav时发生错误:Traceback (most recent call last):
+  File "C:\Users\51198\AppData\Local\Programs\Python\Python36\lib\site-packages\torch\utils\data\dataloader.py", line 138, in _worker_loop
+    samples = collate_fn([dataset[i] for i in batch_indices])
+  File "C:\Users\51198\AppData\Local\Programs\Python\Python36\lib\site-packages\torch\utils\data\dataloader.py", line 138, in <listcomp>
+    samples = collate_fn([dataset[i] for i in batch_indices])
+  File "D:\GitRep\pyQt\algorithms\audio_classifier\pre_mel_loader.py", line 221, in __getitem__
+    self.window_type, self.normalize, self.max_len)
+  File "D:\GitRep\pyQt\algorithms\audio_classifier\pre_mel_loader.py", line 65, in logmeldelta_loader
+    delta = librosa.feature.delta(logmel)
+  File "C:\Users\51198\AppData\Local\Programs\Python\Python36\lib\site-packages\librosa\feature\utils.py", line 110, in delta
+    "cannot exceed data.shape[axis]={}".format(width, data.shape[axis]))
+librosa.util.exceptions.ParameterError: when mode='interp', width=9 cannot exceed data.shape[axis]=5
+
+
+2019-01-13 Sunday 13:49:56  INFO :  user:admin login,Enter second dialog.
+2019-01-13 Sunday 13:49:59  INFO :  Enter third dialog.
+2019-01-13 Sunday 13:50:06  ERROR :  'dialogWait2Rev' object has no attribute 'fileDict'
+2019-01-13 Sunday 13:50:07  INFO :  IP：localhost网络通畅,0
+2019-01-13 Sunday 13:50:07  INFO :  Reveived Request:{'head': 'cmd', 'file': 'D:\\Dataset\\Gunshot', 'func_ycsyjc': 0, 'func_yzfl': 0, 'func_swfl': 0, 'chsum': '0xf53b5ae7'}
+2019-01-13 Sunday 13:50:07  INFO :  Send Reply:{'head': 'rec', 'file': 'D:\\Dataset\\Gunshot', 'network': 0, 'ready': 1, 'error': 200, 'chsum': '0x 9617d9a'}
+2019-01-13 Sunday 13:50:07  INFO :  Send Report:{'head': 'report', 'file': 'D:\\Dataset\\Gunshot', 'file_num': 105, 'time': '00:00：00', 'chsum': '0xf02ca713'}
+2019-01-13 Sunday 13:50:07  INFO :  Receive Msg:{'head': 'control', 'file': ' / xxxx / xxxxx', 'stop': 0, 'chsum': '0x2f42a089'}
+2019-01-13 Sunday 13:51:06  ERROR :  当前线程：1 处理音频D:\Dataset\Gunshot\gun_shot\gun_shot_000000_1-0.00-24.23.wav时发生错误:Traceback (most recent call last):
+  File "C:\Users\51198\AppData\Local\Programs\Python\Python36\lib\site-packages\torch\utils\data\dataloader.py", line 138, in _worker_loop
+    samples = collate_fn([dataset[i] for i in batch_indices])
+  File "C:\Users\51198\AppData\Local\Programs\Python\Python36\lib\site-packages\torch\utils\data\dataloader.py", line 138, in <listcomp>
+    samples = collate_fn([dataset[i] for i in batch_indices])
+  File "D:\GitRep\pyQt\algorithms\audio_classifier\pre_mel_loader.py", line 221, in __getitem__
+    self.window_type, self.normalize, self.max_len)
+  File "D:\GitRep\pyQt\algorithms\audio_classifier\pre_mel_loader.py", line 65, in logmeldelta_loader
+    delta = librosa.feature.delta(logmel)
+  File "C:\Users\51198\AppData\Local\Programs\Python\Python36\lib\site-packages\librosa\feature\utils.py", line 110, in delta
+    "cannot exceed data.shape[axis]={}".format(width, data.shape[axis]))
+librosa.util.exceptions.ParameterError: when mode='interp', width=9 cannot exceed data.shape[axis]=5
+
+
+2019-01-13 Sunday 13:51:13  ERROR :  当前线程：3 处理音频D:\Dataset\Gunshot\gun_shot\gun_shot_000000_1-0.07-3.08.wav时发生错误:CUDA error: invalid device ordinal
+
+2019-01-13 Sunday 13:51:16  ERROR :  当前线程：4 处理音频D:\Dataset\Gunshot\gun_shot\gun_shot_000000_1-0.16-3.24.wav时发生错误:CUDA error: invalid device ordinal
+
+2019-01-13 Sunday 14:11:07  INFO :  user:admin login,Enter second dialog.
+2019-01-13 Sunday 14:11:09  INFO :  Enter third dialog.
+2019-01-13 Sunday 14:11:20  ERROR :  'dialogWait2Rev' object has no attribute 'fileDict'
+2019-01-13 Sunday 14:11:21  INFO :  IP：localhost网络通畅,0
+2019-01-13 Sunday 14:11:21  INFO :  Reveived Request:{'head': 'cmd', 'file': 'D:\\Dataset\\Gunshot', 'func_ycsyjc': 0, 'func_yzfl': 0, 'func_swfl': 0, 'chsum': '0xf53b5ae7'}
+2019-01-13 Sunday 14:11:21  INFO :  Send Reply:{'head': 'rec', 'file': 'D:\\Dataset\\Gunshot', 'network': 0, 'ready': 1, 'error': 200, 'chsum': '0x 9617d9a'}
+2019-01-13 Sunday 14:11:21  INFO :  Send Report:{'head': 'report', 'file': 'D:\\Dataset\\Gunshot', 'file_num': 105, 'time': '00:00：00', 'chsum': '0xf02ca713'}
+2019-01-13 Sunday 14:11:21  INFO :  Receive Msg:{'head': 'control', 'file': ' / xxxx / xxxxx', 'stop': 0, 'chsum': '0x2f42a089'}
+2019-01-13 Sunday 14:15:58  INFO :  user:admin login,Enter second dialog.
+2019-01-13 Sunday 14:16:00  INFO :  Enter third dialog.
+2019-01-13 Sunday 14:16:12  INFO :  IP：localhost网络通畅,0
+2019-01-13 Sunday 14:16:13  INFO :  Reveived Request:{'head': 'cmd', 'file': 'D:\\Dataset\\Gunshot', 'func_ycsyjc': 0, 'func_yzfl': 0, 'func_swfl': 0, 'chsum': '0xf53b5ae7'}
+2019-01-13 Sunday 14:16:13  INFO :  Send Reply:{'head': 'rec', 'file': 'D:\\Dataset\\Gunshot', 'network': 0, 'ready': 1, 'error': 200, 'chsum': '0x 9617d9a'}
+2019-01-13 Sunday 14:16:13  INFO :  Send Report:{'head': 'report', 'file': 'D:\\Dataset\\Gunshot', 'file_num': 105, 'time': '00:00：00', 'chsum': '0xf02ca713'}
+2019-01-13 Sunday 14:16:13  INFO :  Receive Msg:{'head': 'control', 'file': ' / xxxx / xxxxx', 'stop': 0, 'chsum': '0x2f42a089'}
+2019-01-13 Sunday 14:16:47  ERROR :  当前线程：2 处理音频D:\Dataset\Gunshot\gun_shot\gun_shot_000000_1-0.00-25.50.wav时发生错误:CUDA error: invalid device ordinal
+
+2019-01-13 Sunday 14:20:08  INFO :  user:admin login,Enter second dialog.
+2019-01-13 Sunday 14:20:10  INFO :  Enter third dialog.
+2019-01-13 Sunday 14:20:16  INFO :  IP：localhost网络通畅,0
+2019-01-13 Sunday 14:20:16  INFO :  Reveived Request:{'head': 'cmd', 'file': 'D:\\Dataset\\Gunshot', 'func_ycsyjc': 0, 'func_yzfl': 0, 'func_swfl': 0, 'chsum': '0xf53b5ae7'}
+2019-01-13 Sunday 14:20:17  INFO :  Send Reply:{'head': 'rec', 'file': 'D:\\Dataset\\Gunshot', 'network': 0, 'ready': 1, 'error': 200, 'chsum': '0x 9617d9a'}
+2019-01-13 Sunday 14:20:18  ERROR :  'dialogWait2Rev' object has no attribute 'fileDict'
+2019-01-13 Sunday 14:20:18  INFO :  Send Report:{'head': 'report', 'file': 'D:\\Dataset\\Gunshot', 'file_num': 105, 'time': '00:00：00', 'chsum': '0xf02ca713'}
+2019-01-13 Sunday 14:20:18  INFO :  Receive Msg:{'head': 'control', 'file': ' / xxxx / xxxxx', 'stop': 0, 'chsum': '0x2f42a089'}
+2019-01-13 Sunday 14:20:52  ERROR :  当前线程：3 处理音频D:\Dataset\Gunshot\gun_shot\gun_shot_000000_1-0.07-3.08.wav时发生错误:CUDA error: invalid device ordinal
+
+2019-01-13 Sunday 14:20:54  ERROR :  当前线程：4 处理音频D:\Dataset\Gunshot\gun_shot\gun_shot_000000_1-0.16-3.24.wav时发生错误:CUDA error: invalid device ordinal
+
+2019-01-13 Sunday 14:21:02  ERROR :  当前线程：1 处理音频D:\Dataset\Gunshot\gun_shot\gun_shot_000000_1-0.00-24.23.wav时发生错误:Traceback (most recent call last):
+  File "C:\Users\51198\AppData\Local\Programs\Python\Python36\lib\site-packages\torch\utils\data\dataloader.py", line 138, in _worker_loop
+    samples = collate_fn([dataset[i] for i in batch_indices])
+  File "C:\Users\51198\AppData\Local\Programs\Python\Python36\lib\site-packages\torch\utils\data\dataloader.py", line 138, in <listcomp>
+    samples = collate_fn([dataset[i] for i in batch_indices])
+  File "D:\GitRep\pyQt\algorithms\audio_classifier\pre_mel_loader.py", line 221, in __getitem__
+    self.window_type, self.normalize, self.max_len)
+  File "D:\GitRep\pyQt\algorithms\audio_classifier\pre_mel_loader.py", line 65, in logmeldelta_loader
+    delta = librosa.feature.delta(logmel)
+  File "C:\Users\51198\AppData\Local\Programs\Python\Python36\lib\site-packages\librosa\feature\utils.py", line 110, in delta
+    "cannot exceed data.shape[axis]={}".format(width, data.shape[axis]))
+librosa.util.exceptions.ParameterError: when mode='interp', width=9 cannot exceed data.shape[axis]=5
+
+
+2019-01-13 Sunday 14:21:03  ERROR :  当前线程：2 处理音频D:\Dataset\Gunshot\gun_shot\gun_shot_000000_1-0.00-25.50.wav时发生错误:Traceback (most recent call last):
+  File "C:\Users\51198\AppData\Local\Programs\Python\Python36\lib\site-packages\torch\utils\data\dataloader.py", line 138, in _worker_loop
+    samples = collate_fn([dataset[i] for i in batch_indices])
+  File "C:\Users\51198\AppData\Local\Programs\Python\Python36\lib\site-packages\torch\utils\data\dataloader.py", line 138, in <listcomp>
+    samples = collate_fn([dataset[i] for i in batch_indices])
+  File "D:\GitRep\pyQt\algorithms\audio_classifier\pre_mel_loader.py", line 221, in __getitem__
+    self.window_type, self.normalize, self.max_len)
+  File "D:\GitRep\pyQt\algorithms\audio_classifier\pre_mel_loader.py", line 65, in logmeldelta_loader
+    delta = librosa.feature.delta(logmel)
+  File "C:\Users\51198\AppData\Local\Programs\Python\Python36\lib\site-packages\librosa\feature\utils.py", line 110, in delta
+    "cannot exceed data.shape[axis]={}".format(width, data.shape[axis]))
+librosa.util.exceptions.ParameterError: when mode='interp', width=9 cannot exceed data.shape[axis]=5
+
+
+2019-01-13 Sunday 14:21:12  ERROR :  当前线程：3 处理音频D:\Dataset\Gunshot\gun_shot\gun_shot_000000_1-0.18-3.31.wav时发生错误:CUDA error: invalid device ordinal
+
+2019-01-13 Sunday 14:21:14  ERROR :  当前线程：4 处理音频D:\Dataset\Gunshot\gun_shot\gun_shot_000000_1-0.24-3.63.wav时发生错误:CUDA error: invalid device ordinal
+
+2019-01-13 Sunday 14:21:19  ERROR :  当前线程：1 处理音频D:\Dataset\Gunshot\gun_shot\gun_shot_000000_1-1.22-4.27.wav时发生错误:Traceback (most recent call last):
+  File "C:\Users\51198\AppData\Local\Programs\Python\Python36\lib\site-packages\torch\utils\data\dataloader.py", line 138, in _worker_loop
+    samples = collate_fn([dataset[i] for i in batch_indices])
+  File "C:\Users\51198\AppData\Local\Programs\Python\Python36\lib\site-packages\torch\utils\data\dataloader.py", line 138, in <listcomp>
+    samples = collate_fn([dataset[i] for i in batch_indices])
+  File "D:\GitRep\pyQt\algorithms\audio_classifier\pre_mel_loader.py", line 221, in __getitem__
+    self.window_type, self.normalize, self.max_len)
+  File "D:\GitRep\pyQt\algorithms\audio_classifier\pre_mel_loader.py", line 65, in logmeldelta_loader
+    delta = librosa.feature.delta(logmel)
+  File "C:\Users\51198\AppData\Local\Programs\Python\Python36\lib\site-packages\librosa\feature\utils.py", line 110, in delta
+    "cannot exceed data.shape[axis]={}".format(width, data.shape[axis]))
+librosa.util.exceptions.ParameterError: when mode='interp', width=9 cannot exceed data.shape[axis]=5
+
+
+2019-01-13 Sunday 14:21:20  ERROR :  当前线程：2 处理音频D:\Dataset\Gunshot\gun_shot\gun_shot_000000_1-1.41-21.51.wav时发生错误:Traceback (most recent call last):
+  File "C:\Users\51198\AppData\Local\Programs\Python\Python36\lib\site-packages\torch\utils\data\dataloader.py", line 138, in _worker_loop
+    samples = collate_fn([dataset[i] for i in batch_indices])
+  File "C:\Users\51198\AppData\Local\Programs\Python\Python36\lib\site-packages\torch\utils\data\dataloader.py", line 138, in <listcomp>
+    samples = collate_fn([dataset[i] for i in batch_indices])
+  File "D:\GitRep\pyQt\algorithms\audio_classifier\pre_mel_loader.py", line 221, in __getitem__
+    self.window_type, self.normalize, self.max_len)
+  File "D:\GitRep\pyQt\algorithms\audio_classifier\pre_mel_loader.py", line 65, in logmeldelta_loader
+    delta = librosa.feature.delta(logmel)
+  File "C:\Users\51198\AppData\Local\Programs\Python\Python36\lib\site-packages\librosa\feature\utils.py", line 110, in delta
+    "cannot exceed data.shape[axis]={}".format(width, data.shape[axis]))
+librosa.util.exceptions.ParameterError: when mode='interp', width=9 cannot exceed data.shape[axis]=5
+
+
+2019-01-13 Sunday 14:21:31  ERROR :  当前线程：4 处理音频D:\Dataset\Gunshot\gun_shot\gun_shot_000000_1-10.46-13.47.wav时发生错误:CUDA error: invalid device ordinal
+
+2019-01-13 Sunday 14:21:34  ERROR :  当前线程：3 处理音频D:\Dataset\Gunshot\gun_shot\gun_shot_000000_1-1.92-5.05.wav时发生错误:CUDA error: invalid device ordinal
+
+2019-01-13 Sunday 14:21:35  ERROR :  当前线程：1 处理音频D:\Dataset\Gunshot\gun_shot\gun_shot_000000_1-10.69-14.06.wav时发生错误:Traceback (most recent call last):
+  File "C:\Users\51198\AppData\Local\Programs\Python\Python36\lib\site-packages\torch\utils\data\dataloader.py", line 138, in _worker_loop
+    samples = collate_fn([dataset[i] for i in batch_indices])
+  File "C:\Users\51198\AppData\Local\Programs\Python\Python36\lib\site-packages\torch\utils\data\dataloader.py", line 138, in <listcomp>
+    samples = collate_fn([dataset[i] for i in batch_indices])
+  File "D:\GitRep\pyQt\algorithms\audio_classifier\pre_mel_loader.py", line 221, in __getitem__
+    self.window_type, self.normalize, self.max_len)
+  File "D:\GitRep\pyQt\algorithms\audio_classifier\pre_mel_loader.py", line 65, in logmeldelta_loader
+    delta = librosa.feature.delta(logmel)
+  File "C:\Users\51198\AppData\Local\Programs\Python\Python36\lib\site-packages\librosa\feature\utils.py", line 110, in delta
+    "cannot exceed data.shape[axis]={}".format(width, data.shape[axis]))
+librosa.util.exceptions.ParameterError: when mode='interp', width=9 cannot exceed data.shape[axis]=5
+
+
+2019-01-13 Sunday 14:27:21  INFO :  user:admin login,Enter second dialog.
+2019-01-13 Sunday 14:27:23  INFO :  Enter third dialog.
+2019-01-13 Sunday 14:27:27  INFO :  IP：localhost网络通畅,0
+2019-01-13 Sunday 14:27:27  INFO :  Reveived Request:{'head': 'cmd', 'file': 'D:\\Dataset\\Gunshot', 'func_ycsyjc': 0, 'func_yzfl': 0, 'func_swfl': 0, 'chsum': '0xf53b5ae7'}
+2019-01-13 Sunday 14:27:27  INFO :  Send Reply:{'head': 'rec', 'file': 'D:\\Dataset\\Gunshot', 'network': 0, 'ready': 1, 'error': 200, 'chsum': '0x 9617d9a'}
+2019-01-13 Sunday 14:27:27  INFO :  Send Report:{'head': 'report', 'file': 'D:\\Dataset\\Gunshot', 'file_num': 105, 'time': '00:00：00', 'chsum': '0xf02ca713'}
+2019-01-13 Sunday 14:27:27  INFO :  Receive Msg:{'head': 'control', 'file': ' / xxxx / xxxxx', 'stop': 0, 'chsum': '0x2f42a089'}

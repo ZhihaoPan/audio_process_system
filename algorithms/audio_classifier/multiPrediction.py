@@ -22,6 +22,7 @@ from algorithms.audio_classifier.models.crnn import CRNN, CRNN_GRU
 from algorithms.audio_classifier.pre_mel_loader import melLoader as premelLoader
 
 def loading_audio_classifier_models(models, gpu_device):
+    gpu_device=0
     if torch.cuda.is_available():
         torch.cuda.set_device(gpu_device)
         #idx = torch.cuda.current_device()
