@@ -205,19 +205,24 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
                                                                         au_cla_models=self.au_cla_models[0],
                                                                         ifcuda=self.ifcuda[0],
                                                                         lang_cla_model=self.lang_cla_model[0],
-                                                                        gpu_device=0)})
-                elif id > self.thread_num / self.gpu_device and len(self.au_cla_models) == 2:
+                                                                        gpu_device=1)})
+                    self.ThreadList[id].trigger.connect(self.setContent)
+                    self.ThreadList[id].start(id)
+                    # 设置界面 更改线程显示信息
+                    self.showThreadMsg(id, "运行分类", ",GPU0,{}".format(os.path.basename(file_name)))
+                elif id > (self.thread_num / self.gpu_device) and len(self.au_cla_models) == 2:
                     print("加载AudioProcess{}".format(id))
                     self.ThreadList.update({id: WorkThread4AudioProcess(ID=id, mutex=self.mutex4audioprocess,
                                                                         file_path=file_name,
                                                                         au_cla_models=self.au_cla_models[1],
                                                                         ifcuda=self.ifcuda[1],
                                                                         lang_cla_model=self.lang_cla_model[1],
-                                                                        gpu_device=0)})
-                self.ThreadList[id].trigger.connect(self.setContent)
-                self.ThreadList[id].start(id)
-                #设置界面 更改线程显示信息
-                self.showThreadMsg(id, "运行分类", "{}".format(os.path.basename(file_name)))
+                                                                        gpu_device=1)})
+                    self.ThreadList[id].trigger.connect(self.setContent)
+                    self.ThreadList[id].start(id)
+                    # 设置界面 更改线程显示信息
+                    self.showThreadMsg(id, "运行分类", ",GPU1{}".format(os.path.basename(file_name)))
+
 
             #对音频进行静音处理
             elif file_name and step==0:
