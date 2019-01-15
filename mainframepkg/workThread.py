@@ -129,13 +129,12 @@ class WorkThread4SendTempMsg(QThread):
         #如果Message串没有被改变的话就等待3s后在进行一次判断
         if sendMsg==self.lastMsg:
             #todo 此处后面要长时间运行一下，检验是否线程过多程序奔溃
-            #time.sleep(5)
             print("Sending Msg dont update....")
             retMsg = {"time": sendMsg["time"], "IP": self.ip4platform, "success": 0, "head": sendMsg["head"],
                       "file": sendMsg["file"], "filedone": sendMsg["filedone"], "time_remain": sendMsg["time_remain"]}
             self.trigger.emit(retMsg)
             return
-        time.sleep(1)
+        #time.sleep(1)
         #print("Sending processing message......:%s" % str(sendMsg))
         self.socket.send_json(sendMsg)
         self.lastMsg=sendMsg
@@ -219,7 +218,7 @@ class WorkThread4AudioProcess(QThread):
     一个音频文件一个线程
     """
     trigger=pyqtSignal(dict,int,int,float)
-    def __init__(self,ID,mutex,file_path,au_cla_models,ifcuda,lang_cla_model,gpu_device):
+    def __init__(self,ID,mutex,file_path,au_cla_models,ifcuda,lang_cla_model,gpu_device,threadDict):
         super(WorkThread4AudioProcess, self).__init__()
         self.ThreadID=ID
         self.mutex=mutex
@@ -228,12 +227,14 @@ class WorkThread4AudioProcess(QThread):
         self.ifcuda=ifcuda
         self.lang_cla_model=lang_cla_model
         self.gpu_device=gpu_device
+        self.threadDict=threadDict
 
     def run(self):
         try:
-            #time.sleep(int(self.ThreadID) * 1)
+            #time.sleep(int(self.ThreadID) * 0.5)
             url=os.path.dirname(self.file_path)
             file=os.path.basename(self.file_path)
+            mainlog("进行模型分析1{}".format(file))
             #file_path = r"/home/panzh/Downloads/demoAudio/test/0.wav"
             #au_cla_models, ifcuda = loading_audio_classifier_models({"ResNet101": 0.3, "resnext": 0.6, "VGG16": 0.1})
             #lang_cla_model = loading_language_classifier_model()
@@ -255,8 +256,6 @@ class WorkThread4AudioProcess(QThread):
             #         lang_cla_labels["timesteps"].append(get_lang_timesteps(speaking_audio_url,time_len))
             #         lang_cla_labels["content"].append(max_prob_label)
             #         print(speaking_audio_url,max_prob_label,time_len)
-
-
 
             #调整audio class labels调整为ret_content中ycsyjc格式的{'ycsyjc':{}} 其中的时间全转化为秒的形式
             au_cla_labels=adjust_au_cla_labels(au_cla_labels)
@@ -288,34 +287,29 @@ class WorkThread4AudioProcess(QThread):
             # print("Current Thread ID is :{}".format(self.ThreadID))
             # time.sleep(5)
             # self.trigger.emit(self.tmpContent, self.ThreadID)
+            self.rstContent = {"url": url, "file": file, "file_duration": "{:.2f}s".format(dur_time)}
+            self.rstContent.update(au_cla_labels)
+            self.rstContent.update(lang_cla_labels)
+            self.rstContent.update(sw_cla_labels)
 
-        except Exception as e:
-            self.mutex.lock()
-            self.trigger.emit({"ERROR":e,"file":os.path.join(url,file)},self.ThreadID,-1,0)
-            self.quit()
+            self.mutex.tryLock(30000)
+            mainlog("---------------{}上锁---------------------".format(file))
+            #time.sleep(1)
+            try:
+                self.trigger.emit(self.rstContent, self.ThreadID, 0, dur_time)
+            except:
+                self.trigger.emit(self.rstContent, self.ThreadID, 0, dur_time)  # return
+            self.threadDict[self.ThreadID] = 0
             return
-        self.rstContent={"url":url,"file":file,"file_duration":"{:.2f}s".format(dur_time)}
-        self.rstContent.update(au_cla_labels)
-        self.rstContent.update(lang_cla_labels)
-        self.rstContent.update(sw_cla_labels)
+        except Exception as e:
+            self.mutex.tryLock(30000)
+            mainlog("---------------{}上锁---------------------".format(file))
+            #time.sleep(1)
+            #self.threadDict[self.ThreadID]=0
+            self.trigger.emit({"ERROR":e,"file":os.path.join(url,file)},self.ThreadID,-1,0)
+            self.threadDict[self.ThreadID] = 0
+            return
 
-        #测试使用
-        # self.rstContent = {"url": url, "file": file,
-        #                    "file_duration": "{:.2f}s".format(random.randint(1, 1000)),
-        #                    "ycsyjc": {"timesteps": ["00.000s,11.111s", "11.111s,22.222s", "22.222s,33.333s"],
-        #                        "content": ["boom", "gun", "scream"]},
-        #                    "yzfl": {"timesteps": ["00.000s,11.111s", "11.111s,22.222s", "22.222s,33.333s"],
-        #                        "content": ["mandarin", "english", "uygur"]}, "swfl": {
-        #         "timesteps": ["20.123s,23.456s", "30.111s,35.222s", "36.000s,37.000s", "38.000s,40.000s"],
-        #         "content": ["id00001", "id00003", "id00001", "id00002"], "newid": ["id00003"]}}
-
-
-
-        print("线程{}运行中".format(self.ThreadID))
-        self.mutex.lock()
-        self.trigger.emit(self.rstContent,self.ThreadID,0,dur_time)
-        self.quit()
-        return
 
 class WorkThread4SendResult(QThread):
     trigger = pyqtSignal(dict,dict)
@@ -339,37 +333,39 @@ class WorkThread4SendResult(QThread):
     def run(self):
         # struct 4 send message
         #self.mutex.lock()
-        #print("Debug--------------SendResult------------------")
-        if not self.dicContent:
-            self.trigger.emit({},{})
-            return
-        sendMsg = {"head": "data"}
-        sendMsg.update(self.dicContent)
+        try:
+            if not self.dicContent:
+                self.trigger.emit({},{})
+                return
+            sendMsg = {"head": "data"}
+            sendMsg.update(self.dicContent)
 
-        # 暂时不加校验码
-        # chsum = crc32asii(sendMsg)
-        # sendMsg.update({"chsum": chsum})
-        # 如果Message串没有被改变的话就等待3s后在进行一次判断
-        if sendMsg == self.lastMsg:
-            # todo 此处后面要长时间运行一下，检验是否线程过多程序奔溃
-            # time.sleep(5)
-            print("Sending Msg dont update....")
+            # 暂时不加校验码
+            # chsum = crc32asii(sendMsg)
+            # sendMsg.update({"chsum": chsum})
+            # 如果Message串没有被改变的话就等待3s后在进行一次判断
+            if sendMsg == self.lastMsg:
+                # todo 此处后面要长时间运行一下，检验是否线程过多程序奔溃
+                # time.sleep(5)
+                print("Sending Msg dont update....")
+                retMsg = {}
+                self.trigger.emit(retMsg,{})
+                return
+            #time.sleep(1)
+            print("Sending result message......:%s" % str(sendMsg))
+            self.socket.send_json(sendMsg)
+            self.lastMsg = sendMsg
+
+            # 返回主进程信息
+            # retMsg = {"time":getCurrentTime(),"IP":self.ip4platform,"success":1,"head":sendMsg["head"],
+            #           "url":sendMsg["url"],"file":sendMsg["file"],"ycsyjc":sendMsg["ycsyjc"],"yzfl":sendMsg["yzfl"],"swfl":sendMsg["swfl"]}
+            retMsg={"time":getCurrentTime(),"IP":self.ip4platform,"success":1}
+            self.trigger.emit(retMsg,sendMsg)
+            return
+        except Exception as e:
+            mainlog("{}".format(e),"error")
             retMsg = {}
-            self.trigger.emit(retMsg,{})
-            return
-        #time.sleep(1)
-        print("Sending result message......:%s" % str(sendMsg))
-        self.socket.send_json(sendMsg)
-        self.lastMsg = sendMsg
-
-        # 返回主进程信息
-        # retMsg = {"time":getCurrentTime(),"IP":self.ip4platform,"success":1,"head":sendMsg["head"],
-        #           "url":sendMsg["url"],"file":sendMsg["file"],"ycsyjc":sendMsg["ycsyjc"],"yzfl":sendMsg["yzfl"],"swfl":sendMsg["swfl"]}
-        retMsg={"time":getCurrentTime(),"IP":self.ip4platform,"success":1}
-        self.trigger.emit(retMsg,sendMsg)
-        #self.quit()
-        #print("Debug--------------SendResult return------------------")
-        return
+            self.trigger.emit(retMsg, {})
 
 class WorkThread4ReportProcessDone(QThread):
     trigger=pyqtSignal(bool)

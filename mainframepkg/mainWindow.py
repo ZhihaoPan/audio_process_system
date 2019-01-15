@@ -120,6 +120,15 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         self.timer4=QTimer()
         self.timer4.start(300000)
         self.timer4.timeout.connect(self.clearup)
+
+        #用一个Timer定时重置系统 可以消除卡住的线程(如果处理速度太快，经常会有线程卡在emit的过程中或者模型处理的过程)
+        self.timer5reset=QTimer()
+        self.timer5reset.start(1800000)
+        self.timer5reset.timeout.connect(self.reset)
+
+    def reset(self):
+
+
     #定时清除界面信息
     def clearup(self):
         self.plainTextEdit.clear()
@@ -200,7 +209,7 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
                 #todo 此处做GPu使用的判断前一半线程用GPU0 后一半线程用GPU1
                 if id <=(self.thread_num/self.gpu_device_num) and len(self.au_cla_models)>=1:
                     gpu_device= 0
-                    print("加载AudioProcess{}".format(id))
+                    mainlog("加载AudioProcess{},文件：{}".format(id,file_name))
                     self.ThreadList.update({id: WorkThread4AudioProcess(ID=id, mutex=self.mutex4audioprocess,
                                                                         file_path=file_name,
                                                                         au_cla_models=self.au_cla_models[gpu_device],
@@ -221,7 +230,7 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
 
                 elif id > (self.thread_num / self.gpu_device_num) and len(self.au_cla_models) == 2:
                     gpu_device = 1
-                    print("加载AudioProcess{}".format(id))
+                    mainlog("加载AudioProcess{},文件：{}".format(id, file_name))
                     self.ThreadList.update({id: WorkThread4AudioProcess(ID=id, mutex=self.mutex4audioprocess,
                                                                         file_path=file_name,
                                                                         au_cla_models=self.au_cla_models[gpu_device],
@@ -233,8 +242,10 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
                     self.ThreadList[id].start(id)
                     # 设置界面 更改线程显示信息
                     if self.ThreadList[id].isRunning():
+                        mainlog("文件：{}运行中".format(file_name))
                         self.showThreadMsg(id, "运行分类", "GPU1,{}".format(os.path.basename(file_name)))
                     else:
+                        mainlog("文件：{}没有运行".format(file_name))
                         self.threadDict[id] = 0
                         self.fileDict[file_name] = 1
 
@@ -258,7 +269,7 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
 
         except Exception as e:
             #这样可以保证一定解锁
-            print("Error happen in audiochoose 的回调函数procAudio()中：{}".format(e))
+            mainlog("Error happen in audiochoose 的回调函数procAudio()中：{}".format(e))
             self.threadDict[id] = 0
             self.showThreadMsg(id, "就绪", "")
         #对全局变量的操作结束可以解锁
@@ -317,7 +328,7 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
                     self.dur_time += dur_time
 
                 print("---------------解锁---------------------")
-                mainlog("---------------解锁---------------------")
+                mainlog("---------------解锁{}---------------------".format(Content["file"]))
                 self.mutex4audioprocess.unlock()
 
             elif flag is 0:
@@ -341,6 +352,7 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
             # 更改线程显示信息
             self.showThreadMsg(threadID, "就绪", "")
             try:
+                mainlog("---------------解锁{}---------------------".format(Content["file"]))
                 self.mutex4audioprocess.unlock()
             except:
                 mainlog("解锁错误", "error")
@@ -470,7 +482,7 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
 
         self.mutex4audioprocess.unlock()
         print("---------------解锁---------------------")
-        mainlog("---------------解锁---------------------")
+        mainlog("---------------解锁{}---------------------".format(sendMsg["file"]))
 
     def setChangeFile(self,changeMsg):
         if changeMsg:
