@@ -2,28 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9184afb0-a423-4a00-b808-94d748d38236" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms/audio_classifier/cut_audio.py" beforeDir="false" afterPath="$PROJECT_DIR$/algorithms/audio_classifier/cut_audio.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms/audio_classifier/models/crnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/algorithms/audio_classifier/models/crnn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms/audio_classifier/multiPrediction.py" beforeDir="false" afterPath="$PROJECT_DIR$/algorithms/audio_classifier/multiPrediction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms/audio_classifier/pre_mel_loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/algorithms/audio_classifier/pre_mel_loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms/audio_classifier/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/algorithms/audio_classifier/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms/audio_classifier/vad.py" beforeDir="false" afterPath="$PROJECT_DIR$/algorithms/audio_classifier/vad.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms/language_classifier/data_loaders/SpectrogramGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/algorithms/language_classifier/data_loaders/SpectrogramGenerator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms/language_classifier/predict_file.py" beforeDir="false" afterPath="$PROJECT_DIR$/algorithms/language_classifier/predict_file.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms/language_classifier/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/algorithms/language_classifier/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mainframepkg/mainFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainframepkg/mainFrame.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mainframepkg/mainFrame.ui" beforeDir="false" afterPath="$PROJECT_DIR$/mainframepkg/mainFrame.ui" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mainframepkg/mainWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainframepkg/mainWindow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mainframepkg/workThread.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainframepkg/workThread.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/revpkg/dialogWait2Rev.py" beforeDir="false" afterPath="$PROJECT_DIR$/revpkg/dialogWait2Rev.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/revpkg/wait2Rev.py" beforeDir="false" afterPath="$PROJECT_DIR$/revpkg/wait2Rev.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/revpkg/wait2Rev.ui" beforeDir="false" afterPath="$PROJECT_DIR$/revpkg/wait2Rev.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/selfcheck/dialogSelfCheck.py" beforeDir="false" afterPath="$PROJECT_DIR$/selfcheck/dialogSelfCheck.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/getState.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/getState.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/otherUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/otherUtils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/writeLog.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/writeLog.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -135,14 +115,14 @@
         <counts>
           <entry key="dummy" value="72" />
           <entry key="log" value="12" />
-          <entry key="py" value="42793" />
+          <entry key="py" value="42872" />
           <entry key="txt" value="544" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="628" />
-          <entry key="Python" value="42793" />
+          <entry key="Python" value="42872" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -201,7 +181,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/revpkg/dialogWait2Rev.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1840">
+            <state relative-caret-position="169">
               <caret line="93" column="30" selection-start-line="93" selection-start-column="30" selection-end-line="93" selection-end-column="30" />
               <folding>
                 <element signature="e#275#301#0" expanded="true" />
@@ -213,12 +193,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mainframepkg/mainWindow.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="393">
-              <caret line="80" selection-start-line="80" selection-end-line="80" />
+            <state relative-caret-position="256">
+              <caret line="210" column="75" selection-end-line="549" />
               <folding>
-                <element signature="e#24#37#0" expanded="true" />
-                <marker date="1547389926545" expanded="true" signature="19254:19259" ph="..." />
-                <marker date="1547389926545" expanded="true" signature="19286:19295" ph="..." />
+                <marker date="1547527283081" expanded="true" signature="21078:21083" ph="..." />
+                <marker date="1547527283081" expanded="true" signature="21110:21119" ph="..." />
               </folding>
             </state>
           </provider>
@@ -619,13 +598,6 @@
       <option name="presentableId" value="Default" />
       <updated>1541309979165</updated>
     </task>
-    <task id="LOCAL-00013" summary="some modify">
-      <created>1542805832270</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1542805832270</updated>
-    </task>
     <task id="LOCAL-00014" summary="some modify">
       <created>1542805877032</created>
       <option name="number" value="00014" />
@@ -962,7 +934,14 @@
       <option name="project" value="LOCAL" />
       <updated>1547375899885</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="修改了一些bug">
+      <created>1547526932698</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1547526932698</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TodoView">
@@ -975,10 +954,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-5" y="-5" width="1551" height="839" extended-state="7" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49427918" visible="true" weight="0.15137307" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49427918" visible="true" weight="0.15147454" />
       <window_info id="Structure" order="1" sideWeight="0.5057208" side_tool="true" weight="0.16085792" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -1262,6 +1241,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
           <caret line="112" selection-start-line="112" selection-end-line="112" />
+          <folding>
+            <element signature="e#25#39#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1347,6 +1329,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="52">
           <caret line="22" column="7" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
+          <folding>
+            <element signature="e#25#34#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1434,6 +1419,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-586">
           <caret line="125" column="17" lean-forward="true" selection-start-line="125" selection-start-column="17" selection-end-line="125" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+            <marker date="1547364285774" expanded="true" signature="7994:9182" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1462,16 +1451,6 @@
             <marker date="1547040866201" expanded="true" signature="2660:3408" ph="..." />
             <marker date="1547040866201" expanded="true" signature="3434:3439" ph="..." />
             <marker date="1547040866201" expanded="true" signature="4761:4762" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/revpkg/dialogWait2Rev.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1840">
-          <caret line="93" column="30" selection-start-line="93" selection-start-column="30" selection-end-line="93" selection-end-column="30" />
-          <folding>
-            <element signature="e#275#301#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1522,14 +1501,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/revpkg/dialogWait2Rev.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="93" column="30" selection-start-line="93" selection-start-column="30" selection-end-line="93" selection-end-column="30" />
+          <folding>
+            <element signature="e#275#301#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mainframepkg/mainWindow.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="80" selection-start-line="80" selection-end-line="80" />
+        <state relative-caret-position="256">
+          <caret line="210" column="75" selection-end-line="549" />
           <folding>
-            <element signature="e#24#37#0" expanded="true" />
-            <marker date="1547389926545" expanded="true" signature="19254:19259" ph="..." />
-            <marker date="1547389926545" expanded="true" signature="19286:19295" ph="..." />
+            <marker date="1547527283081" expanded="true" signature="21078:21083" ph="..." />
+            <marker date="1547527283081" expanded="true" signature="21110:21119" ph="..." />
           </folding>
         </state>
       </provider>

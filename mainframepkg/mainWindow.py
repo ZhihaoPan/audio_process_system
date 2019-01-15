@@ -213,8 +213,12 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
                     self.ThreadList[id].start(id)
                     # 设置界面 更改线程显示信息
                     #判断线程是否真的运行 如果确实运行则 没有运行则调整
-                    if self.ThreadList[id].
-                    self.showThreadMsg(id, "运行分类", ",GPU0,{}".format(os.path.basename(file_name)))
+                    if self.ThreadList[id].isRunning():
+                        self.showThreadMsg(id, "运行分类", "GPU0,{}".format(os.path.basename(file_name)))
+                    else:
+                        self.threadDict[id] = 0
+                        self.fileDict[file_name] = 1
+
                 elif id > (self.thread_num / self.gpu_device_num) and len(self.au_cla_models) == 2:
                     gpu_device = 1
                     print("加载AudioProcess{}".format(id))
@@ -228,8 +232,11 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
                     self.ThreadList[id].trigger.connect(self.setContent)
                     self.ThreadList[id].start(id)
                     # 设置界面 更改线程显示信息
-                    self.showThreadMsg(id, "运行分类", ",GPU1{}".format(os.path.basename(file_name)))
-
+                    if self.ThreadList[id].isRunning():
+                        self.showThreadMsg(id, "运行分类", "GPU1,{}".format(os.path.basename(file_name)))
+                    else:
+                        self.threadDict[id] = 0
+                        self.fileDict[file_name] = 1
 
             #对音频进行静音处理
             elif file_name and step==0:
@@ -242,11 +249,18 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
                 self.ThreadList[id].start(id)
                 # 设置界面
                 # 更改线程显示信息
-                self.showThreadMsg(id, "运行Vad", "{}".format(os.path.basename(file_name)))
+
+                if self.ThreadList[id].isRunning():
+                    self.showThreadMsg(id, "运行Vad", "{}".format(os.path.basename(file_name)))
+                else:
+                    self.threadDict[id] = 0
+                    self.fileDict.updata({file_name:0})
+
         except Exception as e:
             #这样可以保证一定解锁
             print("Error happen in audiochoose 的回调函数procAudio()中：{}".format(e))
-
+            self.threadDict[id] = 0
+            self.showThreadMsg(id, "就绪", "")
         #对全局变量的操作结束可以解锁
         self.mutex4audiochoose.unlock()
         #同时还需要设置界面 设置维护的两个字典，在处理完之后把字典恢复，同时该list中的内容去除
