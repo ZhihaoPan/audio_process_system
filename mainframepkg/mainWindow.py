@@ -123,10 +123,8 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
 
         #用一个Timer定时重置系统 可以消除卡住的线程(如果处理速度太快，经常会有线程卡在emit的过程中或者模型处理的过程)
         self.timer5reset=QTimer()
-        self.timer5reset.start(1800000)
+        self.timer5reset.start(30000)
         self.timer5reset.timeout.connect(self.reset)
-
-    def reset(self):
 
 
     #定时清除界面信息
@@ -487,6 +485,7 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
     def setChangeFile(self,changeMsg):
         if changeMsg:
             #根据平台发来的信息进行重新初始化
+            self.timer4audiochoose.stop()
             self.plainTextEdit.appendPlainText("INFO -- 系统收到新的文件命令,重启运行环境。")
             mainlog("系统收到新的文件命令,重启运行环境。","info")
             self.file_path=changeMsg["file"]
@@ -496,6 +495,7 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
             self.lineEdit_2.setText("{:}".format(file_num))
             if self.work4AudioChoose.isRunning():
                 try:
+                    self.work4AudioChoose.disconnect()
                     self.work4AudioChoose.terminate()
                     if not self.work4AudioChoose.isFinished():
                         raise Exception("Closed Error")
@@ -506,6 +506,29 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
                                                            self.threadDict, self.mutex4audiochoose)
             self.work4AudioChoose.trigger.connect(self.procAudio)
             self.timer4audiochoose.start(5000)
+
+    def reset(self):
+        self.timer4audiochoose.stop()
+        if self.work4AudioChoose.isRunning():
+            try:
+                self.work4AudioChoose.disconnect()
+                self.work4AudioChoose.terminate()
+                if not self.work4AudioChoose.isFinished():
+                    raise Exception("Closed Error")
+            except Exception as e:
+                mainlog("{}:停止音频选择线程错误".format(e), "error")
+        #
+        for tmpthread in range(self.thread_num):
+            #如果当前的thread正在working就重新记录下文件,并停止
+            if self.threadDict[tmpthread+1] or self.ThreadList[tmpthread+1].isRunning():
+                #重置线程序列和文件序列
+                self.threadDict[tmpthread+1]=0
+                tmpfile=self.ThreadList[tmpthread].getFilePath()
+                self.fileDict[tmpfile]=1
+        self.work4AudioChoose = WorkThread4AudioChoose(self.file_path, self.thread_num, self.fileDict, self.threadDict,
+                                                       self.mutex4audiochoose)
+        self.work4AudioChoose.trigger.connect(self.procAudio)
+        self.timer4audiochoose.start(5000)
 
     def updateTmpContent(self):
         self.tmpContent["filedone"]+=1

@@ -228,6 +228,8 @@ class WorkThread4AudioProcess(QThread):
         self.lang_cla_model=lang_cla_model
         self.gpu_device=gpu_device
         self.threadDict=threadDict
+    def getFilePath(self):
+        return self.file_path
 
     def run(self):
         try:

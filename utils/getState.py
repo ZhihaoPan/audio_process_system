@@ -120,7 +120,7 @@ def getNetWorkstate(ip_address):
             reg_receive = 'min/avg/max/mdev = (.*)'
             match_receive = re.search(reg_receive, output.decode('gbk'))
             receive_count = -1
-
+            p.terminate()
             if match_receive:
                 receive_count = float(match_receive.group().split(r"/")[4])
                 return receive_count
@@ -128,6 +128,7 @@ def getNetWorkstate(ip_address):
                 print('网络不通，目标服务器不可达！')
                 return 9999
         except Exception as e:
+            p.terminate()
             print("Error--得到网络状态时候出错！")
             return 9999
 
