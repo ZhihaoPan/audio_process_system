@@ -118,7 +118,7 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
 
         #用一个Timer定时清除缓存信息
         self.timer4=QTimer()
-        self.timer4.start(100000000)
+        self.timer4.start(300000)
         self.timer4.timeout.connect(self.clearup)
     #定时清除界面信息
     def clearup(self):
@@ -206,10 +206,14 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
                                                                         au_cla_models=self.au_cla_models[gpu_device],
                                                                         ifcuda=self.ifcuda[gpu_device],
                                                                         lang_cla_model=self.lang_cla_model[gpu_device],
-                                                                        gpu_device=gpu_device)})
+                                                                        gpu_device=gpu_device,
+                                                                        threadDict=self.threadDict
+                                                                        )})
                     self.ThreadList[id].trigger.connect(self.setContent)
                     self.ThreadList[id].start(id)
                     # 设置界面 更改线程显示信息
+                    #判断线程是否真的运行 如果确实运行则 没有运行则调整
+                    if self.ThreadList[id].
                     self.showThreadMsg(id, "运行分类", ",GPU0,{}".format(os.path.basename(file_name)))
                 elif id > (self.thread_num / self.gpu_device_num) and len(self.au_cla_models) == 2:
                     gpu_device = 1
@@ -219,7 +223,8 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
                                                                         au_cla_models=self.au_cla_models[gpu_device],
                                                                         ifcuda=self.ifcuda[gpu_device],
                                                                         lang_cla_model=self.lang_cla_model[gpu_device],
-                                                                        gpu_device=gpu_device)})
+                                                                        gpu_device=gpu_device,
+                                                                        threadDict=self.threadDict)})
                     self.ThreadList[id].trigger.connect(self.setContent)
                     self.ThreadList[id].start(id)
                     # 设置界面 更改线程显示信息
@@ -266,7 +271,9 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
             # 更改线程显示信息
             self.showThreadMsg(threadID, "就绪", "")
         except:
-            pass
+            self.threadDict[threadID] = 0
+            # 更改线程显示信息
+            self.showThreadMsg(threadID, "就绪", "")
         self.mutex4audioprocess.unlock()
 
     def setContent(self, Content, threadID, flag, dur_time):
@@ -278,24 +285,32 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         :param flag: 如果flag为0则为5s一次信息，flag为1则为result信息
         :return:
         """
-
+        mainlog("---------------setContent---------------------")
         try:
+            #todo 有的时候这里会出问题
             if flag is -1:
-                self.plainTextEdit.appendPlainText("ERROR --当前线程：{} 处理音频时发生错误:{}\n".format(threadID, Content["ERROR"]))
-                mainlog("当前线程：{} 处理音频{}时发生错误:{}\n".format(threadID, Content["file"], Content["ERROR"]),"error")
-                print("当前线程：{} 处理音频{}时发生错误:{}\n".format(threadID, Content["file"], Content["ERROR"]))
                 self.threadDict[threadID] = 0
 
                 # 更改线程显示信息
                 self.showThreadMsg(threadID, "就绪", "")
 
+                self.plainTextEdit.appendPlainText("ERROR --当前线程：{} 处理音频时发生错误:{}\n".format(threadID, Content["ERROR"]))
+                mainlog("当前线程：{} 处理音频{}时发生错误:{}\n".format(threadID, Content["file"], Content["ERROR"]),"error")
+                print("当前线程：{} 处理音频{}时发生错误:{}\n".format(threadID, Content["file"], Content["ERROR"]))
+
+
                 if dur_time:
                     self.dur_time += dur_time
+
+                print("---------------解锁---------------------")
+                mainlog("---------------解锁---------------------")
                 self.mutex4audioprocess.unlock()
 
-
             elif flag is 0:
+                self.threadDict[threadID] = 0
 
+                # 更改线程显示信息
+                self.showThreadMsg(threadID, "就绪", "")
                 file_done_name = os.path.join(Content["url"], Content["file"])
                 try:
                     self.plainTextEdit.appendPlainText("INFO --当前音频处理线程:{},处理的文件是:{},处理完成,准备发送处理结果信息...".format(threadID,file_done_name))
@@ -305,18 +320,19 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
                 except Exception as e:
                     self.plainTextEdit.appendPlainText("ERROR --当前的文件名不存在在fileDict内：{} Error:{}".format(file_done_name, e))
 
-                self.threadDict[threadID]=0
-
-                #更改线程显示信息
-                self.showThreadMsg(threadID,"就绪","")
-
                 if dur_time:
                     self.dur_time += dur_time
         except Exception as e:
-            print("Error happen in setContent():{}".format(e))
+            self.threadDict[threadID] = 0
+            # 更改线程显示信息
+            self.showThreadMsg(threadID, "就绪", "")
+            try:
+                self.mutex4audioprocess.unlock()
+            except:
+                mainlog("解锁错误", "error")
+            mainlog("Error happen in setContent():{}".format(e),"error")
 
-        #测试
-        #self.mutex4audioprocess.unlock()
+        #
 
     #发送处理信息部
     def sendTempMsg(self):
@@ -336,8 +352,9 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
         发送线程处理的总结果
         :return:
         """
-        print("Debug-- 运行到sendRstMsg")
+        mainlog("Debug-- 运行到sendRstMsg")
         self.work4SendRstMsg.setSendContent(self.rstContent)
+        mainlog("Debug-- 运行到sendRstMsg2")
         self.work4SendRstMsg.start()
 
 
@@ -415,6 +432,9 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
                 self.plainTextEdit.appendPlainText("WARNING --发送平台的信息包头为:data,但发送的内容重复或者为空")
                 # 写入日志文件
                 mainlog("发送平台的信息包头为:data,但发送的内容重复或者为空!!!!!!!", level="warning")
+                self.mutex4audioprocess.unlock()
+                print("---------------解锁---------------------")
+                mainlog("---------------解锁---------------------")
                 self.work4SendRstMsg.disconnect()
                 return
             text="INFO --发送平台信息包头:{}, 当前处理的音频文件是:{} \n发送时刻(hhmmss):{}, IP地址:{}" \
@@ -435,7 +455,8 @@ class windowMainProc(QMainWindow,Ui_MainWindow):
             mainlog("ERROR --发送结果信息是出现了错误:{}".format(e),"ERROR")
 
         self.mutex4audioprocess.unlock()
-
+        print("---------------解锁---------------------")
+        mainlog("---------------解锁---------------------")
 
     def setChangeFile(self,changeMsg):
         if changeMsg:
