@@ -56,12 +56,12 @@ def cut_Audio(audio_file, dict_labels):
             continue
         else:
             if tmp_st:#不同且非空的情况下就切割前一个的tmp_label
-                if tmp_lab in ['gun_shot', 'scream', 'speaking','multispeaker','stLaughter']:
+                if tmp_lab in ['speaking']:
                     cut_method(audio_file,tmp_lab,start_time=tmp_st,dur_time="{:0>2d}:{:0>2d}:{:0>2d}.0".format((2*cnt)//3600,((2 * cnt) % 3600) // 60,(2*cnt)%60))
                 cnt=1
         tmp_st=start_time
         tmp_lab=label
-    if tmp_lab in ['gun_shot', 'scream', 'speaking','multispeaker','stLaughter']:
+    if tmp_lab in ['speaking']:
         cut_method(audio_file, tmp_lab, start_time=tmp_st,
                    dur_time="{:0>2d}:{:0>2d}:{:0>2d}.0".format((2 * cnt) // 3600, ((2 * cnt) % 3600) // 60, (2 * cnt) % 60))
 
