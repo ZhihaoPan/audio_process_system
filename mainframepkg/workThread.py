@@ -434,9 +434,29 @@ class WorkThread4LoadingModels(QThread):
             mainlog("加载模型出现错误！！！！！:{}".format(e), "error")
             self.trigger.emit({}, 0, {}, self.gpu_device)
 
+class WorkThread4ReadAudio(QThread):
+    """
+    该线程用于加载音频文件,加载进来的时候cacheDict为空,dataDict为{path:[0,None]}
+    加载后dataDict为{path:[1,data]} cacheDict长度为40 {path:[0,data]} cacheDict用于文件的后面的加载
+    """
+    trigger=pyqtSignal()
 
+    def __init__(self,dataDict,cacheDict):
+        super(WorkThread4ReadAudio, self).__init__()
+        self.dataDict=dataDict
+        self.cacheDict=cacheDict
+
+    def run(self):
+        # try:
+        #     phymem = psutil.virtual_memory()
+        #     file_name=file_name = list(self.dataDict.keys()[0])[list(self.FileDoneFlags.values()).index(0)]
+        #     if round(float(phymem.used / 1024 / 1024),2)+getFileSize():
+        #
+        pass
 if __name__ == '__main__':
-    label = {'00:00:00': 'speaking', '00:00:02': 'speaking', '00:00:04': 'speaking', '00:00:06': 'speaking',
-             '00:00:08': 'speaking', '00:00:12': 'speaking', '00:00:14': 'speaking', '00:00:16': 'speaking',
-             '00:00:18': 'speaking', '00:00:20': 'speaking', '00:00:24': 'speaking'}
-    print(adjust_au_cla_labels(label))
+    # label = {'00:00:00': 'speaking', '00:00:02': 'speaking', '00:00:04': 'speaking', '00:00:06': 'speaking',
+    #          '00:00:08': 'speaking', '00:00:12': 'speaking', '00:00:14': 'speaking', '00:00:16': 'speaking',
+    #          '00:00:18': 'speaking', '00:00:20': 'speaking', '00:00:24': 'speaking'}
+    # print(adjust_au_cla_labels(label))
+    a={"a":[0,123],"b":[1,1233],"c":[0,123]}
+    print([list(a.values()[0,123])])

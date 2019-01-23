@@ -1,6 +1,6 @@
 import psutil
 import time
-import pynvml,sys
+import pynvml,sys,os
 import subprocess
 import re
 from utils.writeLog import *
@@ -131,6 +131,11 @@ def getNetWorkstate(ip_address):
             p.terminate()
             print("Error--得到网络状态时候出错！")
             return 9999
+
+def getFileSize(filePath):
+    fsize = os.path.getsize(filePath)
+    fsize = fsize/float(1024*1024)
+    return round(fsize,2)
 
 if __name__ == "__main__":
     # -*- coding: utf-8 -*-
