@@ -108,7 +108,7 @@ visdom==0.1.8.5
 wcwidth==0.1.7
 webencodings==0.5.1
 websocket-client==0.51.0
-Werkzeug==0.14.1
+Werkzeug==0.15.3
 widgetsnbextension==3.4.0
 xarray==0.11.0
 xlrd==1.1.0
